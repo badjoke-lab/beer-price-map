@@ -1,0 +1,40 @@
+name: Beer Price Map production smoke
+
+on:
+  workflow_run:
+    workflows:
+      - Deploy Beer Price Map
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production-smoke:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Production browser smoke
+        env:
+          BASE_URL: https://badjoke-lab.github.io/beer-price-map/
+        run: node scripts/smoke-corona-production.mjs
+      - name: Upload production screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: beer-price-map-production-smoke
+          path: production-smoke-artifacts/*.png
+          if-no-files-found: error
