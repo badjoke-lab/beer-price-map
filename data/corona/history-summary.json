@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-07T14:03:18.294342Z",
+  "generatedAt": "2026-09-07T16:13:00.848373Z",
   "countries": {
     "AE": [
       {
@@ -297,9 +297,9 @@
     "GR": [
       {
         "date": "2026-09-07",
-        "pricePer330Ml": 2.47,
+        "pricePer330Ml": 3.47,
         "currency": "EUR",
-        "shelfPrice": 2.47,
+        "shelfPrice": 3.47,
         "packageVolumeMl": 330.0,
         "marketScope": {
           "level": "country-reference",
