@@ -1,0 +1,63 @@
+name: Bootstrap Beer Price Map
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/bootstrap-from-maps-lab.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-corona-production:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout target
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Fetch validated Corona production branch
+        run: |
+          git clone --depth 1 --branch build/corona-production https://github.com/badjoke-lab/maps-lab.git /tmp/maps-lab
+
+      - name: Copy Corona collector, data and UI
+        run: |
+          mkdir -p .github/workflows apps scripts data/probes data/corona
+          cp /tmp/maps-lab/.gitignore .gitignore
+          cp /tmp/maps-lab/.github/workflows/corona-production-v2.yml .github/workflows/corona-production-v2.yml
+          cp /tmp/maps-lab/.github/workflows/corona-ui-smoke.yml .github/workflows/corona-ui-smoke.yml
+          rm -rf apps/corona-price-map
+          cp -R /tmp/maps-lab/apps/corona-price-map apps/corona-price-map
+          for f in \
+            audit-corona-strict.py \
+            build-corona-history-summary.py \
+            build-corona-site.mjs \
+            fetch-corona-fx.mjs \
+            merge-corona-strict.py \
+            probe-corona-strict.mjs \
+            publish-corona-production.py \
+            smoke-corona-site.mjs; do
+            cp "/tmp/maps-lab/scripts/$f" "scripts/$f"
+          done
+          cp /tmp/maps-lab/data/probes/corona-auto-sources.json data/probes/corona-auto-sources.json
+          cp /tmp/maps-lab/data/probes/corona-auto-sources-alt.json data/probes/corona-auto-sources-alt.json
+          rm -rf data/corona
+          cp -R /tmp/maps-lab/data/corona data/corona
+
+      - name: Persist imported production state
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .gitignore .github/workflows/corona-production-v2.yml .github/workflows/corona-ui-smoke.yml apps/corona-price-map scripts data/probes data/corona
+          if git diff --cached --quiet; then
+            echo 'no import changes'
+            exit 0
+          fi
+          git commit -m 'feat: import validated Corona production pipeline'
+          git push origin HEAD:main
