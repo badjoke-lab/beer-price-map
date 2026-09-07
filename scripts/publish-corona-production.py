@@ -55,6 +55,27 @@ if len(core) != 50 or len(set(allowed)) != len(allowed):
     print("invalid production country manifest", file=sys.stderr)
     sys.exit(2)
 
+scope_default = manifest.get("sourceScopeDefault") or {
+    "level": "country-reference",
+    "label": "Selected retailer source",
+    "nationalAverage": False,
+    "locationDeterministic": False,
+    "classification": "not-yet-market-audited",
+}
+scope_overrides = manifest.get("sourceScopeOverrides") or {}
+
+
+def scope_for(code):
+    scope = deepcopy(scope_default)
+    scope.update(scope_overrides.get(code) or {})
+    scope["nationalAverage"] = bool(scope.get("nationalAverage", False))
+    scope["locationDeterministic"] = bool(scope.get("locationDeterministic", False))
+    if scope["nationalAverage"]:
+        print(f"invalid scope for {code}: production source must not claim national average", file=sys.stderr)
+        sys.exit(2)
+    return scope
+
+
 fresh_by_code = {r["code"]: r for r in audit.get("records", []) if r.get("code") in allowed}
 fresh_codes = [c for c in allowed if c in fresh_by_code]
 core_fresh = [c for c in core if c in fresh_by_code]
@@ -91,6 +112,7 @@ for code in allowed:
         "httpStatus": raw.get("httpStatus"),
         "observedPriceText": raw.get("observedPriceText"),
         "observedVolumeText": raw.get("observedVolumeText"),
+        "marketScope": scope_for(code),
         "stale": False,
         "lastFreshAt": generated_at,
     }
@@ -107,6 +129,7 @@ for code in allowed:
     if not old:
         continue
     rec = deepcopy(old)
+    rec["marketScope"] = scope_for(code)
     rec["stale"] = True
     rec["staleSince"] = generated_at
     current_records.append(rec)
@@ -115,7 +138,7 @@ current_records.sort(key=lambda r: (0 if r["role"] == "core" else 1, r["code"]))
 fresh_records.sort(key=lambda r: (0 if r["role"] == "core" else 1, r["code"]))
 
 current_payload = {
-    "schemaVersion": 1,
+    "schemaVersion": 2,
     "product": manifest.get("product", "Corona Extra"),
     "generatedAt": generated_at,
     "minimumFreshCountries": minimum,
@@ -124,11 +147,16 @@ current_payload = {
     "spareFreshCount": len(spare_fresh),
     "displayCountryCount": len(current_records),
     "productionGate": "pass",
+    "scopeSemantics": {
+        "nationalAverage": False,
+        "countryReferenceMeaning": "One validated selected-source observation; not a country average.",
+        "marketLayerIndependent": True,
+    },
     "records": current_records,
 }
 
 history_payload = {
-    "schemaVersion": 1,
+    "schemaVersion": 2,
     "product": manifest.get("product", "Corona Extra"),
     "date": day,
     "generatedAt": generated_at,
@@ -152,6 +180,7 @@ for code in allowed:
             "code": code,
             "role": "core" if code in core else "spare",
             "fresh": True,
+            "marketScope": scope_for(code),
             "sourceUrl": raw.get("url"),
             "sourceMode": raw.get("sourceMode"),
             "httpStatus": raw.get("httpStatus"),
@@ -164,13 +193,14 @@ for code in allowed:
             "code": code,
             "role": "core" if code in core else "spare",
             "fresh": False,
+            "marketScope": scope_for(code),
             "sourceUrl": old.get("sourceUrl"),
             "lastSuccessAt": old.get("lastFreshAt"),
             "failureReasons": failures.get(code, ["not-canonicalized"]),
         })
 
 health_payload = {
-    "schemaVersion": 1,
+    "schemaVersion": 2,
     "generatedAt": generated_at,
     "freshCountryCount": len(fresh_codes),
     "minimumFreshCountries": minimum,
@@ -184,5 +214,5 @@ dump(HEALTH, health_payload)
 
 print(
     f"PRODUCTION PUBLISH PASS fresh={len(fresh_codes)} core={len(core_fresh)} "
-    f"spare={len(spare_fresh)} display={len(current_records)}"
+    f"spare={len(spare_fresh)} display={len(current_records)} scopes={len(allowed)}"
 )

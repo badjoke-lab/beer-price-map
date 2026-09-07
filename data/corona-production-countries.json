@@ -9,6 +9,40 @@
     "PE","PH","PL","PT","PY","SE","SG","TH","TW","VN"
   ],
   "spare": ["NI","KE","RW","SI","UG"],
+  "sourceScopeDefault": {
+    "level": "country-reference",
+    "label": "Selected retailer source",
+    "nationalAverage": false,
+    "locationDeterministic": false,
+    "classification": "not-yet-market-audited"
+  },
+  "sourceScopeOverrides": {
+    "CA": {
+      "level": "region",
+      "label": "Ontario · LCBO",
+      "jurisdiction": "Ontario",
+      "sourceProvider": "LCBO",
+      "nationalAverage": false,
+      "locationDeterministic": true,
+      "classification": "fixed-regional-retailer"
+    },
+    "FI": {
+      "level": "country-retailer",
+      "label": "Finland · Alko catalog",
+      "sourceProvider": "Alko",
+      "nationalAverage": false,
+      "locationDeterministic": true,
+      "classification": "fixed-country-retailer"
+    },
+    "SE": {
+      "level": "country-retailer",
+      "label": "Sweden · Systembolaget catalog",
+      "sourceProvider": "Systembolaget",
+      "nationalAverage": false,
+      "locationDeterministic": true,
+      "classification": "fixed-country-retailer"
+    }
+  },
   "spareNotes": {
     "NI": "Observed product page and parsed volume disagree; keep out of core until source is corrected.",
     "KE": "Current source is a generic retailer landing page; replace with a stable product URL before core promotion.",
