@@ -3,102 +3,363 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Beer Price Map tracks Corona Extra shelf prices across countries and selected deterministic markets, normalizes packages to 330 ml, converts currencies and preserves daily price and FX history with source evidence." />
+  <meta name="description" content="Beer Price Map compares Corona Extra shelf prices around the world, normalized to 330 ml with preserved local prices, package context and daily FX history." />
+  <meta name="theme-color" content="#07131c" />
   <title>Beer Price Map · Corona Extra</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand-lockup">
-      <p class="eyebrow">Global beer price tracker</p>
-      <h1>Beer Price Map</h1>
-      <div class="product-line"><span class="product-pill">Corona Extra</span><span class="product-note">daily retail snapshot</span></div>
-      <p class="lede">Compare selected retailer shelf prices on one world map. Every package is normalized to a 330 ml equivalent while the original local price, package size, source, observation time and daily FX snapshot stay reproducible.</p>
-    </div>
-    <div class="controls-card">
-      <label>Display currency
-        <select id="currency" aria-label="Display currency"><option value="USD">USD</option></select>
-      </label>
-      <div class="data-status"><span id="gate" class="status-dot">—</span><span id="updated">Loading production data…</span><span id="fx-date">FX —</span></div>
-    </div>
-  </header>
+  <a class="skip-link" href="#main">Skip to data</a>
 
-  <main>
-    <section class="summary-grid" aria-label="Current summary">
-      <article><span class="kicker">Fresh countries</span><strong id="fresh-count">—</strong><small>live production records</small></article>
-      <article><span class="kicker">Median / 330 ml</span><strong id="median">—</strong><small>across current coverage</small></article>
-      <article><span class="kicker">Cheapest / 330 ml</span><strong id="cheapest">—</strong><small id="cheapest-country">—</small></article>
-      <article><span class="kicker">Highest / 330 ml</span><strong id="expensive">—</strong><small id="expensive-country">—</small></article>
-    </section>
-
-    <section class="map-panel">
-      <div class="panel-head">
-        <div><p class="section-kicker">World comparison</p><h2>330 ml equivalent</h2><p>Color compares the same product quantity in the selected display currency. Hover for the selected-source shelf price; click a colored country for evidence, preserved history and any independently verified market layer.</p></div>
-        <div id="legend" class="legend" aria-label="Price scale"></div>
+  <section class="poster-hero" id="home" aria-labelledby="page-title">
+    <header class="site-header">
+      <a class="mini-brand" href="#home" aria-label="Beer Price Map home">
+        <span>GLOBAL BEER PRICE TRACKER</span>
+        <strong>BEER PRICE MAP</strong>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#map-section">Map</a>
+        <a href="#ranking-section">Ranking</a>
+        <a href="#methodology">About</a>
+        <a href="#methodology">Methodology</a>
+      </nav>
+      <div class="header-actions">
+        <label class="currency-control">
+          <span aria-hidden="true">◎</span>
+          <span class="sr-only">Display currency</span>
+          <select id="currency" aria-label="Display currency"><option value="USD">USD</option></select>
+        </label>
+        <details class="mobile-menu">
+          <summary aria-label="Open navigation">Menu</summary>
+          <nav aria-label="Mobile navigation">
+            <a href="#home">Explore</a>
+            <a href="#map-section">Map</a>
+            <a href="#ranking-section">Ranking</a>
+            <a href="#history-section">History</a>
+            <a href="#methodology">Methodology</a>
+          </nav>
+        </details>
       </div>
-      <div id="map" class="map" role="img" aria-label="World choropleth map of Corona Extra normalized prices"></div>
-      <div id="tooltip" class="tooltip" hidden></div>
+    </header>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="tracking-now">TRACKING NOW <span>—</span> CORONA EXTRA</p>
+        <h1 id="page-title">BEER PRICE <em>MAP</em></h1>
+        <p class="marker-copy">Same beer.<br />Different world.</p>
+        <p class="lede">Compare the same beer across countries on one common 330 ml basis. See the original local shelf price, package context and a preserved daily FX conversion.</p>
+        <div class="hero-actions-row">
+          <a class="poster-button primary" href="#map-section">Explore the world ↓</a>
+          <a class="poster-button" href="#ranking-section">See the ranking</a>
+        </div>
+      </div>
+
+      <div class="beer-scene" aria-hidden="true">
+        <div class="sunset-orb"></div>
+        <div class="coast-haze"></div>
+        <div class="beer-glass">
+          <div class="foam foam-a"></div>
+          <div class="foam foam-b"></div>
+          <div class="beer-liquid"></div>
+          <span class="glass-copy">BEER<br />FOR A<br />WIDER<br />WORLD</span>
+          <i class="bubble b1"></i><i class="bubble b2"></i><i class="bubble b3"></i><i class="bubble b4"></i>
+        </div>
+        <div class="wood-sign"><span>SAME TASTE</span><strong>A DIFFERENT STORY</strong><small>AROUND THE WORLD</small></div>
+      </div>
+
+      <div class="hero-meta" aria-label="Live data status">
+        <span class="live-beacon"><i></i>Live production</span>
+        <span id="updated">Loading production data…</span>
+        <span id="fx-date">FX —</span>
+        <span id="gate">—</span>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section class="summary-grid" aria-label="Current summary">
+      <article class="stat-plate">
+        <span class="stat-icon">◎</span><div><span class="kicker">Fresh countries</span><strong id="fresh-count">—</strong><small>live production records</small></div>
+      </article>
+      <article class="stat-plate">
+        <span class="stat-icon">$</span><div><span class="kicker">Median / 330 ml</span><strong id="median">—</strong><small>across current coverage</small></div>
+      </article>
+      <article class="stat-plate">
+        <span class="stat-icon">↓</span><div><span class="kicker">Cheapest / 330 ml</span><strong id="cheapest">—</strong><small id="cheapest-country">—</small></div>
+      </article>
+      <article class="stat-plate">
+        <span class="stat-icon">↑</span><div><span class="kicker">Highest / 330 ml</span><strong id="expensive">—</strong><small id="expensive-country">—</small></div>
+      </article>
     </section>
 
-    <section class="workspace-grid">
-      <article class="panel ranking-panel">
-        <div class="panel-head ranking-head">
-          <div><p class="section-kicker">Compare countries</p><h2>Country ranking</h2><p id="ranking-count">—</p></div>
-          <div class="ranking-tools">
-            <label class="search-label">Find country<input id="country-search" type="search" autocomplete="off" placeholder="Japan, Brazil…" /></label>
-            <label>Sort<select id="sort"><option value="price-asc">Price · low to high</option><option value="price-desc">Price · high to low</option><option value="country-asc">Country · A–Z</option></select></label>
+    <section class="explore-grid" id="map-section" aria-label="World map and selected country">
+      <article class="panel map-panel">
+        <div class="panel-head map-head">
+          <div>
+            <p class="section-kicker">World map</p>
+            <h2>Price per 330 ml</h2>
+            <p>Color shows the normalized comparison price in your selected display currency. Country values are selected-source references, not national averages.</p>
           </div>
+          <label class="country-search-wrap">
+            <span class="sr-only">Search country</span>
+            <span aria-hidden="true">⌕</span>
+            <input id="country-search" type="search" autocomplete="off" placeholder="Search country…" />
+          </label>
         </div>
-        <div class="table-wrap">
+
+        <div class="map-toolbar">
+          <div id="legend" class="legend" aria-label="Price scale"></div>
+          <p class="map-note">EXPLORE · COMPARE · DISCOVER</p>
+        </div>
+
+        <div class="mobile-region-nav" aria-label="Explore by region">
+          <p>Explore a region</p>
+          <div class="region-chips" role="group" aria-label="Region">
+            <button type="button" data-region="world" class="active">World</button>
+            <button type="button" data-region="americas">Americas</button>
+            <button type="button" data-region="europe">Europe</button>
+            <button type="button" data-region="africa-middle-east">Africa / M.E.</button>
+            <button type="button" data-region="asia">Asia</button>
+            <button type="button" data-region="oceania">Oceania</button>
+          </div>
+          <div id="region-country-list" class="region-country-list" aria-live="polite"></div>
+        </div>
+
+        <div id="map" class="map" role="img" aria-label="World choropleth map of Corona Extra normalized prices"></div>
+        <div id="tooltip" class="tooltip" hidden></div>
+      </article>
+
+      <article class="panel country-panel country-spotlight" id="country-story">
+        <div class="spotlight-art" aria-hidden="true"><span></span><i></i></div>
+        <div class="detail-head">
+          <div>
+            <p class="section-kicker">Country spotlight</p>
+            <h2 id="country-title">Select a country</h2>
+            <p id="country-rank" class="country-rank">Choose from the map, search or ranking.</p>
+          </div>
+          <button id="clear-country" type="button" hidden>Clear</button>
+        </div>
+        <div id="country-detail" class="country-detail">
+          <p class="empty-copy">Pick a country to reveal its comparable 330 ml price, local unit price, package price, source, scope and freshness.</p>
+        </div>
+        <a class="text-link" href="#history-section">See price &amp; FX history ↓</a>
+      </article>
+    </section>
+
+    <section class="lower-grid" aria-label="Ranking and history">
+      <article class="panel ranking-panel" id="ranking-section">
+        <div class="panel-head ranking-head">
+          <div>
+            <p class="section-kicker">Country ranking</p>
+            <h2>Compare current prices</h2>
+            <p id="ranking-count">—</p>
+          </div>
+          <label class="ranking-order">Order
+            <select id="sort">
+              <option value="price-asc">Cheapest</option>
+              <option value="price-desc">Most expensive</option>
+              <option value="country-asc">Country A–Z</option>
+            </select>
+          </label>
+        </div>
+        <div class="table-wrap ranking-table-wrap">
           <table>
-            <thead><tr><th>#</th><th>Country</th><th>330 ml</th><th>Local shelf</th><th>Package</th><th>Source</th></tr></thead>
+            <thead><tr><th>#</th><th>Country</th><th>330 ml</th><th>Local price</th><th>Package</th><th>Source</th></tr></thead>
             <tbody id="ranking"></tbody>
           </table>
         </div>
+        <button id="ranking-more" class="poster-button ranking-more" type="button" aria-expanded="false">View full ranking →</button>
       </article>
 
-      <article class="panel country-panel">
-        <div class="detail-head"><div><p class="section-kicker">Country evidence</p><h2 id="country-title">Select a country</h2></div><button id="clear-country" type="button" hidden>Clear</button></div>
-        <div id="country-detail" class="country-detail"><p>Tap a colored country on the map or a row in the ranking. The panel keeps the selected country reference separate from any verified city/region market observations.</p></div>
-
-        <section id="market-section" hidden>
-          <div class="history-head">
-            <div><p class="section-kicker">Verified market layer</p><h3>City / region observations</h3><p class="history-sub">These are independently fixed store or regional references. They are never promoted to a national average.</p></div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Market</th><th>Store</th><th>Package</th><th>Local</th><th>330 ml</th></tr></thead>
-              <tbody id="market-ranking"></tbody>
-            </table>
-          </div>
-          <p id="market-note" class="history-note"></p>
-        </section>
-
+      <article class="panel history-panel" id="history-section">
         <div class="history-head">
-          <div><p class="section-kicker">Daily history</p><h3>Price × FX</h3><p class="history-sub">Actual values use separate price/FX axes. Indexed view rebases each visible series to 100 so relative movement can be compared directly.</p></div>
+          <div>
+            <p class="section-kicker">Price × FX history</p>
+            <h2>What changed?</h2>
+            <p class="history-sub">Compare preserved local beer-price observations with the FX series used for display conversion.</p>
+          </div>
           <div class="history-controls">
-            <label>Series<select id="history-series"><option value="price">Price only</option><option value="fx">FX only</option><option value="both" selected>Both</option></select></label>
-            <label>View<select id="history-scale"><option value="actual">Actual</option><option value="indexed">Indexed = 100</option></select></label>
+            <label>Series<select id="history-series"><option value="price">Price</option><option value="fx">FX</option><option value="both" selected>Both</option></select></label>
+            <label>Values<select id="history-scale"><option value="actual">Actual values</option><option value="indexed">Indexed (100)</option></select></label>
             <label>Range<select id="history-range"><option value="30">30 days</option><option value="90">90 days</option><option value="365">1 year</option><option value="all">All</option></select></label>
           </div>
         </div>
         <div id="history-stats" class="history-stats"></div>
-        <div id="history-chart" class="history-chart"></div>
+        <div id="history-chart" class="history-chart"><p class="empty-note">Select a country to draw its preserved history.</p></div>
         <p id="history-note" class="history-note"></p>
       </article>
     </section>
 
-    <section class="method-strip" aria-label="Method summary">
-      <div><strong>Selected-source price, not a national average.</strong><span>Country values remain one validated selected-source observation. City/region rows appear only where unattended deterministic location selection has been proven.</span></div>
-      <div><strong>Daily FX is preserved.</strong><span>Historical conversions use the FX snapshot from the same date when available, otherwise the nearest prior preserved FX date. Today’s FX is never retroactively applied to old observations.</span></div>
-      <div><strong>Fail-closed publishing.</strong><span>A new country snapshot is rejected below 50 fresh countries. The market layer has its own gate and cannot silently relabel an unverified location.</span></div>
+    <section id="market-section" class="panel market-section" hidden>
+      <div class="history-head">
+        <div>
+          <p class="section-kicker">Verified market layer</p>
+          <h2>City / region observations</h2>
+          <p class="history-sub">Deterministic local references stay separate from the country reference. They are never silently promoted to a national average.</p>
+        </div>
+      </div>
+      <div class="table-wrap market-table-wrap">
+        <table>
+          <thead><tr><th>Market</th><th>Store / source</th><th>Package</th><th>Local</th><th>330 ml</th></tr></thead>
+          <tbody id="market-ranking"></tbody>
+        </table>
+      </div>
+      <p id="market-note" class="history-note"></p>
+    </section>
+
+    <section class="method-strip" id="methodology" aria-label="Method summary">
+      <div><span class="method-number">01</span><strong>Selected-source price.</strong><p>Country values are validated retailer observations, not national averages.</p></div>
+      <div><span class="method-number">02</span><strong>Daily FX is preserved.</strong><p>Historical conversions use same-date FX where available, otherwise the nearest prior preserved snapshot.</p></div>
+      <div><span class="method-number">03</span><strong>Package context stays visible.</strong><p>Comparable 330 ml price, local unit price and package total are kept distinct.</p></div>
+    </section>
+
+    <section class="insights-teaser" aria-label="Future insights">
+      <p class="marker-copy small">Good beer. A wider world.</p>
+      <h2>From one shelf price to a global story.</h2>
+      <p>Explore the map for the big picture, ranking for precise comparison, and history for the price-versus-FX story. Aggregate Insights and multi-country Compare remain separate experiences rather than crowding this poster home.</p>
     </section>
   </main>
 
-  <footer><p>Corona Extra is currently the first tracked product. The repository and UI are structured as Beer Price Map so additional beers can be added only after they pass the same automated coverage and evidence requirements.</p></footer>
+  <footer class="poster-footer">
+    <div class="horizon" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="footer-campaign">GOOD BEER. A WIDER WORLD.</p>
+    <nav aria-label="Footer navigation">
+      <a href="#methodology">About</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#methodology">Source Policy</a>
+      <a href="#methodology">Contact</a>
+    </nav>
+    <p>Independent personal project. Not affiliated with any tracked beer brand or retailer.</p>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
   <script src="./app.js" type="module"></script>
   <script src="./markets.js" type="module"></script>
+  <script>
+  (()=>{
+    const regionNames={
+      americas:new Set(['Brazil','Canada','Chile','Colombia','Costa Rica','Dominican Republic','Ecuador','Guatemala','Jamaica','Mexico','Nicaragua','Panama','Paraguay','Peru','Trinidad and Tobago','United States','Uruguay']),
+      europe:new Set(['Austria','Belgium','Bosnia and Herzegovina','Bulgaria','Croatia','Cyprus','Czechia','Denmark','Estonia','Finland','France','Germany','Greece','Hungary','Iceland','Ireland','Italy','Latvia','Luxembourg','Malta','Moldova','Netherlands','Norway','Poland','Portugal','Romania','Serbia','Slovakia','Slovenia','Spain','Sweden','Switzerland','United Kingdom']),
+      'africa-middle-east':new Set(['Bahrain','Ghana','Israel','Jordan','Kenya','Lebanon','Mauritius','Rwanda','South Africa','Uganda','United Arab Emirates','Zambia']),
+      asia:new Set(['Armenia','Georgia','Hong Kong','Indonesia','Japan','Kazakhstan','Malaysia','Nepal','Philippines','Singapore','South Korea','Sri Lanka','Taiwan','Thailand','Vietnam']),
+      oceania:new Set(['Australia','New Zealand'])
+    };
+    const viewBoxes={world:'0 0 1200 600',americas:'0 70 470 450',europe:'500 75 260 235','africa-middle-east':'485 190 360 330',asia:'690 75 430 390',oceania:'900 300 290 235'};
+    const search=document.querySelector('#country-search');
+    const ranking=document.querySelector('#ranking');
+    const regionList=document.querySelector('#region-country-list');
+    const mapHost=document.querySelector('#map');
+    let cachedRows=[];
+    let activeRegion='world';
+    let autoSelected=false;
+
+    function rowSnapshot(){
+      const rows=[...ranking.querySelectorAll('tr')];
+      if((search?.value||'').trim()===''&&rows.length>=50){
+        cachedRows=rows.map(row=>{const cells=row.querySelectorAll('td');return {country:(cells[1]?.textContent||'').trim(),price:(cells[2]?.textContent||'').trim(),local:(cells[3]?.textContent||'').trim(),package:(cells[4]?.textContent||'').trim()}}).filter(x=>x.country);
+      }
+      refreshRankMap();
+      renderRegionList();
+      maybeAutoSelectJapan();
+    }
+
+    const rankMap=new Map();
+    function refreshRankMap(){
+      if((search?.value||'').trim()!==''||document.querySelector('#sort')?.value!=='price-asc')return;
+      [...ranking.querySelectorAll('tr')].forEach((row,i)=>{const name=(row.querySelectorAll('td')[1]?.textContent||'').trim();if(name)rankMap.set(name,i+1)});
+      updateCountryRank();
+    }
+
+    function updateCountryRank(){
+      const title=(document.querySelector('#country-title')?.textContent||'').trim();
+      const host=document.querySelector('#country-rank');
+      if(!host||!title||title==='Select a country')return;
+      const rank=rankMap.get(title),count=document.querySelector('#fresh-count')?.textContent?.trim();
+      host.textContent=rank?`Rank #${rank}${count&&count!=='—'?` of ${count}`:''}`:'Current selected-source reference';
+    }
+
+    function renderRegionList(){
+      if(!regionList||!cachedRows.length)return;
+      const rows=activeRegion==='world'?cachedRows.slice(0,8):cachedRows.filter(r=>regionNames[activeRegion]?.has(r.country));
+      regionList.textContent='';
+      const label=document.createElement('p');label.className='region-list-label';label.textContent=activeRegion==='world'?'Quick country list':'Countries in this region';regionList.append(label);
+      const grid=document.createElement('div');grid.className='region-list-grid';
+      rows.forEach(r=>{const b=document.createElement('button');b.type='button';b.className='region-country-button';b.innerHTML=`<strong>${escapeHtml(r.country)}</strong><span>${escapeHtml(r.price)}</span><small>${escapeHtml(r.local)}</small>`;b.addEventListener('click',()=>selectCountry(r.country));grid.append(b)});
+      regionList.append(grid);
+    }
+
+    function selectCountry(name){
+      if(!search)return;
+      search.value=name;search.dispatchEvent(new Event('input',{bubbles:true}));
+      requestAnimationFrame(()=>{const row=[...ranking.querySelectorAll('tr')].find(r=>(r.querySelectorAll('td')[1]?.textContent||'').trim()===name);row?.click();setTimeout(()=>{search.value='';search.dispatchEvent(new Event('input',{bubbles:true}));document.querySelector('#country-story')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})},40)});
+    }
+
+    function applyMapView(){
+      const svg=mapHost?.querySelector('svg');if(!svg)return;
+      svg.setAttribute('viewBox',viewBoxes[activeRegion]||viewBoxes.world);
+      svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+    }
+
+    document.querySelectorAll('[data-region]').forEach(button=>button.addEventListener('click',()=>{
+      activeRegion=button.dataset.region||'world';
+      document.querySelectorAll('[data-region]').forEach(b=>b.classList.toggle('active',b===button));
+      applyMapView();renderRegionList();
+    }));
+
+    function parseMl(text){
+      const t=String(text||'').replace(/,/g,'');
+      const direct=t.match(/([\d.]+)\s*(?:ml|mL)/);if(direct)return Number(direct[1]);
+      const litres=t.match(/([\d.]+)\s*L\b/i);if(litres)return Number(litres[1])*1000;
+      return null;
+    }
+    function packageLabel(totalText,observedText){
+      const explicit=String(observedText||'').match(/(\d+)\s*[x×]\s*([\d.]+)\s*(?:ml|mL)/i);
+      if(explicit)return `${explicit[1]} × ${Number(explicit[2])} ml`;
+      const total=parseMl(totalText),unit=parseMl(observedText);
+      if(total&&unit&&total>unit*1.5){const n=Math.round(total/unit);if(Math.abs(total/unit-n)<.08)return `${n} × ${Number(unit)} ml`}
+      return totalText||observedText||'—';
+    }
+    function polishCountryDetail(){
+      const host=document.querySelector('#country-detail'),dl=host?.querySelector('dl');if(!dl||dl.dataset.posterPolished)return;
+      dl.dataset.posterPolished='1';
+      const hero=host.querySelector('.price-hero');
+      if(hero){const small=hero.querySelector('small'),span=hero.querySelector('span');if(span)span.textContent=`${document.querySelector('#currency')?.value||'USD'} comparison / 330 ml`;if(small){const value=small.textContent.replace(/\s*normalized locally\s*/i,'').trim();small.textContent=`Local unit · ${value} / 330 ml`}}
+      const pairs=[];[...dl.querySelectorAll('dt')].forEach(dt=>{const dd=dt.nextElementSibling;if(dd?.tagName==='DD')pairs.push({key:dt.textContent.trim(),dt,dd})});
+      const byKey=new Map(pairs.map(p=>[p.key,p]));
+      const shelf=byKey.get('Selected shelf price');if(shelf)shelf.dt.textContent='Package price';
+      const packageSize=byKey.get('Package total');
+      const observedVolume=byKey.get('Observed volume text');
+      if(packageSize){packageSize.dt.textContent='Package size';packageSize.dd.textContent=packageLabel(packageSize.dd.textContent,observedVolume?.dd.textContent)}
+      const source=byKey.get('Source');if(source){const a=source.dd.querySelector('a');if(a){try{a.textContent=`${new URL(a.href).hostname.replace(/^www\./,'')} ↗`}catch{a.textContent='Open source ↗'}}}
+      const order=['Selected shelf price','Package total','Source','Last fresh','Status','Market scope'];
+      const diagKeys=new Set(['Observed price text','Observed volume text','Collection']);
+      const frag=document.createDocumentFragment();
+      order.forEach(key=>{const p=byKey.get(key);if(p){frag.append(p.dt,p.dd)}});
+      dl.textContent='';dl.append(frag);
+      const diagnosticPairs=pairs.filter(p=>diagKeys.has(p.key));
+      if(diagnosticPairs.length){const details=document.createElement('details');details.className='source-diagnostics';const summary=document.createElement('summary');summary.textContent='Source details';const inner=document.createElement('dl');diagnosticPairs.forEach(p=>inner.append(p.dt,p.dd));details.append(summary,inner);host.append(details)}
+      updateCountryRank();
+    }
+
+    function maybeAutoSelectJapan(){
+      if(autoSelected||new URL(location.href).searchParams.has('country')||document.querySelector('#country-title')?.textContent.trim()!=='Select a country'||cachedRows.length<50)return;
+      const hasJapan=cachedRows.some(r=>r.country==='Japan');if(!hasJapan)return;autoSelected=true;selectCountry('Japan');
+    }
+
+    function escapeHtml(value){return String(value).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c))}
+
+    new MutationObserver(()=>rowSnapshot()).observe(ranking,{childList:true});
+    new MutationObserver(()=>{applyMapView()}).observe(mapHost,{childList:true});
+    new MutationObserver(()=>{requestAnimationFrame(polishCountryDetail)}).observe(document.querySelector('#country-detail'),{childList:true,subtree:true});
+    new MutationObserver(()=>{updateCountryRank()}).observe(document.querySelector('#country-title'),{childList:true,subtree:true,characterData:true});
+
+    document.querySelector('#sort')?.addEventListener('change',()=>setTimeout(rowSnapshot,0));
+    document.querySelector('#currency')?.addEventListener('change',()=>setTimeout(()=>{applyMapView();polishCountryDetail()},0));
+    document.querySelector('#ranking-more')?.addEventListener('click',e=>{const panel=document.querySelector('#ranking-section');const open=panel.classList.toggle('show-all');e.currentTarget.setAttribute('aria-expanded',String(open));e.currentTarget.textContent=open?'Show less ↑':'View full ranking →'});
+    rowSnapshot();
+  })();
+  </script>
 </body>
 </html>
