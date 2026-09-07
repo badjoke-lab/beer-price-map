@@ -1,0 +1,33 @@
+name: Brisbane Corona assortment diagnostic
+
+on:
+  push:
+    branches:
+      - research/major-market-probes-r1
+    paths:
+      - scripts/diagnose-danmurphys-brisbane-assortment.mjs
+      - .github/workflows/au-brisbane-assortment.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --check scripts/diagnose-danmurphys-brisbane-assortment.mjs
+      - run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - run: node scripts/diagnose-danmurphys-brisbane-assortment.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: au-brisbane-assortment
+          path: au-brisbane-assortment/**
+          if-no-files-found: error
