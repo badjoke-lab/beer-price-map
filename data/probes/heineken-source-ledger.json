@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-09-07",
+  "purpose": "Track Heineken price-source research without inflating country counts or losing reject/hold reasons.",
+  "counting": {
+    "baseline_auto_countries": 16,
+    "baseline_manual_countries": 0,
+    "baseline_country_list_complete": false,
+    "known_baseline_country": "ZA",
+    "safe_minimum_auto_countries": 17,
+    "note": "The exact pre-existing 16-country Heineken AUTO list was not preserved in repository history available during this research phase. Only countries proven new relative to that baseline may increase safe_minimum_auto_countries. Canada is proven new because its earlier GroceryPulse route had been rejected as paid before the BC government route was found."
+  },
+  "status_definitions": {
+    "baseline_known": "Known member of the earlier AUTO baseline.",
+    "pass": "Free/adequate free quota, automatable, regular Heineken evidenced, and public-app reuse/display basis is acceptable.",
+    "hold": "Promising but at least one gate remains unresolved.",
+    "reject": "Fails a required gate for this project."
+  },
+  "sources": [
+    {
+      "code": "ZA",
+      "country": "South Africa",
+      "status": "baseline_known",
+      "source_name": "LoyaltyHub",
+      "update_frequency": "twice_weekly",
+      "free_basis": "100 calls/month free tier",
+      "heineken_evidence": "Regular Heineken observed at Makro in multiple pack sizes.",
+      "notes": "Known as the 16th AUTO country from the earlier research phase."
+    },
+    {
+      "code": "CA",
+      "country": "Canada",
+      "status": "pass",
+      "source_name": "BC Liquor Stores product price data / Government of British Columbia",
+      "source_url": "https://catalogue.data.gov.bc.ca/",
+      "reuse_basis": "Open Government Licence - British Columbia",
+      "heineken_evidence": "Regular Heineken 5% 6x330ml current BC Liquor Stores product was verified.",
+      "notes": "Definitely new relative to the old AUTO 16 because the previous Canada route (GroceryPulse) had been rejected as paid."
+    },
+    {
+      "code": "AR",
+      "country": "Argentina",
+      "status": "pass",
+      "source_name": "SEPA / Precios Claros",
+      "source_url": "https://www.argentina.gob.ar/produccion/consumidor/precios-claros",
+      "update_frequency": "daily",
+      "reuse_basis": "Government open-price dataset; CC BY 4.0 basis verified during research.",
+      "heineken_evidence": "Regular Heineken pack sizes were verified in current Coto pricing.",
+      "notes": "Overlap with the unknown old AUTO 16 still needs reconciliation."
+    },
+    {
+      "code": "IL",
+      "country": "Israel",
+      "status": "pass",
+      "source_name": "Retail price-transparency machine-readable files",
+      "update_frequency": "continuous/current retail files",
+      "reuse_basis": "Statutory price-transparency regime intended for price comparison.",
+      "heineken_evidence": "Regular Heineken 5% 6x330ml verified across multiple major retailers on 2026-09-06.",
+      "notes": "Overlap with the unknown old AUTO 16 still needs reconciliation."
+    },
+    {
+      "code": "HR",
+      "country": "Croatia",
+      "status": "pass",
+      "source_name": "Retailer statutory XML/CSV price lists",
+      "source_url": "https://narodne-novine.nn.hr/clanci/sluzbeni/2025_05_75_979.html",
+      "update_frequency": "daily",
+      "reuse_basis": "Government decision requires machine-readable publication and permits automated price-comparison collection.",
+      "heineken_evidence": "Regular Heineken verified across Kaufland, Konzum, Lidl and other chains.",
+      "notes": "Overlap with the unknown old AUTO 16 still needs reconciliation."
+    },
+    {
+      "code": "HK",
+      "country": "Hong Kong",
+      "status": "pass",
+      "source_name": "Consumer Council Online Price Watch / DATA.GOV.HK",
+      "source_url": "https://data.gov.hk/en-data/dataset/cc-pricewatch-pricewatch",
+      "update_frequency": "daily",
+      "reuse_basis": "DATA.GOV.HK terms permit download, reproduction and distribution for commercial and non-commercial use.",
+      "heineken_evidence": "Regular Heineken product/GTIN and multi-store prices verified.",
+      "notes": "Overlap with the unknown old AUTO 16 still needs reconciliation."
+    },
+    {
+      "code": "RS",
+      "country": "Serbia",
+      "status": "pass",
+      "source_name": "National Open Data Portal retailer price lists",
+      "source_url": "https://data.gov.rs/",
+      "update_frequency": "daily_or_realtime",
+      "reuse_basis": "Serbian Open Data Licence; standardized machine-readable retail price lists support price tracking/comparison.",
+      "heineken_evidence": "Regular Heineken 0.5L verified in major-chain pricing.",
+      "notes": "Overlap with the unknown old AUTO 16 still needs reconciliation."
+    },
+    {
+      "code": "MK",
+      "country": "North Macedonia",
+      "status": "pass",
+      "source_name": "Statutory retailer price publication",
+      "update_frequency": "working_days_by_10am",
+      "reuse_basis": "Law requires all products, by outlet, publicly accessible without login; automated comparison services operate on the published data.",
+      "heineken_evidence": "Regular Heineken 0.5L and other pack sizes verified across multiple chains with 2026-09-05 freshness.",
+      "notes": "Overlap with the unknown old AUTO 16 still needs reconciliation."
+    },
+    {
+      "code": "NZ",
+      "country": "New Zealand",
+      "status": "pass",
+      "source_name": "Baskt Public API",
+      "source_url": "https://baskt.co.nz/",
+      "update_frequency": "automated retailer observation",
+      "reuse_basis": "Public API terms permit integration into consumer-facing tools.",
+      "heineken_evidence": "Regular Heineken verified at New World in 12x330ml and other formats.",
+      "notes": "Overlap with the unknown old AUTO 16 still needs reconciliation."
+    },
+    {
+      "code": "AU",
+      "country": "Australia",
+      "status": "hold",
+      "source_name": "WhichGrocer Public API",
+      "source_url": "https://www.whichgrocer.com/developers",
+      "terms_url": "https://www.whichgrocer.com/developers/terms",
+      "update_frequency": "at_least_twice_weekly",
+      "reuse_basis": "API Terms explicitly permit returned product data in own consumer applications, display and caching.",
+      "remaining_gate": "Official numeric free credit allowance is JS-rendered and was not independently captured. A current third-party report says 200 searches/month free, but this ledger does not treat that as the official quota.",
+      "notes": "One credit per search/page per official API Terms."
+    },
+    {
+      "code": "MX",
+      "country": "Mexico",
+      "status": "hold",
+      "source_name": "PROFECO Quien es Quien en los Precios 2026",
+      "source_url": "https://qqp.profeco.gob.mx/",
+      "open_data_url": "https://datos.profeco.gob.mx/datos_abiertos/qqp.php",
+      "update_frequency": "weekday price collection",
+      "reuse_basis": "PROFECO publishes QQP open data and public price-comparison service.",
+      "remaining_gate": "Regular Heineken row has not yet been extracted from the 2026 RAR dataset in the available execution environment.",
+      "notes": "2026 direct open-data download was identified as application/x-rar."
+    },
+    {
+      "code": "TW",
+      "country": "Taiwan",
+      "status": "hold",
+      "source_name": "Government consumer price information / e-invoice data",
+      "update_frequency": "weekly",
+      "remaining_gate": "Beer category exists, but a current regular Heineken (海尼根) row has not been directly verified."
+    },
+    {
+      "code": "KR",
+      "country": "South Korea",
+      "status": "hold",
+      "source_name": "Government OpenAPI/CSV price data",
+      "remaining_gate": "Regular Heineken has not been verified in the monitored product universe."
+    },
+    {
+      "code": "BR",
+      "country": "Brazil",
+      "status": "hold",
+      "source_name": "Menor Preco / NFC-e consumer price systems",
+      "update_frequency": "realtime_or_near_realtime",
+      "remaining_gate": "Official external API/public redistribution rights for a third-party public price map have not been confirmed."
+    },
+    {
+      "code": "IN",
+      "country": "India",
+      "status": "hold",
+      "source_name": "State alcohol MRP lists",
+      "heineken_evidence": "Regular Heineken current MRP verified in state lists, including Odisha 2026-27.",
+      "remaining_gate": "State price-list pages do not carry a sufficiently clear open redistribution licence for this use."
+    },
+    {
+      "code": "FI",
+      "country": "Finland",
+      "status": "hold",
+      "source_name": "Alko product price list",
+      "remaining_gate": "Machine-readable/Excel price data exists, but explicit third-party redistribution permission was not verified."
+    },
+    {
+      "code": "NO",
+      "country": "Norway",
+      "status": "reject",
+      "source_name": "Vinmonopolet Open API",
+      "reject_reason": "API-data third-party sharing/use restrictions conflict with public price-map redistribution requirements."
+    },
+    {
+      "code": "GR",
+      "country": "Greece",
+      "status": "reject",
+      "source_name": "Official price monitor",
+      "reject_reason": "Primary retailer price data is not available for open API/redistribution according to the current operator."
+    },
+    {
+      "code": "RO",
+      "country": "Romania",
+      "status": "reject",
+      "source_name": "Monitorul Preturilor",
+      "source_url": "https://monitorulpreturilor.info/",
+      "reject_reason": "Official API is technically accessible, but site-use terms are too restrictive for copying/storing/redistributing prices in this public project."
+    },
+    {
+      "code": "IS",
+      "country": "Iceland",
+      "status": "reject",
+      "source_name": "Vinbudin / ATVR",
+      "reject_reason": "Website material distribution is prohibited without ATVR consent."
+    },
+    {
+      "code": "US",
+      "country": "United States",
+      "status": "reject",
+      "source_name": "Kroger Public API",
+      "reject_reason": "Acceptable-use restrictions conflict with competitive price comparison and accumulating response data into a public price-history database."
+    },
+    {
+      "code": "JP",
+      "country": "Japan",
+      "status": "reject",
+      "source_name": "Rakuten Item Search API",
+      "reject_reason": "Storage/public-sharing restrictions conflict with daily persistence and public historical-price display."
+    },
+    {
+      "code": "BG",
+      "country": "Bulgaria",
+      "status": "reject",
+      "source_name": "Government open retail basket",
+      "reject_reason": "Beer coverage is a fixed generic 2L light-beer basket item and does not reliably cover regular Heineken."
+    },
+    {
+      "code": "UY",
+      "country": "Uruguay",
+      "status": "reject",
+      "source_name": "Government SIPC",
+      "reject_reason": "Selected product universe is too narrow; regular Heineken was not verified."
+    },
+    {
+      "code": "MY",
+      "country": "Malaysia",
+      "status": "reject",
+      "source_name": "PriceCatcher",
+      "reuse_basis": "CC BY 4.0 government data",
+      "reject_reason": "Selected monitored goods do not contain verified Heineken/beer coverage."
+    },
+    {
+      "code": "CL",
+      "country": "Chile",
+      "status": "reject",
+      "source_name": "ODEPA consumer price open data",
+      "reuse_basis": "CC BY",
+      "reject_reason": "Dataset scope is agricultural/major foods and does not provide regular Heineken store prices."
+    }
+  ]
+}
