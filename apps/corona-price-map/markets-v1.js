@@ -16,11 +16,25 @@ if(seededDefaultCountry){initialUrl.searchParams.set('country','JP');history.rep
 const skipLink=document.querySelector('.skip-link');
 if(skipLink){skipLink.style.visibility='hidden';skipLink.addEventListener('focus',()=>skipLink.style.visibility='visible');skipLink.addEventListener('blur',()=>skipLink.style.visibility='hidden')}
 
-// Poster motion layer. This deliberately lives in an already-published module so
-// the production build keeps one canonical HTML/CSS surface while motion remains
-// progressive enhancement. prefers-reduced-motion disables all non-essential motion.
+async function j(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(`${url}: ${r.status}`);return r.json()}
+function esc(s){return String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c))}
+function rate(code){if(code==='USD')return 1;const n=Number(marketState.fx?.rates?.[code]);return Number.isFinite(n)&&n>0?n:null}
+function convert(value,from,to){if(from===to)return value;const a=rate(from),b=rate(to);return a&&b?(value/a)*b:null}
+function money(value,currency){if(value==null||!Number.isFinite(Number(value)))return '—';try{return new Intl.NumberFormat(undefined,{style:'currency',currency,currencyDisplay:'narrowSymbol',maximumFractionDigits:2}).format(Number(value))}catch{return `${currency} ${fmt.format(Number(value))}`}}
+function packageLabel(r){
+  if(r.packCount&&r.packageVolumeMl)return `${r.packCount} × ${fmt.format(r.packageVolumeMl)} ml`;
+  if(r.totalVolumeMl)return r.totalVolumeMl>=1000?`${fmt.format(r.totalVolumeMl/1000)} L total`:`${fmt.format(r.totalVolumeMl)} ml total`;
+  return '—';
+}
+function selectedCurrency(){return document.querySelector('#currency')?.value||'USD'}
+function selectedCountry(){const t=document.querySelector('#country-title')?.textContent?.trim();return !t||t==='Select a country'?null:t}
+
+// Progressive poster motion. Reduced-motion users get the same data and controls
+// without parallax, reveal, float or chart-draw animation.
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const motionCss=`
+const motionStyle=document.createElement('style');
+motionStyle.dataset.posterMotion='r1';
+motionStyle.textContent=`
 @keyframes posterRise{0%{opacity:0;transform:translate3d(0,28px,0)}100%{opacity:1;transform:translate3d(0,0,0)}}
 @keyframes posterSlideLeft{0%{opacity:0;transform:translate3d(-34px,0,0)}100%{opacity:1;transform:translate3d(0,0,0)}}
 @keyframes posterSlideRight{0%{opacity:0;transform:translate3d(34px,0,0)}100%{opacity:1;transform:translate3d(0,0,0)}}
@@ -51,10 +65,10 @@ const motionCss=`
 .poster-hero{--poster-px:0px;--poster-py:0px}
 .poster-hero .beer-scene{translate:var(--poster-px) var(--poster-py)}
 .poster-hero .hero-copy{translate:calc(var(--poster-px) * -.16) calc(var(--poster-py) * -.11)}
-@media(max-width:720px){.motion-on .beer-glass{animation:posterFloat 5.8s 1.1s ease-in-out infinite}.poster-hero .beer-scene,.poster-hero .hero-copy{translate:none}}
+@media(max-width:720px){.poster-hero .beer-scene,.poster-hero .hero-copy{translate:none}}
 @media(prefers-reduced-motion:reduce){.motion-on *,.motion-reveal,.motion-reveal.motion-visible,.motion-map-path,.motion-row,.motion-country-change{animation:none!important;transition:none!important;transform:none!important;opacity:1!important;translate:none!important}}
 `;
-const motionStyle=document.createElement('style');motionStyle.dataset.posterMotion='r1';motionStyle.textContent=motionCss;document.head.append(motionStyle);
+document.head.append(motionStyle);
 
 function bootMotion(){
   if(reduceMotion)return;
@@ -89,15 +103,15 @@ function countText(el,targetText){
   const m=targetText.match(/^(.*?)(-?[\d,.]+)(.*)$/);if(!m)return;
   const target=Number(m[2].replace(/,/g,''));if(!Number.isFinite(target))return;
   const decimals=(m[2].split('.')[1]||'').length,start=performance.now(),duration=720;
-  const tick=now=>{const p=Math.min(1,(now-start)/duration),e=1-Math.pow(1-p,3),value=target*e;el.textContent=`${m[1]}${value.toLocaleString(undefined,{minimumFractionDigits:decimals,maximumFractionDigits:decimals})}${m[3]}`;if(p<1)requestAnimationFrame(tick);else el.textContent=targetText};requestAnimationFrame(tick);
+  const tick=now=>{const p=Math.min(1,(now-start)/duration),ease=1-Math.pow(1-p,3),value=target*ease;el.textContent=`${m[1]}${value.toLocaleString(undefined,{minimumFractionDigits:decimals,maximumFractionDigits:decimals})}${m[3]}`;if(p<1)requestAnimationFrame(tick);else el.textContent=targetText};
+  requestAnimationFrame(tick);
 }
-
 function installDynamicMotion(){
   const map=document.querySelector('#map');
   if(map)new MutationObserver(()=>animateMapPaths()).observe(map,{childList:true,subtree:true});
   animateMapPaths();
   const ranking=document.querySelector('#ranking');
-  if(ranking)new MutationObserver(muts=>{for(const m of muts)for(const node of m.addedNodes){if(node.nodeType===1&&node.matches?.('tr'))animateRow(node)}}).observe(ranking,{childList:true});
+  if(ranking)new MutationObserver(mutations=>{for(const mutation of mutations)for(const node of mutation.addedNodes){if(node.nodeType===1&&node.matches?.('tr'))animateRow(node)}}).observe(ranking,{childList:true});
   const country=document.querySelector('#country-detail');
   if(country)new MutationObserver(()=>{country.classList.remove('motion-country-change');requestAnimationFrame(()=>country.classList.add('motion-country-change'))}).observe(country,{childList:true,subtree:false});
   const chart=document.querySelector('#history-chart');
@@ -107,32 +121,23 @@ function installDynamicMotion(){
 function animateMapPaths(){
   if(reduceMotion)return;
   const paths=[...document.querySelectorAll('#map svg path:not([data-motion-seen])')];
-  paths.forEach((p,i)=>{p.dataset.motionSeen='1';p.classList.add('motion-map-path');p.style.animationDelay=`${Math.min(i*4,520)}ms`});
+  paths.forEach((path,index)=>{path.dataset.motionSeen='1';path.classList.add('motion-map-path');path.style.animationDelay=`${Math.min(index*4,520)}ms`});
 }
 function animateRow(row){
-  if(reduceMotion)return;row.classList.add('motion-row');row.addEventListener('animationend',()=>row.classList.remove('motion-row'),{once:true});
+  if(reduceMotion)return;
+  row.classList.add('motion-row');
+  row.addEventListener('animationend',()=>row.classList.remove('motion-row'),{once:true});
 }
 function animateChartLines(){
   if(reduceMotion)return;
   for(const path of document.querySelectorAll('#history-chart .price-series,#history-chart .fx-series')){
-    if(path.dataset.motionDrawn==='1')continue;path.dataset.motionDrawn='1';path.classList.add('motion-chart-line');
-    let len=0;try{len=path.getTotalLength()}catch{}if(!Number.isFinite(len)||len<=0)continue;
-    path.animate([{strokeDasharray:`${len} ${len}`,strokeDashoffset:len,opacity:.2},{strokeDasharray:`${len} ${len}`,strokeDashoffset:0,opacity:1}],{duration:760,easing:'cubic-bezier(.2,.8,.2,1)',fill:'both'});
+    if(path.dataset.motionDrawn==='1')continue;
+    path.dataset.motionDrawn='1';path.classList.add('motion-chart-line');
+    let length=0;try{length=path.getTotalLength()}catch{}
+    if(!Number.isFinite(length)||length<=0)continue;
+    path.animate([{strokeDasharray:`${length} ${length}`,strokeDashoffset:length,opacity:.2},{strokeDasharray:`${length} ${length}`,strokeDashoffset:0,opacity:1}],{duration:760,easing:'cubic-bezier(.2,.8,.2,1)',fill:'both'});
   }
 }
-
-async function j(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(`${url}: ${r.status}`);return r.json()}
-function esc(s){return String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c))}
-function rate(code){if(code==='USD')return 1;const n=Number(marketState.fx?.rates?.[code]);return Number.isFinite(n)&&n>0?n:null}
-function convert(value,from,to){if(from===to)return value;const a=rate(from),b=rate(to);return a&&b?(value/a)*b:null}
-function money(value,currency){if(value==null||!Number.isFinite(Number(value)))return '—';try{return new Intl.NumberFormat(undefined,{style:'currency',currency,currencyDisplay:'narrowSymbol',maximumFractionDigits:2}).format(Number(value))}catch{return `${currency} ${fmt.format(Number(value))}`}}
-function packageLabel(r){
-  if(r.packCount&&r.packageVolumeMl)return `${r.packCount} × ${fmt.format(r.packageVolumeMl)} ml`;
-  if(r.totalVolumeMl)return r.totalVolumeMl>=1000?`${fmt.format(r.totalVolumeMl/1000)} L total`:`${fmt.format(r.totalVolumeMl)} ml total`;
-  return '—';
-}
-function selectedCurrency(){return document.querySelector('#currency')?.value||'USD'}
-function selectedCountry(){const t=document.querySelector('#country-title')?.textContent?.trim();return !t||t==='Select a country'?null:t}
 
 const mobileRegionCountries={
   americas:new Set(['Brazil','Canada','Chile','Colombia','Costa Rica','Dominican Republic','Ecuador','Guatemala','Jamaica','Mexico','Nicaragua','Panama','Paraguay','Peru','Trinidad and Tobago','United States','Uruguay']),
@@ -151,7 +156,7 @@ function syncMobileRegion(){
 }
 function cleanupSeededDefault(){
   if(!seededDefaultCountry||selectedCountry()!=='Japan')return;
-  const u=new URL(location.href);if(u.searchParams.get('country')==='JP'){u.searchParams.delete('country');history.replaceState(null,'',u)}
+  const url=new URL(location.href);if(url.searchParams.get('country')==='JP'){url.searchParams.delete('country');history.replaceState(null,'',url)}
 }
 function render(){
   const section=document.querySelector('#market-section'),body=document.querySelector('#market-ranking'),note=document.querySelector('#market-note');
