@@ -35,13 +35,25 @@ try {
   const rows=await page.locator('#ranking tr').count();
   const paths=await page.locator('#map svg path').count();
   const gate=(await page.locator('#gate').innerText()).trim();
-  const heading=(await page.locator('h1').innerText()).trim();
+  const heading=(await page.locator('h1').innerText()).replace(/\s+/g,' ').trim();
   const currencyOptions=await page.locator('#currency option').count();
   if(rows<50) throw new Error(`ranking rows ${rows}<50`);
   if(paths<150) throw new Error(`map paths ${paths}<150`);
   if(gate!=='PASS') throw new Error(`gate=${gate}`);
   if(!/Beer Price Map/i.test(heading)) throw new Error(`unexpected heading=${heading}`);
   if(currencyOptions<25) throw new Error(`currency options ${currencyOptions}<25`);
+
+  // Production motion proof: the published page must actually animate rather than
+  // merely contain the poster styling in source.
+  await page.waitForFunction(()=>document.documentElement.classList.contains('motion-on'),{timeout:5000});
+  if(await page.locator('style[data-poster-motion="r1"]').count()!==1) throw new Error('production poster motion stylesheet missing');
+  const glassAnimation=await page.locator('.beer-glass').evaluate(el=>getComputedStyle(el).animationName);
+  if(!/posterFloat/.test(glassAnimation)) throw new Error(`production beer glass motion missing: ${glassAnimation}`);
+  await page.waitForFunction(()=>document.querySelectorAll('#map svg path[data-motion-seen="1"]').length>=150,{timeout:5000});
+  await page.mouse.move(1320,260);
+  await page.waitForTimeout(80);
+  const parallax=await page.locator('.poster-hero').evaluate(el=>getComputedStyle(el).getPropertyValue('--poster-px').trim());
+  if(!parallax||parallax==='0px') throw new Error(`production hero parallax did not respond: ${parallax}`);
 
   const sourceHref=await page.locator('#ranking tr').first().locator('a').getAttribute('href');
   if(!sourceHref||!/^https?:\/\//.test(sourceHref)) throw new Error('first ranking source link missing');
@@ -61,6 +73,7 @@ try {
   if(title!=='Japan') throw new Error(`country detail=${title}`);
   if(await page.locator('#history-stats > div').count()!==4) throw new Error('history stats missing');
   if(await page.locator('#history-chart .price-series').count()<1||await page.locator('#history-chart .fx-series').count()<1) throw new Error('both-mode series missing');
+  await page.waitForFunction(()=>document.querySelectorAll('#history-chart .price-series[data-motion-drawn="1"],#history-chart .fx-series[data-motion-drawn="1"]').length>=2,{timeout:5000});
   await page.selectOption('#history-series','fx');
   await page.waitForTimeout(50);
   if(await page.locator('#history-chart .price-series').count()!==0||await page.locator('#history-chart .fx-series').count()<1) throw new Error('FX-only mode failed');
@@ -100,7 +113,7 @@ try {
   await page.screenshot({path:'production-smoke-artifacts/mobile.png',fullPage:true});
 
   if(errors.length) throw new Error(errors.join('\n'));
-  console.log(`PRODUCTION SMOKE PASS url=${base} fresh=${current.freshCountryCount} rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} markets=${markets.freshMarketCount} AU=3 CA=1 priceFxModes=pass mobileOverflow=${overflow}`);
+  console.log(`PRODUCTION SMOKE PASS url=${base} fresh=${current.freshCountryCount} rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} markets=${markets.freshMarketCount} AU=3 CA=1 priceFxModes=pass motion=pass parallax=${parallax} mobileOverflow=${overflow}`);
 } finally {
   await browser.close();
 }
