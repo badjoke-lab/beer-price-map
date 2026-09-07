@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Beer Price Map tracks Corona Extra shelf prices across countries, normalizes packages to 330 ml, converts currencies and preserves daily price and FX history with source evidence." />
+  <meta name="description" content="Beer Price Map tracks Corona Extra shelf prices across countries and selected deterministic markets, normalizes packages to 330 ml, converts currencies and preserves daily price and FX history with source evidence." />
   <title>Beer Price Map · Corona Extra</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -33,7 +33,7 @@
 
     <section class="map-panel">
       <div class="panel-head">
-        <div><p class="section-kicker">World comparison</p><h2>330 ml equivalent</h2><p>Color compares the same product quantity in the selected display currency. Hover for the local shelf price; click a colored country for its evidence and history.</p></div>
+        <div><p class="section-kicker">World comparison</p><h2>330 ml equivalent</h2><p>Color compares the same product quantity in the selected display currency. Hover for the selected-source shelf price; click a colored country for evidence, preserved history and any independently verified market layer.</p></div>
         <div id="legend" class="legend" aria-label="Price scale"></div>
       </div>
       <div id="map" class="map" role="img" aria-label="World choropleth map of Corona Extra normalized prices"></div>
@@ -59,7 +59,20 @@
 
       <article class="panel country-panel">
         <div class="detail-head"><div><p class="section-kicker">Country evidence</p><h2 id="country-title">Select a country</h2></div><button id="clear-country" type="button" hidden>Clear</button></div>
-        <div id="country-detail" class="country-detail"><p>Tap a colored country on the map or a row in the ranking. The panel keeps the original package and retailer evidence separate from the normalized comparison price.</p></div>
+        <div id="country-detail" class="country-detail"><p>Tap a colored country on the map or a row in the ranking. The panel keeps the selected country reference separate from any verified city/region market observations.</p></div>
+
+        <section id="market-section" hidden>
+          <div class="history-head">
+            <div><p class="section-kicker">Verified market layer</p><h3>City / region observations</h3><p class="history-sub">These are independently fixed store or regional references. They are never promoted to a national average.</p></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Market</th><th>Store</th><th>Package</th><th>Local</th><th>330 ml</th></tr></thead>
+              <tbody id="market-ranking"></tbody>
+            </table>
+          </div>
+          <p id="market-note" class="history-note"></p>
+        </section>
 
         <div class="history-head">
           <div><p class="section-kicker">Daily history</p><h3>Price × FX</h3><p class="history-sub">Actual values use separate price/FX axes. Indexed view rebases each visible series to 100 so relative movement can be compared directly.</p></div>
@@ -76,9 +89,9 @@
     </section>
 
     <section class="method-strip" aria-label="Method summary">
-      <div><strong>Selected-source price, not a national average.</strong><span>Large countries can vary by city, store and channel; this release shows one validated source record per covered country. Location-level coverage is a separate data layer, not silently inferred.</span></div>
+      <div><strong>Selected-source price, not a national average.</strong><span>Country values remain one validated selected-source observation. City/region rows appear only where unattended deterministic location selection has been proven.</span></div>
       <div><strong>Daily FX is preserved.</strong><span>Historical conversions use the FX snapshot from the same date when available, otherwise the nearest prior preserved FX date. Today’s FX is never retroactively applied to old observations.</span></div>
-      <div><strong>Fail-closed publishing.</strong><span>A new production snapshot is rejected when fewer than 50 fresh countries pass the product/price/package gate.</span></div>
+      <div><strong>Fail-closed publishing.</strong><span>A new country snapshot is rejected below 50 fresh countries. The market layer has its own gate and cannot silently relabel an unverified location.</span></div>
     </section>
   </main>
 
