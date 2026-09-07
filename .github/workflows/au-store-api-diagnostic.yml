@@ -7,6 +7,7 @@ on:
     paths:
       - scripts/diagnose-danmurphys-store-api.mjs
       - scripts/diagnose-danmurphys-store-switch.mjs
+      - scripts/diagnose-danmurphys-city-discovery.mjs
       - .github/workflows/au-store-api-diagnostic.yml
   workflow_dispatch:
 
@@ -16,7 +17,7 @@ permissions:
 jobs:
   diagnose:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,18 +27,22 @@ jobs:
         run: |
           node --check scripts/diagnose-danmurphys-store-api.mjs
           node --check scripts/diagnose-danmurphys-store-switch.mjs
+          node --check scripts/diagnose-danmurphys-city-discovery.mjs
       - name: Install Playwright
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
       - name: Capture current Dan Murphy API/session
         run: node scripts/diagnose-danmurphys-store-api.mjs
-      - name: Attempt deterministic Sydney store switch
+      - name: Verify deterministic Sydney city price
         run: node scripts/diagnose-danmurphys-store-switch.mjs
+      - name: Discover Melbourne and Brisbane stores
+        run: node scripts/diagnose-danmurphys-city-discovery.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: au-store-api-diagnostic
           path: |
             au-store-api-diagnostic/**
             au-store-switch-diagnostic/**
+            au-city-discovery/**
           if-no-files-found: error
