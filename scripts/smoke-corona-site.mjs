@@ -58,12 +58,15 @@ try{
   if(await page.locator('#history-chart .fx-series').count()<1) throw new Error('FX series missing');
 
   await page.selectOption('#history-series','fx');
+  await page.waitForTimeout(50);
   if(await page.locator('#history-chart .price-series').count()!==0) throw new Error('price series remained in FX-only mode');
   if(await page.locator('#history-chart .fx-series').count()<1) throw new Error('FX-only series missing');
   await page.selectOption('#history-series','both');
   await page.selectOption('#history-scale','indexed');
+  await page.waitForTimeout(50);
   if(await page.locator('#history-chart .price-series').count()<1||await page.locator('#history-chart .fx-series').count()<1) throw new Error('indexed both-mode missing series');
-  if(!/first visible point = 100/i.test(await page.locator('#history-chart .chart-label').first().innerText())) throw new Error('indexed label missing');
+  const indexedLabel=((await page.locator('#history-chart .chart-label').first().textContent())||'').trim();
+  if(!/first visible point = 100/i.test(indexedLabel)) throw new Error(`indexed label missing: ${indexedLabel}`);
 
   const sourceHref=await page.locator('#country-detail a').getAttribute('href');
   if(!sourceHref||!/^https?:\/\//.test(sourceHref)) throw new Error('country source link missing');
