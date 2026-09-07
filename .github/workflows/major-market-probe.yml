@@ -7,6 +7,7 @@ on:
     paths:
       - data/market-probes/**
       - scripts/probe-corona-major-markets.mjs
+      - scripts/diagnose-market-controls.mjs
       - .github/workflows/major-market-probe.yml
   workflow_dispatch:
 
@@ -23,16 +24,22 @@ jobs:
         with:
           node-version: 22
       - name: Syntax
-        run: node --check scripts/probe-corona-major-markets.mjs
+        run: |
+          node --check scripts/probe-corona-major-markets.mjs
+          node --check scripts/diagnose-market-controls.mjs
       - name: Install Playwright
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
       - name: Probe deterministic market selection
         run: node scripts/probe-corona-major-markets.mjs
+      - name: Diagnose AU and BR market controls
+        run: node scripts/diagnose-market-controls.mjs
       - name: Upload market evidence
         uses: actions/upload-artifact@v4
         with:
           name: corona-major-market-probe
-          path: market-probe-artifacts/**
+          path: |
+            market-probe-artifacts/**
+            market-control-diagnostics/**
           if-no-files-found: error
