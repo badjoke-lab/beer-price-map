@@ -1,13 +1,19 @@
 # Beer Price Map
 
-World beer price map with automated, source-backed price collection and normalized comparisons.
+Public world map for comparing exact beer products using selected retailer shelf prices, normalized to 330 ml.
 
-## Current dataset
+## Current product
 
-- **Corona Extra** is the first production dataset.
-- Heineken may be added later using the same product/source/history pipeline.
-- Raw local price, package size, normalized 330 ml price, FX conversion, source URL, and collection health are kept separately.
+- Corona Extra
+- Daily automated collection on GitHub-hosted runners
+- Fail-closed publication gate: at least 50 fresh countries
+- Original shelf price, package volume, currency, source URL and freshness retained
+- Daily FX snapshots preserved under `data/fx/history/`
+- Historical conversion uses the same-date FX snapshot when available, otherwise the nearest prior preserved snapshot; today's FX is never applied retroactively
+- Country history UI supports Price / FX / Both and Actual / Indexed=100 views
 
-## Operating model
+The current country value is a selected source reference, not a national average. Market/metro/store coverage is tracked separately in the public launch completion gate.
 
-Daily GitHub Actions collection with a fail-closed production gate. A refresh is not published when the validated fresh-country floor is not met. Collection uses public product pages; no paid price API or paid proxy is required for the current Corona dataset.
+Live: https://badjoke-lab.github.io/beer-price-map/
+
+Completion gate: https://github.com/badjoke-lab/beer-price-map/issues/5
