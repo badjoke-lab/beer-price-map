@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "product": "Corona Extra",
-  "generatedAt": "2026-09-07T06:36:27.105Z",
+  "generatedAt": "2026-09-07T09:40:52.622Z",
   "minimumFreshCountries": 50,
-  "freshCountryCount": 54,
-  "coreFreshCount": 49,
+  "freshCountryCount": 52,
+  "coreFreshCount": 47,
   "spareFreshCount": 5,
   "displayCountryCount": 54,
   "productionGate": "pass",
@@ -25,7 +25,7 @@
       "observedPriceText": "AED 7.00",
       "observedVolumeText": "355ML",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "AT",
@@ -42,8 +42,9 @@
       "httpStatus": 200,
       "observedPriceText": "2,25 €",
       "observedVolumeText": "0,355 liter",
-      "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "stale": true,
+      "lastFreshAt": "2026-09-07T06:36:27.105Z",
+      "staleSince": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "AU",
@@ -61,7 +62,7 @@
       "observedPriceText": "$65.95",
       "observedVolumeText": "355mL",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "BA",
@@ -79,7 +80,7 @@
       "observedPriceText": "87,00 KM",
       "observedVolumeText": "0.355L",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "BR",
@@ -97,7 +98,7 @@
       "observedPriceText": "R$ 7,79",
       "observedVolumeText": "330ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "CA",
@@ -115,7 +116,7 @@
       "observedPriceText": "$35.95",
       "observedVolumeText": "12 x 473 ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "CH",
@@ -133,7 +134,7 @@
       "observedPriceText": "CHF 5.30",
       "observedVolumeText": "0.33 l",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "CL",
@@ -151,7 +152,7 @@
       "observedPriceText": "$1.490",
       "observedVolumeText": "330CC",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "CR",
@@ -169,7 +170,7 @@
       "observedPriceText": "₡3.000",
       "observedVolumeText": "1242 ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "CZ",
@@ -187,7 +188,7 @@
       "observedPriceText": "CZK 123.69",
       "observedVolumeText": "6×0,335 l",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "DK",
@@ -205,7 +206,7 @@
       "observedPriceText": "10,00 kr",
       "observedVolumeText": "330 ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "DO",
@@ -223,7 +224,7 @@
       "observedPriceText": "RD$810",
       "observedVolumeText": "355 ML",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "EC",
@@ -241,7 +242,7 @@
       "observedPriceText": "$1,67",
       "observedVolumeText": "330 ML",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "EE",
@@ -259,7 +260,7 @@
       "observedPriceText": "1.39 €",
       "observedVolumeText": "0,355l",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "FI",
@@ -277,7 +278,7 @@
       "observedPriceText": "1.99 €",
       "observedVolumeText": "0.33 l",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "FR",
@@ -295,7 +296,7 @@
       "observedPriceText": "4,84 €",
       "observedVolumeText": "6 x 33cl",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "GE",
@@ -313,7 +314,7 @@
       "observedPriceText": "USD 2.61",
       "observedVolumeText": "0.355L",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "GR",
@@ -321,17 +322,17 @@
       "role": "core",
       "product": "Corona Extra",
       "currency": "EUR",
-      "shelfPrice": 3.47,
+      "shelfPrice": 2.47,
       "packageVolumeMl": 330.0,
-      "pricePerLiter": 10.5152,
-      "pricePer330Ml": 3.47,
+      "pricePerLiter": 7.4848,
+      "pricePer330Ml": 2.47,
       "sourceUrl": "https://www.bigle.gr/products?code=c3781cd4-5c62-425d-9860-90e2c6daa78f",
       "sourceMode": "http",
       "httpStatus": 200,
-      "observedPriceText": "3,47€",
+      "observedPriceText": "2,47€",
       "observedVolumeText": "330ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "HR",
@@ -349,7 +350,7 @@
       "observedPriceText": "1 89 €",
       "observedVolumeText": "0,33 l",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "ID",
@@ -367,7 +368,7 @@
       "observedPriceText": "Rp 50,000",
       "observedVolumeText": "330ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "IE",
@@ -385,7 +386,7 @@
       "observedPriceText": "€28.99",
       "observedVolumeText": "18 x 330ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "IL",
@@ -403,7 +404,7 @@
       "observedPriceText": "₪7.90",
       "observedVolumeText": "330 ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "IS",
@@ -421,7 +422,7 @@
       "observedPriceText": "369 Price per liter",
       "observedVolumeText": "330 ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "IT",
@@ -439,7 +440,7 @@
       "observedPriceText": "€ 1,29",
       "observedVolumeText": "330.0 ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "JM",
@@ -457,7 +458,7 @@
       "observedPriceText": "$51.95",
       "observedVolumeText": "355ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "JO",
@@ -475,7 +476,7 @@
       "observedPriceText": "2.850 JD",
       "observedVolumeText": "35cl",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "JP",
@@ -493,7 +494,7 @@
       "observedPriceText": "¥248",
       "observedVolumeText": "330 ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "KZ",
@@ -511,7 +512,7 @@
       "observedPriceText": "2 300 ₸",
       "observedVolumeText": "0.33L",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "LB",
@@ -529,7 +530,7 @@
       "observedPriceText": "$ 1.99",
       "observedVolumeText": "35.50 CL",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "LK",
@@ -546,8 +547,9 @@
       "httpStatus": 200,
       "observedPriceText": "LKR 7,680.00",
       "observedVolumeText": "330ml",
-      "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "stale": true,
+      "lastFreshAt": "2026-09-07T06:36:27.105Z",
+      "staleSince": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "LV",
@@ -565,7 +567,7 @@
       "observedPriceText": "1.79 €",
       "observedVolumeText": "0,355l",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "MD",
@@ -583,7 +585,7 @@
       "observedPriceText": "42,00 lei",
       "observedVolumeText": "0.355 L",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "MT",
@@ -601,7 +603,7 @@
       "observedPriceText": "€2.00",
       "observedVolumeText": "355ML",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "MU",
@@ -619,7 +621,7 @@
       "observedPriceText": "Rs 105.00",
       "observedVolumeText": "355ML",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "MY",
@@ -637,7 +639,7 @@
       "observedPriceText": "RM 19.90",
       "observedVolumeText": "355ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "NL",
@@ -655,7 +657,7 @@
       "observedPriceText": "€ 9,99",
       "observedVolumeText": "6 x 33 cl",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "NP",
@@ -673,7 +675,7 @@
       "observedPriceText": "US$ 4.65",
       "observedVolumeText": "330ML",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "NZ",
@@ -691,7 +693,7 @@
       "observedPriceText": "$6.50",
       "observedVolumeText": "500mL",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "PA",
@@ -709,7 +711,7 @@
       "observedPriceText": "$1.12",
       "observedVolumeText": "355ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "PE",
@@ -727,7 +729,7 @@
       "observedPriceText": "S/ 5 . 50 ",
       "observedVolumeText": "330ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "PH",
@@ -745,7 +747,7 @@
       "observedPriceText": "₱99.00",
       "observedVolumeText": "330ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "PL",
@@ -753,17 +755,17 @@
       "role": "core",
       "product": "Corona Extra",
       "currency": "PLN",
-      "shelfPrice": 6.59,
+      "shelfPrice": 4.59,
       "packageVolumeMl": 330.0,
-      "pricePerLiter": 19.9697,
-      "pricePer330Ml": 6.59,
+      "pricePerLiter": 13.9091,
+      "pricePer330Ml": 4.59,
       "sourceUrl": "https://www.frisco.pl/pid,140996/n,corona-extra-piwo-(butelka-bezzwrotna)/stn,product",
       "sourceMode": "http",
       "httpStatus": 200,
-      "observedPriceText": "Cena 6,59",
+      "observedPriceText": "Cena 4,59",
       "observedVolumeText": "330 ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "PT",
@@ -781,7 +783,7 @@
       "observedPriceText": "1,67 €",
       "observedVolumeText": "0.355 LT",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "PY",
@@ -799,7 +801,7 @@
       "observedPriceText": "Gs 8.500",
       "observedVolumeText": "330 ML",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "SE",
@@ -817,7 +819,7 @@
       "observedPriceText": "19:90",
       "observedVolumeText": "330 ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "SG",
@@ -835,7 +837,7 @@
       "observedPriceText": "$3.45",
       "observedVolumeText": "330ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "TH",
@@ -853,7 +855,7 @@
       "observedPriceText": "109 ฿",
       "observedVolumeText": "330ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "TW",
@@ -871,7 +873,7 @@
       "observedPriceText": "1,340 TWD",
       "observedVolumeText": "355ML",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "VN",
@@ -889,7 +891,7 @@
       "observedPriceText": "27.000₫",
       "observedVolumeText": "300ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "KE",
@@ -907,7 +909,7 @@
       "observedPriceText": "KSh 300.00",
       "observedVolumeText": "330ML",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "NI",
@@ -925,7 +927,7 @@
       "observedPriceText": "C$64.00",
       "observedVolumeText": "355ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "RW",
@@ -943,7 +945,7 @@
       "observedPriceText": "RWF 4,500",
       "observedVolumeText": "330ml",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "SI",
@@ -961,7 +963,7 @@
       "observedPriceText": "8,99 €",
       "observedVolumeText": "0,33 l",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     },
     {
       "code": "UG",
@@ -979,7 +981,7 @@
       "observedPriceText": "Ush 22,000",
       "observedVolumeText": "330ML",
       "stale": false,
-      "lastFreshAt": "2026-09-07T06:36:27.105Z"
+      "lastFreshAt": "2026-09-07T09:40:52.622Z"
     }
   ]
 }
