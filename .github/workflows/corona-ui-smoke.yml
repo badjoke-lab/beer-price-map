@@ -5,10 +5,12 @@ on:
     branches:
       - build/corona-production
       - main
+      - feat/fx-history-chart-r1
     paths:
       - 'apps/corona-price-map/**'
       - 'scripts/build-corona-site.mjs'
       - 'scripts/build-corona-history-summary.py'
+      - 'scripts/build-fx-history-summary.mjs'
       - 'scripts/fetch-corona-fx.mjs'
       - 'scripts/smoke-corona-site.mjs'
       - '.github/workflows/corona-ui-smoke.yml'
@@ -26,6 +28,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Syntax check
+        run: |
+          node --check apps/corona-price-map/app-v2.js
+          node --check scripts/fetch-corona-fx.mjs
+          node --check scripts/build-fx-history-summary.mjs
+          node --check scripts/build-corona-site.mjs
+          node --check scripts/smoke-corona-site.mjs
       - name: Install Playwright
         run: |
           npm install --no-save playwright@1.55.0
@@ -33,6 +42,7 @@ jobs:
       - name: Refresh derived UI data
         run: |
           node scripts/fetch-corona-fx.mjs
+          node scripts/build-fx-history-summary.mjs
           python scripts/build-corona-history-summary.py
           node scripts/build-corona-site.mjs
       - name: Browser smoke
