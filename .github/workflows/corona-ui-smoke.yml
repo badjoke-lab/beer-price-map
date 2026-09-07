@@ -5,12 +5,14 @@ on:
     branches:
       - build/corona-production
       - main
+      - feat/market-layer-r1
     paths:
       - 'apps/corona-price-map/**'
       - 'scripts/build-corona-site.mjs'
       - 'scripts/build-corona-history-summary.py'
       - 'scripts/build-fx-history-summary.mjs'
       - 'scripts/fetch-corona-fx.mjs'
+      - 'scripts/fetch-corona-markets.mjs'
       - 'scripts/smoke-corona-site.mjs'
       - '.github/workflows/corona-ui-smoke.yml'
   workflow_dispatch:
@@ -21,7 +23,7 @@ permissions:
 jobs:
   browser-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,7 +32,9 @@ jobs:
       - name: Syntax check
         run: |
           node --check apps/corona-price-map/app-v2.js
+          node --check apps/corona-price-map/markets-v1.js
           node --check scripts/fetch-corona-fx.mjs
+          node --check scripts/fetch-corona-markets.mjs
           node --check scripts/build-fx-history-summary.mjs
           node --check scripts/build-corona-site.mjs
           node --check scripts/smoke-corona-site.mjs
@@ -40,6 +44,7 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Refresh derived UI data
         run: |
+          node scripts/fetch-corona-markets.mjs
           node scripts/fetch-corona-fx.mjs
           node scripts/build-fx-history-summary.mjs
           python scripts/build-corona-history-summary.py
