@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "product": "Corona Extra",
   "date": "2026-09-07",
-  "generatedAt": "2026-09-07T16:12:45.639Z",
+  "generatedAt": "2026-09-07T16:32:05.237Z",
   "records": [
     {
       "marketId": "CA-ON-LCBO",
@@ -27,7 +27,7 @@
       "locationDeterministic": true,
       "nationalAverage": false,
       "fresh": true,
-      "observedAt": "2026-09-07T16:12:45.639Z",
+      "observedAt": "2026-09-07T16:32:05.237Z",
       "evidence": "Fixed Ontario provincial-retailer reference; not a Canada-wide average."
     },
     {
@@ -53,7 +53,7 @@
       "locationDeterministic": true,
       "nationalAverage": false,
       "fresh": true,
-      "observedAt": "2026-09-07T16:12:45.639Z",
+      "observedAt": "2026-09-07T16:32:05.237Z",
       "priceType": "caseprice",
       "priceMessage": "case (24)",
       "stockCode": "357480",
@@ -83,7 +83,7 @@
       "locationDeterministic": true,
       "nationalAverage": false,
       "fresh": true,
-      "observedAt": "2026-09-07T16:12:45.639Z",
+      "observedAt": "2026-09-07T16:32:05.237Z",
       "priceType": "caseprice",
       "priceMessage": "case (24)",
       "stockCode": "6079724",
@@ -113,7 +113,7 @@
       "locationDeterministic": true,
       "nationalAverage": false,
       "fresh": true,
-      "observedAt": "2026-09-07T16:12:45.639Z",
+      "observedAt": "2026-09-07T16:32:05.237Z",
       "priceType": "caseprice",
       "priceMessage": "case (24)",
       "stockCode": "6079724",
