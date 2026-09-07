@@ -1,0 +1,38 @@
+name: Corona major-market probe
+
+on:
+  push:
+    branches:
+      - research/major-market-probes-r1
+    paths:
+      - data/market-probes/**
+      - scripts/probe-corona-major-markets.mjs
+      - .github/workflows/major-market-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Syntax
+        run: node --check scripts/probe-corona-major-markets.mjs
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Probe deterministic market selection
+        run: node scripts/probe-corona-major-markets.mjs
+      - name: Upload market evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: corona-major-market-probe
+          path: market-probe-artifacts/**
+          if-no-files-found: error
