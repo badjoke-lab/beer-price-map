@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "product": "Corona Extra",
   "purpose": "Evidence-backed candidates for deterministic market/store price collection. Nothing in this registry counts as production market coverage until a GitHub-hosted runner probe proves unattended location selection, exact product, package and price.",
   "targets": [
@@ -7,13 +7,18 @@
       "code": "US",
       "country": "United States",
       "currentSource": "Total Wine & More",
+      "url": "https://www.totalwine.com/brand/corona",
       "publicEvidence": [
         "https://www.totalwine.com/store-finder/",
         "https://www.totalwine.com/about-us/lowest-price-guarantee"
       ],
       "observedBehavior": "The public store finder asks for city/state/ZIP and says users should identify where they shop for accurate store locations and product availability. State minimum-price laws differ. Store-local price selection still needs direct technical proof.",
       "candidateMechanism": "fixed store selected from a deterministic city/ZIP lookup",
-      "candidateMarkets": ["Florida store", "California store", "Texas store"],
+      "probeMarkets": [
+        {"market":"Miami, FL","postalCode":"33139"},
+        {"market":"San Francisco, CA","postalCode":"94103"},
+        {"market":"Austin, TX","postalCode":"78701"}
+      ],
       "automationStatus": "runner-probe-required",
       "productionEligible": false
     },
@@ -21,13 +26,16 @@
       "code": "CA",
       "country": "Canada",
       "currentSource": "LCBO",
+      "url": "https://www.lcbo.com/en/corona-extra-44253",
       "publicEvidence": [
         "https://www.lcbo.com/content/lcbo/en/corporate-pages/faq.html",
         "https://www.lcbo.com/content/dbwl/en/basepage/home/updates/LCO-program-changes-removal-of-uniform-pricing-on-select-products.html"
       ],
       "observedBehavior": "The existing LCBO value is an Ontario provincial retailer reference, not a Canada-wide average. From June 2026 LCBO Convenience Outlets may independently set beer prices, so non-LCBO retail variation must not be collapsed into the LCBO reference.",
       "candidateMechanism": "keep Ontario/LCBO as a fixed regional reference; add other provinces or retailer markets separately",
-      "candidateMarkets": ["Ontario · LCBO"],
+      "probeMarkets": [
+        {"market":"Ontario · LCBO","postalCode":"M5V2T6","referenceOnly":true}
+      ],
       "automationStatus": "regional-reference-proven-market-expansion-required",
       "productionEligible": false
     },
@@ -35,13 +43,18 @@
       "code": "AU",
       "country": "Australia",
       "currentSource": "Dan Murphy's",
+      "url": "https://www.danmurphys.com.au/beer/brand-corona",
       "publicEvidence": [
         "https://www.danmurphys.com.au/help/set-your-store-content",
         "https://www.danmurphys.com.au/help/help-centre/articles/360001663056-How-can-I-find-my-local-store"
       ],
       "observedBehavior": "Dan Murphy's documents that setting Your Store exposes that store's local prices and that a store can be selected using postcode or suburb.",
       "candidateMechanism": "fixed postcode/suburb -> fixed Dan Murphy's store",
-      "candidateMarkets": ["Sydney", "Melbourne", "Brisbane"],
+      "probeMarkets": [
+        {"market":"Sydney","postalCode":"2000"},
+        {"market":"Melbourne","postalCode":"3000"},
+        {"market":"Brisbane","postalCode":"4000"}
+      ],
       "automationStatus": "high-probability-runner-probe-required",
       "productionEligible": false
     },
@@ -49,6 +62,7 @@
       "code": "BR",
       "country": "Brazil",
       "currentSource": "Mercado Carrefour",
+      "url": "https://mercado.carrefour.com.br/produto/cerveja-corona-extra-pilsen-330ml-long-neck-18487",
       "publicEvidence": [
         "https://secure.mercado.carrefour.com.br/atendimento/faq-loja-fisica/como-faco-para-saber-os-precos-dos-produtos",
         "https://secure.mercado.carrefour.com.br/localizador-de-lojas",
@@ -56,7 +70,11 @@
       ],
       "observedBehavior": "Carrefour says prices change daily and tells users to select a preferred store to see offers. The grocery site asks for CEP and its delivery policy lists supported metropolitan areas.",
       "candidateMechanism": "fixed CEP -> fixed city/store",
-      "candidateMarkets": ["São Paulo", "Rio de Janeiro", "Brasília", "Belo Horizonte", "Curitiba", "Porto Alegre"],
+      "probeMarkets": [
+        {"market":"São Paulo","postalCode":"01001000"},
+        {"market":"Rio de Janeiro","postalCode":"20040002"},
+        {"market":"Brasília","postalCode":"70040900"}
+      ],
       "automationStatus": "high-probability-runner-probe-required",
       "productionEligible": false
     },
@@ -64,13 +82,18 @@
       "code": "MX",
       "country": "Mexico",
       "currentSource": "Walmart México",
+      "url": "https://www.walmart.com.mx/ip/cerveza-corona-extra-710-ml/00750106419927",
       "publicEvidence": [
         "https://www.walmart.com.mx/content/ideas-para-vivir-mejor/impulsa-tu-bienestar/haz-tu-super-desde-la-app-de-walmart-paso-a-paso/9898297_9090486_0563284",
         "https://www.walmart.com.mx/content/cervezas-vinos-y-licores/cervezas/750004_120094"
       ],
       "observedBehavior": "Walmart México documents that grocery shopping begins with postal-code location and then chooses/suggests a nearby Walmart or Walmart Express for delivery/pickup. Exact market-specific Corona pricing still needs a runner proof.",
       "candidateMechanism": "fixed postal code -> fixed fulfillment store",
-      "candidateMarkets": ["Ciudad de México", "Guadalajara", "Monterrey"],
+      "probeMarkets": [
+        {"market":"Ciudad de México","postalCode":"06000"},
+        {"market":"Guadalajara","postalCode":"44100"},
+        {"market":"Monterrey","postalCode":"64000"}
+      ],
       "automationStatus": "high-probability-runner-probe-required",
       "productionEligible": false
     },
@@ -78,13 +101,14 @@
       "code": "JP",
       "country": "Japan",
       "currentSource": "Costco Japan online",
+      "url": "https://www.costco.co.jp/Corona/c/Corona",
       "publicEvidence": [
         "https://www.costco.co.jp/Corona/c/Corona",
         "https://www.costco.co.jp/Same-Price/c/SamePrice"
       ],
       "observedBehavior": "The current Corona source is an online Costco price. Costco states that warehouse and online prices/inventory can differ; therefore the current online price cannot be relabeled as a Tokyo/Osaka warehouse price.",
       "candidateMechanism": "retain Costco Online as an ecommerce reference; find a separate public source with deterministic store/area selection for metro coverage",
-      "candidateMarkets": ["Tokyo-area alternative source", "Osaka-area alternative source"],
+      "probeMarkets": [],
       "automationStatus": "alternative-source-required",
       "productionEligible": false
     }
