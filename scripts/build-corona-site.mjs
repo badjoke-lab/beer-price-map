@@ -8,6 +8,7 @@ const copies=[
   ['apps/corona-price-map/index-v2.html',`${out}/index.html`],
   ['apps/corona-price-map/styles.css',`${out}/styles.css`],
   ['apps/corona-price-map/app-v2.js',`${out}/app.js`],
+  ['apps/corona-price-map/markets-v1.js',`${out}/markets.js`],
   ['data/corona/current.json',`${out}/data/current.json`],
   ['data/fx/current.json',`${out}/data/fx.json`],
   ['data/fx/history-summary.json',`${out}/data/fx-history-summary.json`],
