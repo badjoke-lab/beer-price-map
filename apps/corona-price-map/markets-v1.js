@@ -11,6 +11,11 @@ const initialUrl=new URL(location.href);
 const seededDefaultCountry=!initialUrl.searchParams.has('country');
 if(seededDefaultCountry){initialUrl.searchParams.set('country','JP');history.replaceState(null,'',initialUrl)}
 
+// Keep the keyboard skip link available on focus without letting full-page
+// screenshot stitching paint an intentionally off-screen fixed element.
+const skipLink=document.querySelector('.skip-link');
+if(skipLink){skipLink.style.visibility='hidden';skipLink.addEventListener('focus',()=>skipLink.style.visibility='visible');skipLink.addEventListener('blur',()=>skipLink.style.visibility='hidden')}
+
 async function j(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(`${url}: ${r.status}`);return r.json()}
 function esc(s){return String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c))}
 function rate(code){if(code==='USD')return 1;const n=Number(marketState.fx?.rates?.[code]);return Number.isFinite(n)&&n>0?n:null}
