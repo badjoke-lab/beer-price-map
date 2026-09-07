@@ -15,6 +15,18 @@ on:
       - 'scripts/fetch-corona-markets.mjs'
       - 'scripts/smoke-corona-site.mjs'
       - '.github/workflows/corona-ui-smoke.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'apps/corona-price-map/**'
+      - 'scripts/build-corona-site.mjs'
+      - 'scripts/build-corona-history-summary.py'
+      - 'scripts/build-fx-history-summary.mjs'
+      - 'scripts/fetch-corona-fx.mjs'
+      - 'scripts/fetch-corona-markets.mjs'
+      - 'scripts/smoke-corona-site.mjs'
+      - '.github/workflows/corona-ui-smoke.yml'
   workflow_dispatch:
 
 permissions:
