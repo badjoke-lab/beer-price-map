@@ -1,0 +1,33 @@
+name: Functional parity branch check
+
+on:
+  push:
+    branches:
+      - feat/functional-parity-r1
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Syntax
+        run: |
+          node --check apps/corona-price-map/app-v2.js
+          node --check scripts/smoke-corona-site.mjs
+          node --check scripts/smoke-corona-production.mjs
+          node --check scripts/build-corona-site.mjs
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Build
+        run: node scripts/build-corona-site.mjs
+      - name: Browser smoke
+        run: node scripts/smoke-corona-site.mjs
