@@ -16,7 +16,8 @@ The current country value is a selected source reference, not a national average
 
 ## UI specification
 
-- [PC UI Specification](docs/PC_UI_SPEC.md) — normative desktop redesign specification based on the approved beer-advertising-poster mock. Mobile is intentionally specified separately.
+- [PC UI Specification](docs/PC_UI_SPEC.md) — normative desktop redesign specification based on the approved beer-advertising-poster mock.
+- [Mobile UI Specification](docs/MOBILE_UI_SPEC.md) — normative mobile specification: search/region/list-first country discovery, world-map overview rather than tiny-country selection, full-width country/history sections, persistent 2–4-country Compare tray, market scope, mobile motion and acceptance criteria.
 
 Live: https://badjoke-lab.github.io/beer-price-map/
 
