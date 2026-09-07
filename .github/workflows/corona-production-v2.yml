@@ -19,7 +19,7 @@ jobs:
   collect-build:
     if: github.actor != 'github-actions[bot]' || github.event_name != 'push'
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,6 +40,7 @@ jobs:
         run: |
           node --check scripts/probe-corona-strict.mjs
           node --check scripts/fetch-corona-fx.mjs
+          node --check scripts/fetch-corona-markets.mjs
           node --check scripts/build-fx-history-summary.mjs
           node --check scripts/build-corona-site.mjs
           node --check apps/corona-price-map/app-v2.js
@@ -86,6 +87,9 @@ jobs:
       - name: Build production snapshot
         run: python scripts/publish-corona-production.py
 
+      - name: Collect deterministic market layer
+        run: node scripts/fetch-corona-markets.mjs
+
       - name: Fetch free FX rates
         run: node scripts/fetch-corona-fx.mjs
 
@@ -109,6 +113,8 @@ jobs:
             data/corona/history-summary.json
             data/corona/source-health.json
             data/corona/history/*.json
+            data/corona/markets/current.json
+            data/corona/markets/history/*.json
             data/fx/current.json
             data/fx/history-summary.json
             data/fx/history/*.json
@@ -130,5 +136,5 @@ jobs:
             echo 'no production data changes'
             exit 0
           fi
-          git commit -m 'data: refresh Corona production dataset and FX history'
+          git commit -m 'data: refresh Corona production dataset, markets and FX history'
           git push origin "HEAD:${GITHUB_REF_NAME}"
