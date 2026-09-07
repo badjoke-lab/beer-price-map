@@ -39,6 +39,18 @@ try{
   if(gate!=='PASS') throw new Error(`gate=${gate}`);
   if(currencyOptions<25) throw new Error(`currency options ${currencyOptions}<25`);
 
+  // Motion acceptance: prove this is not merely a static poster.
+  await page.waitForFunction(()=>document.documentElement.classList.contains('motion-on'),{timeout:5000});
+  if(await page.locator('style[data-poster-motion="r1"]').count()!==1) throw new Error('poster motion stylesheet missing');
+  const glassAnimation=await page.locator('.beer-glass').evaluate(el=>getComputedStyle(el).animationName);
+  if(!/posterFloat/.test(glassAnimation)) throw new Error(`beer glass motion missing: ${glassAnimation}`);
+  await page.waitForFunction(()=>document.querySelectorAll('#map svg path[data-motion-seen="1"]').length>=150,{timeout:5000});
+  await page.waitForFunction(()=>['fresh-count','median','cheapest','expensive'].every(id=>document.getElementById(id)?.dataset.motionNumber==='1'),{timeout:5000});
+  await page.mouse.move(1320,260);
+  await page.waitForTimeout(80);
+  const parallax=await page.locator('.poster-hero').evaluate(el=>getComputedStyle(el).getPropertyValue('--poster-px').trim());
+  if(!parallax||parallax==='0px') throw new Error(`hero parallax did not respond: ${parallax}`);
+
   const usd=await page.locator('#ranking tr').first().locator('td').nth(2).innerText();
   await page.selectOption('#currency','JPY');
   await page.waitForTimeout(250);
@@ -58,6 +70,8 @@ try{
   if(historyStats!==4) throw new Error(`history stats=${historyStats}`);
   if(await page.locator('#history-chart .price-series').count()<1) throw new Error('price series missing');
   if(await page.locator('#history-chart .fx-series').count()<1) throw new Error('FX series missing');
+  await page.waitForFunction(()=>document.querySelectorAll('#history-chart .price-series[data-motion-drawn="1"],#history-chart .fx-series[data-motion-drawn="1"]').length>=2,{timeout:5000});
+  if(!await page.locator('#country-detail').evaluate(el=>el.classList.contains('motion-country-change'))) throw new Error('country spotlight transition missing');
 
   await page.selectOption('#history-series','fx');
   await page.waitForTimeout(50);
@@ -108,9 +122,12 @@ try{
   if(await page.locator('#history-series').count()!==1||await page.locator('#history-scale').count()!==1) throw new Error('history controls missing on mobile');
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
   if(overflow>2) throw new Error(`mobile horizontal overflow ${overflow}px`);
+  const mobileParallax=await page.locator('.poster-hero').evaluate(el=>getComputedStyle(el).getPropertyValue('--poster-px').trim());
+  if(mobileParallax!=='0px') throw new Error(`mobile parallax should stay disabled: ${mobileParallax}`);
   await page.screenshot({path:'smoke-artifacts/mobile.png',fullPage:true});
+
   if(errors.length) throw new Error(errors.join('\n'));
-  console.log(`UI SMOKE PASS rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} markets=${markets.freshMarketCount} AU=${auMarkets} CA=1 priceFxModes=pass mobileOverflow=${overflow}`);
+  console.log(`UI SMOKE PASS rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} markets=${markets.freshMarketCount} AU=${auMarkets} CA=1 priceFxModes=pass motion=pass parallax=${parallax} mobileOverflow=${overflow}`);
 } finally {
   await browser.close();
   await new Promise(r=>server.close(r));
