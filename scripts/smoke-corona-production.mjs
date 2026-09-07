@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 const base=(process.env.BASE_URL||'https://badjoke-lab.github.io/beer-price-map/').replace(/\/+$/,'')+'/';
 const dataUrl=new URL('data/current.json',base).href;
 const fxHistoryUrl=new URL('data/fx-history-summary.json',base).href;
+const marketsUrl=new URL('data/markets-current.json',base).href;
 
 const response=await fetch(dataUrl,{headers:{'cache-control':'no-cache'}});
 if(!response.ok) throw new Error(`current.json HTTP ${response.status}`);
@@ -15,6 +16,10 @@ const fxResponse=await fetch(fxHistoryUrl,{headers:{'cache-control':'no-cache'}}
 if(!fxResponse.ok) throw new Error(`fx-history-summary.json HTTP ${fxResponse.status}`);
 const fxHistory=await fxResponse.json();
 if(!Array.isArray(fxHistory.days)||fxHistory.days.length<1) throw new Error('FX history missing');
+const marketsResponse=await fetch(marketsUrl,{headers:{'cache-control':'no-cache'}});
+if(!marketsResponse.ok) throw new Error(`markets-current.json HTTP ${marketsResponse.status}`);
+const markets=await marketsResponse.json();
+if(markets.marketLayerGate!=='pass'||Number(markets.freshMarketCount)<4) throw new Error(`marketLayerGate=${markets.marketLayerGate} freshMarketCount=${markets.freshMarketCount}`);
 
 await fs.mkdir('production-smoke-artifacts',{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -64,21 +69,38 @@ try {
   await page.waitForTimeout(50);
   const indexedLabel=((await page.locator('#history-chart .chart-label').first().textContent())||'').trim();
   if(!/first visible point = 100/i.test(indexedLabel)) throw new Error(`indexed mode failed: ${indexedLabel}`);
+
+  await page.fill('#country-search','Australia');
+  await page.waitForTimeout(100);
+  await page.locator('#ranking tr').first().click();
+  await page.waitForFunction(()=>!document.querySelector('#market-section')?.hidden&&document.querySelectorAll('#market-ranking tr').length===3,{timeout:5000});
+  const auNames=await page.locator('#market-ranking tr td:first-child strong').allInnerTexts();
+  if(!['Sydney','Melbourne','Brisbane'].every(x=>auNames.includes(x))) throw new Error(`AU market rows=${auNames.join(',')}`);
+  const marketHref=await page.locator('#market-ranking tr').first().locator('a').getAttribute('href');
+  if(!marketHref||!/^https?:\/\//.test(marketHref)) throw new Error('market source link missing');
+
+  await page.fill('#country-search','Canada');
+  await page.waitForTimeout(100);
+  await page.locator('#ranking tr').first().click();
+  await page.waitForFunction(()=>!document.querySelector('#market-section')?.hidden&&document.querySelectorAll('#market-ranking tr').length===1,{timeout:5000});
+  const caMarket=(await page.locator('#market-ranking tr td:first-child strong').innerText()).trim();
+  if(caMarket!=='Ontario') throw new Error(`CA market=${caMarket}`);
   await page.screenshot({path:'production-smoke-artifacts/desktop.png',fullPage:true});
 
   await page.setViewportSize({width:390,height:844});
-  await page.goto(new URL('?country=JP&currency=JPY',base).href,{waitUntil:'networkidle',timeout:60000});
+  await page.goto(new URL('?country=AU&currency=JPY',base).href,{waitUntil:'networkidle',timeout:60000});
   await page.waitForFunction(()=>document.querySelectorAll('#ranking tr').length>=50,{timeout:30000});
   const deepTitle=(await page.locator('#country-title').innerText()).trim();
-  if(deepTitle!=='Japan') throw new Error(`deep-link country=${deepTitle}`);
+  if(deepTitle!=='Australia') throw new Error(`deep-link country=${deepTitle}`);
   if(await page.inputValue('#currency')!=='JPY') throw new Error('deep-link currency did not restore');
+  await page.waitForFunction(()=>document.querySelectorAll('#market-ranking tr').length===3,{timeout:5000});
   if(await page.locator('#history-series').count()!==1||await page.locator('#history-scale').count()!==1) throw new Error('history controls missing');
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
   if(overflow>2) throw new Error(`mobile horizontal overflow ${overflow}px`);
   await page.screenshot({path:'production-smoke-artifacts/mobile.png',fullPage:true});
 
   if(errors.length) throw new Error(errors.join('\n'));
-  console.log(`PRODUCTION SMOKE PASS url=${base} fresh=${current.freshCountryCount} rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} detail=${title} priceFxModes=pass mobileOverflow=${overflow}`);
+  console.log(`PRODUCTION SMOKE PASS url=${base} fresh=${current.freshCountryCount} rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} markets=${markets.freshMarketCount} AU=3 CA=1 priceFxModes=pass mobileOverflow=${overflow}`);
 } finally {
   await browser.close();
 }

@@ -26,7 +26,9 @@ try{
   await page.waitForFunction(()=>document.querySelectorAll('#ranking tr').length>=50,{timeout:30000});
 
   const fxHistory=await (await page.request.get('http://127.0.0.1:4173/data/fx-history-summary.json')).json();
+  const markets=await (await page.request.get('http://127.0.0.1:4173/data/markets-current.json')).json();
   if(!Array.isArray(fxHistory.days)||fxHistory.days.length<1) throw new Error('FX history missing');
+  if(markets.marketLayerGate!=='pass'||markets.freshMarketCount<4) throw new Error(`market layer missing ${markets.freshMarketCount}`);
 
   const rows=await page.locator('#ranking tr').count();
   const paths=await page.locator('#map svg path').count();
@@ -70,6 +72,24 @@ try{
 
   const sourceHref=await page.locator('#country-detail a').getAttribute('href');
   if(!sourceHref||!/^https?:\/\//.test(sourceHref)) throw new Error('country source link missing');
+
+  await page.fill('#country-search','Australia');
+  await page.waitForTimeout(100);
+  await page.locator('#ranking tr').first().click();
+  await page.waitForFunction(()=>!document.querySelector('#market-section')?.hidden&&document.querySelectorAll('#market-ranking tr').length===3,{timeout:5000});
+  const auMarkets=await page.locator('#market-ranking tr').count();
+  const auNames=await page.locator('#market-ranking tr td:first-child strong').allInnerTexts();
+  if(auMarkets!==3||!['Sydney','Melbourne','Brisbane'].every(x=>auNames.includes(x))) throw new Error(`AU markets invalid ${auNames.join(',')}`);
+  const marketHref=await page.locator('#market-ranking tr').first().locator('a').getAttribute('href');
+  if(!marketHref||!/^https?:\/\//.test(marketHref)) throw new Error('market source link missing');
+
+  await page.fill('#country-search','Canada');
+  await page.waitForTimeout(100);
+  await page.locator('#ranking tr').first().click();
+  await page.waitForFunction(()=>!document.querySelector('#market-section')?.hidden&&document.querySelectorAll('#market-ranking tr').length===1,{timeout:5000});
+  const caMarket=(await page.locator('#market-ranking tr td:first-child strong').innerText()).trim();
+  if(caMarket!=='Ontario') throw new Error(`CA market=${caMarket}`);
+
   await page.fill('#country-search','');
   await page.selectOption('#sort','price-desc');
   const high=(await page.locator('#ranking tr').first().locator('td').nth(2).innerText()).trim();
@@ -79,17 +99,18 @@ try{
   await page.screenshot({path:'smoke-artifacts/desktop.png',fullPage:true});
 
   await page.setViewportSize({width:390,height:844});
-  await page.goto('http://127.0.0.1:4173/?country=JP&currency=JPY',{waitUntil:'networkidle',timeout:60000});
+  await page.goto('http://127.0.0.1:4173/?country=AU&currency=JPY',{waitUntil:'networkidle',timeout:60000});
   await page.waitForFunction(()=>document.querySelectorAll('#ranking tr').length>=50,{timeout:30000});
   const deepTitle=(await page.locator('#country-title').innerText()).trim();
-  if(deepTitle!=='Japan') throw new Error(`deep-link country=${deepTitle}`);
+  if(deepTitle!=='Australia') throw new Error(`deep-link country=${deepTitle}`);
   if(await page.inputValue('#currency')!=='JPY') throw new Error('deep-link currency did not restore');
+  await page.waitForFunction(()=>document.querySelectorAll('#market-ranking tr').length===3,{timeout:5000});
   if(await page.locator('#history-series').count()!==1||await page.locator('#history-scale').count()!==1) throw new Error('history controls missing on mobile');
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
   if(overflow>2) throw new Error(`mobile horizontal overflow ${overflow}px`);
   await page.screenshot({path:'smoke-artifacts/mobile.png',fullPage:true});
   if(errors.length) throw new Error(errors.join('\n'));
-  console.log(`UI SMOKE PASS rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} detail=${title} priceFxModes=pass mobileOverflow=${overflow}`);
+  console.log(`UI SMOKE PASS rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} markets=${markets.freshMarketCount} AU=${auMarkets} CA=1 priceFxModes=pass mobileOverflow=${overflow}`);
 } finally {
   await browser.close();
   await new Promise(r=>server.close(r));
