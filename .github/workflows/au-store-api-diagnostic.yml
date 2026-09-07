@@ -8,6 +8,7 @@ on:
       - scripts/diagnose-danmurphys-store-api.mjs
       - scripts/diagnose-danmurphys-store-switch.mjs
       - scripts/diagnose-danmurphys-city-discovery.mjs
+      - scripts/probe-danmurphys-city-prices.mjs
       - .github/workflows/au-store-api-diagnostic.yml
   workflow_dispatch:
 
@@ -17,7 +18,7 @@ permissions:
 jobs:
   diagnose:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,6 +29,7 @@ jobs:
           node --check scripts/diagnose-danmurphys-store-api.mjs
           node --check scripts/diagnose-danmurphys-store-switch.mjs
           node --check scripts/diagnose-danmurphys-city-discovery.mjs
+          node --check scripts/probe-danmurphys-city-prices.mjs
       - name: Install Playwright
         run: |
           npm install --no-save playwright@1.55.0
@@ -38,6 +40,8 @@ jobs:
         run: node scripts/diagnose-danmurphys-store-switch.mjs
       - name: Discover Melbourne and Brisbane stores
         run: node scripts/diagnose-danmurphys-city-discovery.mjs
+      - name: Require Sydney Melbourne Brisbane city prices
+        run: node scripts/probe-danmurphys-city-prices.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: au-store-api-diagnostic
@@ -45,4 +49,5 @@ jobs:
             au-store-api-diagnostic/**
             au-store-switch-diagnostic/**
             au-city-discovery/**
+            au-city-price-probe/**
           if-no-files-found: error
