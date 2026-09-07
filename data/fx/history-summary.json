@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "base": "USD",
-  "generatedAt": "2026-09-07T16:32:17.893Z",
+  "generatedAt": "2026-09-07T17:02:20.952Z",
   "days": [
     {
       "date": "2026-09-06",
@@ -352,7 +352,7 @@
     },
     {
       "date": "2026-09-07",
-      "fetchedAt": "2026-09-07T16:32:17.812Z",
+      "fetchedAt": "2026-09-07T17:02:20.871Z",
       "source": "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json",
       "rates": {
         "USD": 1,
