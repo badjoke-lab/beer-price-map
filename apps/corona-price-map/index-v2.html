@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Beer Price Map tracks Corona Extra shelf prices across countries, normalizes packages to 330 ml, converts currencies and preserves daily history with source evidence." />
+  <meta name="description" content="Beer Price Map tracks Corona Extra shelf prices across countries, normalizes packages to 330 ml, converts currencies and preserves daily price and FX history with source evidence." />
   <title>Beer Price Map · Corona Extra</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -13,7 +13,7 @@
       <p class="eyebrow">Global beer price tracker</p>
       <h1>Beer Price Map</h1>
       <div class="product-line"><span class="product-pill">Corona Extra</span><span class="product-note">daily retail snapshot</span></div>
-      <p class="lede">Compare selected retailer shelf prices on one world map. Every package is normalized to a 330 ml equivalent while the original local price, package size, source and observation time stay visible.</p>
+      <p class="lede">Compare selected retailer shelf prices on one world map. Every package is normalized to a 330 ml equivalent while the original local price, package size, source, observation time and daily FX snapshot stay reproducible.</p>
     </div>
     <div class="controls-card">
       <label>Display currency
@@ -60,15 +60,24 @@
       <article class="panel country-panel">
         <div class="detail-head"><div><p class="section-kicker">Country evidence</p><h2 id="country-title">Select a country</h2></div><button id="clear-country" type="button" hidden>Clear</button></div>
         <div id="country-detail" class="country-detail"><p>Tap a colored country on the map or a row in the ranking. The panel keeps the original package and retailer evidence separate from the normalized comparison price.</p></div>
-        <div class="history-head"><div><p class="section-kicker">Daily history</p><h3>330 ml local-price trend</h3></div><label>Range<select id="history-range"><option value="30">30 days</option><option value="90">90 days</option><option value="365">1 year</option><option value="all">All</option></select></label></div>
+
+        <div class="history-head">
+          <div><p class="section-kicker">Daily history</p><h3>Price × FX</h3><p class="history-sub">Actual values use separate price/FX axes. Indexed view rebases each visible series to 100 so relative movement can be compared directly.</p></div>
+          <div class="history-controls">
+            <label>Series<select id="history-series"><option value="price">Price only</option><option value="fx">FX only</option><option value="both" selected>Both</option></select></label>
+            <label>View<select id="history-scale"><option value="actual">Actual</option><option value="indexed">Indexed = 100</option></select></label>
+            <label>Range<select id="history-range"><option value="30">30 days</option><option value="90">90 days</option><option value="365">1 year</option><option value="all">All</option></select></label>
+          </div>
+        </div>
         <div id="history-stats" class="history-stats"></div>
         <div id="history-chart" class="history-chart"></div>
+        <p id="history-note" class="history-note"></p>
       </article>
     </section>
 
     <section class="method-strip" aria-label="Method summary">
       <div><strong>Selected-source price, not a national average.</strong><span>Large countries can vary by city, store and channel; this release shows one validated source record per covered country. Location-level coverage is a separate data layer, not silently inferred.</span></div>
-      <div><strong>FX is a display conversion.</strong><span>Historical charts stay in the source country’s local currency so old prices are not rewritten using today’s exchange rate.</span></div>
+      <div><strong>Daily FX is preserved.</strong><span>Historical conversions use the FX snapshot from the same date when available, otherwise the nearest prior preserved FX date. Today’s FX is never retroactively applied to old observations.</span></div>
       <div><strong>Fail-closed publishing.</strong><span>A new production snapshot is rejected when fewer than 50 fresh countries pass the product/price/package gate.</span></div>
     </section>
   </main>

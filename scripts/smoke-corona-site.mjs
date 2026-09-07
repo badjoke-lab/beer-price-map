@@ -1,6 +1,7 @@
 import { chromium } from 'playwright';
 import http from 'node:http';
 import fs from 'node:fs';
+import fsp from 'node:fs/promises';
 import path from 'node:path';
 
 const root=path.resolve('dist/corona-price-map');
@@ -13,6 +14,7 @@ const server=http.createServer((req,res)=>{
   fs.readFile(file,(err,buf)=>{if(err){res.writeHead(404);res.end('not found');return;}res.writeHead(200,{'content-type':mime[path.extname(file)]||'application/octet-stream','cache-control':'no-store'});res.end(buf)});
 });
 await new Promise(r=>server.listen(4173,'127.0.0.1',r));
+await fsp.mkdir('smoke-artifacts',{recursive:true});
 
 const browser=await chromium.launch({headless:true});
 const errors=[];
@@ -22,6 +24,9 @@ try{
   page.on('pageerror',e=>errors.push(`page: ${e.message}`));
   await page.goto('http://127.0.0.1:4173/',{waitUntil:'networkidle',timeout:60000});
   await page.waitForFunction(()=>document.querySelectorAll('#ranking tr').length>=50,{timeout:30000});
+
+  const fxHistory=await (await page.request.get('http://127.0.0.1:4173/data/fx-history-summary.json')).json();
+  if(!Array.isArray(fxHistory.days)||fxHistory.days.length<1) throw new Error('FX history missing');
 
   const rows=await page.locator('#ranking tr').count();
   const paths=await page.locator('#map svg path').count();
@@ -44,21 +49,33 @@ try{
   if(filtered!==1) throw new Error(`country search expected 1 row, got ${filtered}`);
   const filteredCountry=(await page.locator('#ranking tr').first().locator('td').nth(1).innerText()).trim();
   if(filteredCountry!=='Japan') throw new Error(`country search returned ${filteredCountry}`);
-  await page.fill('#country-search','');
+  await page.locator('#ranking tr').first().click();
+  const title=(await page.locator('#country-title').innerText()).trim();
+  if(title!=='Japan') throw new Error(`country detail=${title}`);
+  const historyStats=await page.locator('#history-stats > div').count();
+  if(historyStats!==4) throw new Error(`history stats=${historyStats}`);
+  if(await page.locator('#history-chart .price-series').count()<1) throw new Error('price series missing');
+  if(await page.locator('#history-chart .fx-series').count()<1) throw new Error('FX series missing');
 
+  await page.selectOption('#history-series','fx');
+  await page.waitForTimeout(50);
+  if(await page.locator('#history-chart .price-series').count()!==0) throw new Error('price series remained in FX-only mode');
+  if(await page.locator('#history-chart .fx-series').count()<1) throw new Error('FX-only series missing');
+  await page.selectOption('#history-series','both');
+  await page.selectOption('#history-scale','indexed');
+  await page.waitForTimeout(50);
+  if(await page.locator('#history-chart .price-series').count()<1||await page.locator('#history-chart .fx-series').count()<1) throw new Error('indexed both-mode missing series');
+  const indexedLabel=((await page.locator('#history-chart .chart-label').first().textContent())||'').trim();
+  if(!/first visible point = 100/i.test(indexedLabel)) throw new Error(`indexed label missing: ${indexedLabel}`);
+
+  const sourceHref=await page.locator('#country-detail a').getAttribute('href');
+  if(!sourceHref||!/^https?:\/\//.test(sourceHref)) throw new Error('country source link missing');
+  await page.fill('#country-search','');
   await page.selectOption('#sort','price-desc');
   const high=(await page.locator('#ranking tr').first().locator('td').nth(2).innerText()).trim();
   await page.selectOption('#sort','price-asc');
   const low=(await page.locator('#ranking tr').first().locator('td').nth(2).innerText()).trim();
   if(high===low) throw new Error('sort did not change first ranking price');
-
-  await page.locator('#ranking tr').first().click();
-  const title=(await page.locator('#country-title').innerText()).trim();
-  if(!title||title==='Select a country') throw new Error('country detail did not open');
-  const historyStats=await page.locator('#history-stats > div').count();
-  if(historyStats!==4) throw new Error(`history stats=${historyStats}`);
-  const sourceHref=await page.locator('#country-detail a').getAttribute('href');
-  if(!sourceHref||!/^https?:\/\//.test(sourceHref)) throw new Error('country source link missing');
   await page.screenshot({path:'smoke-artifacts/desktop.png',fullPage:true});
 
   await page.setViewportSize({width:390,height:844});
@@ -67,11 +84,12 @@ try{
   const deepTitle=(await page.locator('#country-title').innerText()).trim();
   if(deepTitle!=='Japan') throw new Error(`deep-link country=${deepTitle}`);
   if(await page.inputValue('#currency')!=='JPY') throw new Error('deep-link currency did not restore');
+  if(await page.locator('#history-series').count()!==1||await page.locator('#history-scale').count()!==1) throw new Error('history controls missing on mobile');
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
   if(overflow>2) throw new Error(`mobile horizontal overflow ${overflow}px`);
   await page.screenshot({path:'smoke-artifacts/mobile.png',fullPage:true});
   if(errors.length) throw new Error(errors.join('\n'));
-  console.log(`UI SMOKE PASS rows=${rows} mapPaths=${paths} currencies=${currencyOptions} detail=${title} deepLink=${deepTitle} mobileOverflow=${overflow}`);
+  console.log(`UI SMOKE PASS rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} detail=${title} priceFxModes=pass mobileOverflow=${overflow}`);
 } finally {
   await browser.close();
   await new Promise(r=>server.close(r));
