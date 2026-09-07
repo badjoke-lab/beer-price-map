@@ -1,0 +1,135 @@
+name: Heineken Source Research
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/heineken-source-research.yml'
+      - 'data/probes/heineken-source-ledger.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Query Open Prices for Heineken products and countries
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import time
+          import urllib.parse
+          import urllib.request
+
+          BASE = 'https://prices.openfoodfacts.org/api/v1'
+          HEADERS = {'User-Agent': 'beer-price-map-research/1.0 (https://github.com/badjoke-lab/beer-price-map)'}
+
+          def get(path, params):
+              url = BASE + path + '?' + urllib.parse.urlencode(params, doseq=True)
+              req = urllib.request.Request(url, headers=HEADERS)
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.load(r)
+
+          products = []
+          page = 1
+          while True:
+              payload = get('/products', {
+                  'brands__like': 'Heineken',
+                  'price_count__gte': 1,
+                  'size': 100,
+                  'page': page,
+              })
+              products.extend(payload.get('items', []))
+              if page >= payload.get('pages', 1):
+                  break
+              page += 1
+
+          result = []
+          for p in products:
+              code = p.get('code')
+              if not code:
+                  continue
+              prices = []
+              pp = 1
+              while True:
+                  payload = get('/prices', {
+                      'product_code': code,
+                      'size': 100,
+                      'page': pp,
+                      'order_by': '-date',
+                  })
+                  prices.extend(payload.get('items', []))
+                  if pp >= payload.get('pages', 1):
+                      break
+                  pp += 1
+                  time.sleep(0.05)
+              rows = []
+              for x in prices:
+                  loc = x.get('location') or {}
+                  rows.append({
+                      'country_code': loc.get('osm_address_country_code'),
+                      'country': loc.get('osm_address_country'),
+                      'city': loc.get('osm_address_city'),
+                      'location': loc.get('osm_name') or loc.get('osm_display_name'),
+                      'date': x.get('date'),
+                      'price': x.get('price'),
+                      'currency': x.get('currency'),
+                      'discounted': x.get('price_is_discounted'),
+                  })
+              result.append({
+                  'code': code,
+                  'product_name': p.get('product_name'),
+                  'brands': p.get('brands'),
+                  'quantity': p.get('quantity'),
+                  'categories_tags': p.get('categories_tags'),
+                  'price_count': p.get('price_count'),
+                  'countries': sorted({r['country_code'] for r in rows if r.get('country_code')}),
+                  'prices': rows,
+              })
+
+          with open('open-prices-heineken.json', 'w', encoding='utf-8') as f:
+              json.dump(result, f, ensure_ascii=False, indent=2)
+
+          print('=== OPEN PRICES HEINEKEN SUMMARY ===')
+          print('products_with_prices=', len(result))
+          country_codes = sorted({c for p in result for c in p['countries']})
+          print('country_codes=', ','.join(country_codes))
+          for p in result:
+              print(json.dumps({k: p[k] for k in ('code','product_name','brands','quantity','price_count','countries')}, ensure_ascii=False))
+          print('=== END OPEN PRICES SUMMARY ===')
+          PY
+
+      - name: Download and inspect PROFECO QQP 2026 RAR
+        shell: bash
+        continue-on-error: true
+        run: |
+          set -x
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq unar file ripgrep
+          curl -fL --retry 3 --connect-timeout 20 --max-time 180 \
+            'https://datos.profeco.gob.mx/datos_abiertos/file.php?t=9d62040eae6dcc63e36b8ac821427647' \
+            -o qqp-2026.rar
+          ls -lh qqp-2026.rar
+          file qqp-2026.rar
+          mkdir -p qqp-extract
+          unar -force-overwrite -output-directory qqp-extract qqp-2026.rar
+          echo '=== PROFECO FILES ==='
+          find qqp-extract -maxdepth 2 -type f -printf '%p %s bytes\n' | head -100
+          echo '=== PROFECO HEINEKEN MATCHES ==='
+          rg -i -n -m 50 -C 1 'HEINEKEN' qqp-extract || true
+          echo '=== END PROFECO HEINEKEN MATCHES ==='
+
+      - name: Upload research outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: heineken-source-research
+          path: |
+            open-prices-heineken.json
+            qqp-extract
+          if-no-files-found: warn
+          retention-days: 7
