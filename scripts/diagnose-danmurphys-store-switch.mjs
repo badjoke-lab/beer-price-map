@@ -22,9 +22,9 @@ page.on('response',async res=>{
 
 async function snapshot(label){
   const inputs=await page.locator('input').evaluateAll(els=>els.map((e,i)=>({i,visible:!!(e.offsetWidth||e.offsetHeight||e.getClientRects().length),placeholder:e.getAttribute('placeholder')||'',aria:e.getAttribute('aria-label')||'',name:e.getAttribute('name')||'',id:e.id||'',type:e.getAttribute('type')||'',value:e.value||'',outer:e.outerHTML.slice(0,900)}))).catch(()=>[]);
-  const buttons=await page.locator('button,[role="button"],[role="option"],li').evaluateAll(els=>els.slice(0,250).map((e,i)=>({i,visible:!!(e.offsetWidth||e.offsetHeight||e.getClientRects().length),text:(e.innerText||'').replace(/\s+/g,' ').trim().slice(0,500),role:e.getAttribute('role')||'',cls:e.className||'',outer:e.outerHTML.slice(0,900)}))).catch(()=>[]);
+  const buttons=await page.locator('button,[role="button"],[role="option"],li,a').evaluateAll(els=>els.slice(0,300).map((e,i)=>({i,visible:!!(e.offsetWidth||e.offsetHeight||e.getClientRects().length),text:(e.innerText||'').replace(/\s+/g,' ').trim().slice(0,700),role:e.getAttribute('role')||'',cls:e.className||'',outer:e.outerHTML.slice(0,1000)}))).catch(()=>[]);
   const body=clean(await page.locator('body').innerText().catch(()=>''));
-  return {label,inputs,buttons:buttons.filter(x=>x.visible&&x.text).slice(0,180),body:body.slice(0,18000)};
+  return {label,inputs,buttons:buttons.filter(x=>x.visible&&x.text).slice(0,220),body:body.slice(0,20000)};
 }
 
 let navStatus=null,storeClick=false,changeClick=false,inputMeta=null,suggestionClick=null,confirmClick=null;
@@ -42,33 +42,34 @@ try{
   stages.push(await snapshot('store-change-open'));
 
   const candidates=await page.locator('input').evaluateAll(els=>els.map((e,i)=>({i,visible:!!(e.offsetWidth||e.offsetHeight||e.getClientRects().length),placeholder:e.getAttribute('placeholder')||'',aria:e.getAttribute('aria-label')||'',name:e.getAttribute('name')||'',id:e.id||'',type:e.getAttribute('type')||''}))).catch(()=>[]);
-  inputMeta=candidates.find(x=>x.visible&&/(post|suburb|address|location|store)/i.test(`${x.placeholder} ${x.aria} ${x.name} ${x.id}`))||null;
+  inputMeta=candidates.find(x=>x.visible&&/(post|suburb|address|location|store)/i.test(`${x.placeholder} ${x.aria} ${x.name} ${x.id}`))||candidates.find(x=>x.visible&&x.type==='search'&&/start typing/i.test(x.placeholder))||null;
   if(inputMeta){
     const input=page.locator('input').nth(inputMeta.i);
     await input.fill(TARGET_POSTCODE,{timeout:3000});
-    await input.press('Enter').catch(()=>{});
     await page.waitForTimeout(1800);
   }
   stages.push(await snapshot('postcode-entered'));
 
-  const clickables=page.locator('[role="option"],button,[role="button"],li,a');
-  const n=Math.min(await clickables.count().catch(()=>0),260);
+  const clickables=page.locator('[role="option"],button,[role="button"],li,a,div');
+  const n=Math.min(await clickables.count().catch(()=>0),420);
   for(let i=0;i<n;i++){
     const el=clickables.nth(i),txt=clean(await el.innerText().catch(()=>''));
-    if(!txt||/change|cart|login|checkout|search/i.test(txt))continue;
+    if(!txt||txt.length>900||/change|cart|login|checkout|search member/i.test(txt))continue;
     if(new RegExp(`${TARGET_POSTCODE}|${TARGET_CITY}`,'i').test(txt)){
       const ok=await el.click({timeout:2200}).then(()=>true).catch(()=>false);
-      if(ok){suggestionClick=txt.slice(0,500);await page.waitForTimeout(1400);break}
+      if(ok){suggestionClick=txt.slice(0,700);await page.waitForTimeout(1600);break}
     }
   }
 
-  const confirms=page.locator('button,[role="button"]');
-  const cn=Math.min(await confirms.count().catch(()=>0),120);
-  for(let i=0;i<cn;i++){
-    const el=confirms.nth(i),txt=clean(await el.innerText().catch(()=>''));
-    if(!txt||!/select|choose|use this|pick up|confirm|save/i.test(txt))continue;
-    const ok=await el.click({timeout:1800}).then(()=>true).catch(()=>false);
-    if(ok){confirmClick=txt.slice(0,300);await page.waitForTimeout(1600);break}
+  if(suggestionClick){
+    const confirms=page.locator('button,[role="button"]');
+    const cn=Math.min(await confirms.count().catch(()=>0),140);
+    for(let i=0;i<cn;i++){
+      const el=confirms.nth(i),txt=clean(await el.innerText().catch(()=>''));
+      if(!txt||!/select|choose|use this|pick up|confirm|save/i.test(txt))continue;
+      const ok=await el.click({timeout:1800}).then(()=>true).catch(()=>false);
+      if(ok){confirmClick=txt.slice(0,300);await page.waitForTimeout(1800);break}
+    }
   }
   stages.push(await snapshot('selection-attempted'));
 
