@@ -19,9 +19,10 @@ for path in sorted(glob.glob('data/corona/history/*.json')):
             'currency':r.get('currency'),
             'shelfPrice':r.get('shelfPrice'),
             'packageVolumeMl':r.get('packageVolumeMl'),
+            'marketScope':r.get('marketScope'),
             'sourceUrl':r.get('sourceUrl')
         })
 
-out={'schemaVersion':1,'generatedAt':__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat().replace('+00:00','Z'),'countries':dict(series)}
+out={'schemaVersion':2,'generatedAt':__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat().replace('+00:00','Z'),'countries':dict(series)}
 json.dump(out,open('data/corona/history-summary.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
 print('HISTORY SUMMARY PASS',len(series),'countries',sum(map(len,series.values())),'points')
