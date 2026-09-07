@@ -7,6 +7,7 @@ on:
       - main
     paths-ignore:
       - 'data/corona/**'
+      - 'data/fx/**'
   schedule:
     - cron: '17 3 * * *'
   workflow_dispatch:
@@ -39,6 +40,7 @@ jobs:
         run: |
           node --check scripts/probe-corona-strict.mjs
           node --check scripts/fetch-corona-fx.mjs
+          node --check scripts/build-fx-history-summary.mjs
           node --check scripts/build-corona-site.mjs
           node --check apps/corona-price-map/app-v2.js
           python -m py_compile scripts/audit-corona-strict.py scripts/merge-corona-strict.py scripts/publish-corona-production.py scripts/build-corona-history-summary.py
@@ -87,6 +89,9 @@ jobs:
       - name: Fetch free FX rates
         run: node scripts/fetch-corona-fx.mjs
 
+      - name: Build FX history summary
+        run: node scripts/build-fx-history-summary.mjs
+
       - name: Build price history summary
         run: python scripts/build-corona-history-summary.py
 
@@ -104,6 +109,9 @@ jobs:
             data/corona/history-summary.json
             data/corona/source-health.json
             data/corona/history/*.json
+            data/fx/current.json
+            data/fx/history-summary.json
+            data/fx/history/*.json
             dist/corona-price-map/**
           if-no-files-found: error
 
@@ -117,10 +125,10 @@ jobs:
             echo 'branch advanced during collection; refusing to overwrite newer state'
             exit 3
           fi
-          git add data/corona
+          git add data/corona data/fx
           if git diff --cached --quiet; then
             echo 'no production data changes'
             exit 0
           fi
-          git commit -m 'data: refresh Corona production dataset'
+          git commit -m 'data: refresh Corona production dataset and FX history'
           git push origin "HEAD:${GITHUB_REF_NAME}"
