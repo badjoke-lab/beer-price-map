@@ -14,6 +14,10 @@ Public world map for comparing exact beer products using selected retailer shelf
 
 The current country value is a selected source reference, not a national average. Market/metro/store coverage is tracked separately in the public launch completion gate.
 
+## UI specification
+
+- [PC UI Specification](docs/PC_UI_SPEC.md) — normative desktop redesign specification based on the approved beer-advertising-poster mock. Mobile is intentionally specified separately.
+
 Live: https://badjoke-lab.github.io/beer-price-map/
 
 Completion gate: https://github.com/badjoke-lab/beer-price-map/issues/5
