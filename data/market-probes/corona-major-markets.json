@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "product": "Corona Extra",
   "purpose": "Evidence-backed candidates for deterministic market/store price collection. Nothing in this registry counts as production market coverage until a GitHub-hosted runner probe proves unattended location selection, exact product, package and price.",
   "targets": [
@@ -48,15 +48,21 @@
         "https://www.danmurphys.com.au/help/set-your-store-content",
         "https://www.danmurphys.com.au/help/help-centre/articles/360001663056-How-can-I-find-my-local-store"
       ],
-      "observedBehavior": "Dan Murphy's documents that setting Your Store exposes that store's local prices and that a store can be selected using postcode or suburb.",
-      "candidateMechanism": "fixed postcode/suburb -> fixed Dan Murphy's store",
+      "observedBehavior": "GitHub-hosted Playwright proved unattended suburb/postcode -> fixed-store selection and exact Corona Extra price extraction in Sydney, Melbourne and Brisbane. Pack variants differ by market, so matching is by exact Corona Extra identity plus explicit volume/price rather than one globally fixed stock code.",
+      "candidateMechanism": "fixed postcode/suburb -> fixed Dan Murphy's store -> exact Corona Extra variant",
       "probeMarkets": [
-        {"market":"Sydney","postalCode":"2000"},
-        {"market":"Melbourne","postalCode":"3000"},
-        {"market":"Brisbane","postalCode":"4000"}
+        {"market":"Sydney","postalCode":"2000","storeId":"1026","store":"The Cellar Martin Place","observedProduct":"Corona Extra Lager Bottles 330ml","stockCode":"6079724","observedPriceAUD":66.99},
+        {"market":"Melbourne","postalCode":"3000","storeId":"3419","store":"Melbourne QV","observedProduct":"Corona Extra Lager Bottle 12 Pack 330ml","stockCode":"6076490","observedPriceAUD":37.99},
+        {"market":"Brisbane","postalCode":"4000","storeId":"2543","store":"Newstead","observedProduct":"Corona Extra Lager Bottle 12 Pack 330ml","stockCode":"6076490","observedPriceAUD":37.99}
       ],
-      "automationStatus": "high-probability-runner-probe-required",
-      "productionEligible": false
+      "automationStatus": "github-runner-proven-3-city",
+      "productionEligible": true,
+      "proof": {
+        "commit":"cbe57c8b95534eb512dd8d6034223dafaf930582",
+        "workflowRunId":34125799499,
+        "artifactId":10020071083,
+        "result":"3/3"
+      }
     },
     {
       "code": "BR",
