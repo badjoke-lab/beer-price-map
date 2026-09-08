@@ -2,8 +2,8 @@
   "schemaVersion": 2,
   "product": "Corona Extra",
   "date": "2026-09-08",
-  "generatedAt": "2026-09-08T12:51:32.289Z",
-  "freshCountryCount": 54,
+  "generatedAt": "2026-09-08T14:24:45.929Z",
+  "freshCountryCount": 53,
   "records": [
     {
       "code": "AE",
@@ -28,7 +28,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "AT",
@@ -53,32 +53,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
-    },
-    {
-      "code": "AU",
-      "country": "Australia",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "AUD",
-      "shelfPrice": 65.95,
-      "packageVolumeMl": 8520.0,
-      "pricePerLiter": 7.7406,
-      "pricePer330Ml": 2.5544,
-      "sourceUrl": "https://www.danmurphys.com.au/beer/brand-corona",
-      "sourceMode": "browser",
-      "httpStatus": 200,
-      "observedPriceText": "$65.95",
-      "observedVolumeText": "355mL",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "BA",
@@ -103,7 +78,32 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
+    },
+    {
+      "code": "BE",
+      "country": "Belgium",
+      "role": "core",
+      "product": "Corona Extra",
+      "currency": "EUR",
+      "shelfPrice": 8.69,
+      "packageVolumeMl": 1980.0,
+      "pricePerLiter": 4.3889,
+      "pricePer330Ml": 1.4483,
+      "sourceUrl": "https://www.carrefour.be/nl/extra-12x33cl-fles/06955917.html",
+      "sourceMode": "browser",
+      "httpStatus": 200,
+      "observedPriceText": "8,69 €",
+      "observedVolumeText": "6 x 33 cl",
+      "marketScope": {
+        "level": "country-reference",
+        "label": "Selected retailer source",
+        "nationalAverage": false,
+        "locationDeterministic": false,
+        "classification": "not-yet-market-audited"
+      },
+      "stale": false,
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "BR",
@@ -128,7 +128,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "CA",
@@ -155,7 +155,7 @@
         "sourceProvider": "LCBO"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "CH",
@@ -180,7 +180,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "CL",
@@ -205,7 +205,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "CR",
@@ -230,7 +230,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "CZ",
@@ -255,7 +255,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "DK",
@@ -280,7 +280,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "DO",
@@ -305,7 +305,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "EC",
@@ -330,7 +330,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "EE",
@@ -355,7 +355,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "FI",
@@ -381,7 +381,7 @@
         "sourceProvider": "Alko"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "FR",
@@ -406,7 +406,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "GE",
@@ -431,7 +431,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "GR",
@@ -439,14 +439,14 @@
       "role": "core",
       "product": "Corona Extra",
       "currency": "EUR",
-      "shelfPrice": 2.98,
+      "shelfPrice": 1.98,
       "packageVolumeMl": 330.0,
-      "pricePerLiter": 9.0303,
-      "pricePer330Ml": 2.98,
+      "pricePerLiter": 6.0,
+      "pricePer330Ml": 1.98,
       "sourceUrl": "https://www.bigle.gr/products?code=c3781cd4-5c62-425d-9860-90e2c6daa78f",
       "sourceMode": "http",
       "httpStatus": 200,
-      "observedPriceText": "2,98€",
+      "observedPriceText": "1,98€",
       "observedVolumeText": "330ml",
       "marketScope": {
         "level": "country-reference",
@@ -456,7 +456,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "HR",
@@ -481,7 +481,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "ID",
@@ -506,7 +506,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "IE",
@@ -531,7 +531,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "IL",
@@ -556,7 +556,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "IS",
@@ -581,7 +581,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "IT",
@@ -606,7 +606,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "JM",
@@ -631,7 +631,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "JO",
@@ -656,7 +656,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "JP",
@@ -681,7 +681,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "KZ",
@@ -706,7 +706,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "LB",
@@ -731,7 +731,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "LK",
@@ -756,7 +756,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "LV",
@@ -781,7 +781,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "MD",
@@ -806,7 +806,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "MT",
@@ -831,7 +831,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "MU",
@@ -856,7 +856,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "MY",
@@ -881,7 +881,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "NL",
@@ -906,7 +906,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "NP",
@@ -931,7 +931,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "NZ",
@@ -956,7 +956,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "PA",
@@ -981,32 +981,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
-    },
-    {
-      "code": "PE",
-      "country": "Peru",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "PEN",
-      "shelfPrice": 5.5,
-      "packageVolumeMl": 330.0,
-      "pricePerLiter": 16.6667,
-      "pricePer330Ml": 5.5,
-      "sourceUrl": "https://www.metro.pe/cerveza-corona-extra-botella-330ml-996296/p",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "S/ 5 . 50 ",
-      "observedVolumeText": "330ml",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "PH",
@@ -1031,7 +1006,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "PL",
@@ -1056,7 +1031,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "PT",
@@ -1081,7 +1056,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "PY",
@@ -1106,7 +1081,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "SE",
@@ -1132,7 +1107,7 @@
         "sourceProvider": "Systembolaget"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "SG",
@@ -1157,7 +1132,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "TH",
@@ -1182,7 +1157,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "TW",
@@ -1207,7 +1182,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "VN",
@@ -1232,7 +1207,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "KE",
@@ -1257,7 +1232,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "NI",
@@ -1282,7 +1257,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "RW",
@@ -1307,7 +1282,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "SI",
@@ -1332,7 +1307,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     },
     {
       "code": "UG",
@@ -1357,7 +1332,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+      "lastFreshAt": "2026-09-08T14:24:45.929Z"
     }
   ]
 }
