@@ -1,0 +1,38 @@
+/* Country Spotlight placement invariant.
+ * Desktop: the selected-country card must occupy the right column beside the map.
+ * Tablet/mobile: existing responsive rules may stack it, but it must never disappear.
+ */
+#map-section.explore-grid > .map-panel{
+  grid-column:1;
+  grid-row:1;
+  min-width:0;
+}
+#map-section.explore-grid > #country-story.country-panel{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  min-width:0;
+  position:relative;
+  z-index:3;
+}
+@media (min-width:1121px){
+  #map-section.explore-grid{
+    grid-template-columns:minmax(0,1.72fr) minmax(330px,.88fr)!important;
+    align-items:stretch;
+  }
+  #map-section.explore-grid > #country-story.country-panel{
+    grid-column:2!important;
+    grid-row:1!important;
+    align-self:stretch;
+    width:auto!important;
+    min-height:650px;
+    transform:none!important;
+  }
+}
+@media (max-width:1120px){
+  #map-section.explore-grid > #country-story.country-panel{
+    grid-column:auto!important;
+    grid-row:auto!important;
+    width:100%!important;
+  }
+}
