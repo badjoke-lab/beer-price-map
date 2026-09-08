@@ -6,29 +6,27 @@ Depends on: `PC_UI_SPEC.md`, `MOBILE_UI_SPEC.md`, `MOTION_IMPLEMENTATION.md`
 
 ## 1. Purpose
 
-The World Map, Country Spotlight and Country Ranking are three views of the same selected-country state. They must not feel like unrelated panels. Selection motion must make the relationship explicit without changing any price, source, rank, scope or FX semantics.
+The World Map, Country Spotlight and Country Ranking are three views of the same selected-country state. Selection motion should make that relationship explicit without forcing cross-panel scrolling or changing any price, source, rank, scope or FX semantics.
 
 ## 2. Desktop
 
-Country Spotlight is the visual hub.
+Country Spotlight is the visual hub, but **only one animated connector is drawn per selection**.
 
 ### Map-origin selection
 
 1. selected map country highlights,
-2. an animated gold connector draws from the country to Country Spotlight,
-3. Spotlight content reveals,
-4. a second connector draws from Spotlight to the selected ranking row,
-5. the ranking row pulses and remains selected.
+2. one animated gold connector draws from the selected country to Country Spotlight,
+3. Country Spotlight content remains visible and updates to the selected country,
+4. the matching ranking row is highlighted in place,
+5. do **not** auto-scroll the ranking and do **not** draw a second Spotlight → Ranking connector.
 
 ### Ranking-origin selection
 
 1. selected ranking row highlights,
-2. an animated connector draws from the row to Country Spotlight,
-3. Spotlight content reveals,
-4. a second connector draws from Spotlight to the selected map country,
-5. the map country pulses and remains selected.
-
-The two connector legs are separate. Do not draw a direct Map → Ranking line that bypasses Country Spotlight.
+2. one animated connector draws from the row to Country Spotlight,
+3. Country Spotlight content remains visible and updates to the selected country,
+4. the matching map country is highlighted in place,
+5. do **not** draw a second Spotlight → Map connector.
 
 ### Visual treatment
 
@@ -39,23 +37,23 @@ The two connector legs are separate. Do not draw a direct Map → Ranking line t
 - short destination pulse,
 - settled selected state remains on map, Spotlight and ranking after the transient connector fades.
 
-Ranking rows outside the ranking viewport should be brought into view inside the ranking scroller before the second connector finishes.
+The connector is never allowed to hide Country Spotlight content. Selection information must be readable while the connector is drawing and after it completes.
 
 ## 3. Mobile
 
-Do not reproduce the desktop cross-page curves on a narrow viewport. Mobile uses a separate **vertical selection rail**.
+Do not reproduce desktop cross-page curves on a narrow viewport. Mobile uses a short **vertical selection rail** whose destination is Country Story only.
 
 ### Map-origin selection
 
 1. map country highlights,
-2. the fixed vertical rail advances to the Country Story stage,
-3. Country Story is brought into view and revealed,
-4. after a short dwell the rail advances to the Ranking stage,
-5. the selected ranking row is revealed, brought into view and pulsed.
+2. the fixed vertical rail advances to Country Story,
+3. Country Story is brought into view and remains readable,
+4. the selected ranking row is highlighted/revealed in the ranking list,
+5. do **not** auto-scroll to the ranking and do **not** extend the rail to a Ranking stage.
 
 ### Ranking-origin selection
 
-Ranking selection may route upward to Country Story without automatically bouncing back to Map. Country Story remains the mobile hub.
+Ranking selection may route to Country Story. The map country remains highlighted as counterpart state, but the page does not bounce back to the Map.
 
 The mobile rail is a progress/relationship device, not a literal geometric line connecting distant off-screen coordinates.
 
@@ -66,21 +64,26 @@ With `prefers-reduced-motion: reduce`:
 - do not draw moving connector paths,
 - do not animate the mobile rail,
 - keep selected-state highlights,
-- keep necessary scrolling/navigation functional,
-- reveal Country Spotlight without large transforms.
+- keep necessary Country Story navigation functional,
+- keep Country Spotlight content visible.
 
 ## 5. Acceptance
 
-Desktop browser proof must demonstrate both directions:
+Desktop browser proof must demonstrate:
 
-- Map → Spotlight → Ranking,
-- Ranking → Spotlight → Map.
+- Map → Spotlight as the only map-origin connector,
+- Ranking → Spotlight as the only ranking-origin connector,
+- no second connector leg,
+- no connector-driven ranking auto-scroll,
+- selected map country and selected ranking row remain highlighted,
+- Country Spotlight details are visible after map selection.
 
 Mobile browser proof must demonstrate:
 
-- map selection activates the vertical rail,
-- Country Story becomes the intermediate state,
-- the selected ranking row is revealed and highlighted,
+- map selection activates the vertical rail to Country Story,
+- Country Story details are visible,
+- the selected ranking row is highlighted/revealed without automatic ranking scroll,
+- no Ranking rail stage is used,
 - page-level horizontal overflow stays within the existing 2 px tolerance.
 
 The connector layer is progressive enhancement only. Existing country selection, data, source links, market scope, FX history and ranking behavior must remain usable if the connector layer is disabled.
