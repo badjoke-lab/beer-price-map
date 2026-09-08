@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "product": "Corona Extra",
-  "generatedAt": "2026-09-08T08:14:58.276Z",
+  "generatedAt": "2026-09-08T12:51:32.750Z",
   "marketLayerGate": "pass",
   "freshMarketCount": 4,
   "countriesWithMarketLayer": 2,
@@ -29,7 +29,7 @@
       "locationDeterministic": true,
       "nationalAverage": false,
       "fresh": true,
-      "observedAt": "2026-09-08T08:14:58.276Z",
+      "observedAt": "2026-09-08T12:51:32.750Z",
       "evidence": "Fixed Ontario provincial-retailer reference; not a Canada-wide average."
     },
     {
@@ -55,7 +55,7 @@
       "locationDeterministic": true,
       "nationalAverage": false,
       "fresh": true,
-      "observedAt": "2026-09-08T08:14:58.276Z",
+      "observedAt": "2026-09-08T12:51:32.750Z",
       "priceType": "caseprice",
       "priceMessage": "case (24)",
       "stockCode": "357480",
@@ -85,11 +85,11 @@
       "locationDeterministic": true,
       "nationalAverage": false,
       "fresh": true,
-      "observedAt": "2026-09-08T08:14:58.276Z",
+      "observedAt": "2026-09-08T12:51:32.750Z",
       "priceType": "caseprice",
       "priceMessage": "case (24)",
       "stockCode": "6079724",
-      "availability": 498,
+      "availability": 474,
       "evidence": "Fixed store 3419 verified by Fulfilment Preferences."
     },
     {
@@ -115,7 +115,7 @@
       "locationDeterministic": true,
       "nationalAverage": false,
       "fresh": true,
-      "observedAt": "2026-09-08T08:14:58.276Z",
+      "observedAt": "2026-09-08T12:51:32.750Z",
       "priceType": "caseprice",
       "priceMessage": "case (24)",
       "stockCode": "6079724",

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-08T08:15:11.515047Z",
+  "generatedAt": "2026-09-08T12:51:43.128099Z",
   "countries": {
     "AE": [
       {
@@ -69,6 +69,21 @@
     "AU": [
       {
         "date": "2026-09-07",
+        "pricePer330Ml": 2.5544,
+        "currency": "AUD",
+        "shelfPrice": 65.95,
+        "packageVolumeMl": 8520.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.danmurphys.com.au/beer/brand-corona"
+      },
+      {
+        "date": "2026-09-08",
         "pricePer330Ml": 2.5544,
         "currency": "AUD",
         "shelfPrice": 65.95,
@@ -1721,23 +1736,6 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://legourmetkampala.com/collections/imported-beer"
-      }
-    ],
-    "BE": [
-      {
-        "date": "2026-09-08",
-        "pricePer330Ml": 1.4483,
-        "currency": "EUR",
-        "shelfPrice": 8.69,
-        "packageVolumeMl": 1980.0,
-        "marketScope": {
-          "level": "country-reference",
-          "label": "Selected retailer source",
-          "nationalAverage": false,
-          "locationDeterministic": false,
-          "classification": "not-yet-market-audited"
-        },
-        "sourceUrl": "https://www.carrefour.be/nl/extra-12x33cl-fles/06955917.html"
       }
     ]
   }

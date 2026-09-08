@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "product": "Corona Extra",
   "date": "2026-09-08",
-  "generatedAt": "2026-09-08T08:14:57.787Z",
+  "generatedAt": "2026-09-08T12:51:32.289Z",
   "freshCountryCount": 54,
   "records": [
     {
@@ -28,7 +28,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "AT",
@@ -53,7 +53,32 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
+    },
+    {
+      "code": "AU",
+      "country": "Australia",
+      "role": "core",
+      "product": "Corona Extra",
+      "currency": "AUD",
+      "shelfPrice": 65.95,
+      "packageVolumeMl": 8520.0,
+      "pricePerLiter": 7.7406,
+      "pricePer330Ml": 2.5544,
+      "sourceUrl": "https://www.danmurphys.com.au/beer/brand-corona",
+      "sourceMode": "browser",
+      "httpStatus": 200,
+      "observedPriceText": "$65.95",
+      "observedVolumeText": "355mL",
+      "marketScope": {
+        "level": "country-reference",
+        "label": "Selected retailer source",
+        "nationalAverage": false,
+        "locationDeterministic": false,
+        "classification": "not-yet-market-audited"
+      },
+      "stale": false,
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "BA",
@@ -78,32 +103,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
-    },
-    {
-      "code": "BE",
-      "country": "Belgium",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "EUR",
-      "shelfPrice": 8.69,
-      "packageVolumeMl": 1980.0,
-      "pricePerLiter": 4.3889,
-      "pricePer330Ml": 1.4483,
-      "sourceUrl": "https://www.carrefour.be/nl/extra-12x33cl-fles/06955917.html",
-      "sourceMode": "browser",
-      "httpStatus": 200,
-      "observedPriceText": "8,69 €",
-      "observedVolumeText": "6 x 33 cl",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "BR",
@@ -128,7 +128,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "CA",
@@ -155,7 +155,7 @@
         "sourceProvider": "LCBO"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "CH",
@@ -180,7 +180,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "CL",
@@ -205,7 +205,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "CR",
@@ -230,7 +230,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "CZ",
@@ -255,7 +255,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "DK",
@@ -280,7 +280,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "DO",
@@ -305,7 +305,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "EC",
@@ -330,7 +330,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "EE",
@@ -355,7 +355,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "FI",
@@ -381,7 +381,7 @@
         "sourceProvider": "Alko"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "FR",
@@ -406,7 +406,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "GE",
@@ -431,7 +431,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "GR",
@@ -456,7 +456,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "HR",
@@ -481,7 +481,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "ID",
@@ -506,7 +506,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "IE",
@@ -531,7 +531,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "IL",
@@ -556,7 +556,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "IS",
@@ -581,7 +581,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "IT",
@@ -606,7 +606,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "JM",
@@ -631,7 +631,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "JO",
@@ -656,7 +656,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "JP",
@@ -681,7 +681,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "KZ",
@@ -706,7 +706,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "LB",
@@ -731,7 +731,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "LK",
@@ -756,7 +756,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "LV",
@@ -781,7 +781,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "MD",
@@ -806,7 +806,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "MT",
@@ -831,7 +831,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "MU",
@@ -856,7 +856,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "MY",
@@ -881,7 +881,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "NL",
@@ -906,7 +906,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "NP",
@@ -931,7 +931,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "NZ",
@@ -956,7 +956,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "PA",
@@ -981,7 +981,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "PE",
@@ -1006,7 +1006,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "PH",
@@ -1031,7 +1031,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "PL",
@@ -1056,7 +1056,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "PT",
@@ -1081,7 +1081,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "PY",
@@ -1106,7 +1106,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "SE",
@@ -1132,7 +1132,7 @@
         "sourceProvider": "Systembolaget"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "SG",
@@ -1157,7 +1157,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "TH",
@@ -1182,7 +1182,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "TW",
@@ -1207,7 +1207,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "VN",
@@ -1232,7 +1232,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "KE",
@@ -1257,7 +1257,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "NI",
@@ -1282,7 +1282,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "RW",
@@ -1307,7 +1307,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "SI",
@@ -1332,7 +1332,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     },
     {
       "code": "UG",
@@ -1357,7 +1357,7 @@
         "classification": "not-yet-market-audited"
       },
       "stale": false,
-      "lastFreshAt": "2026-09-08T08:14:57.787Z"
+      "lastFreshAt": "2026-09-08T12:51:32.289Z"
     }
   ]
 }
