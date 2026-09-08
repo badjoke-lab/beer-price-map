@@ -45,22 +45,42 @@ try{
   if(layout.panel.right>1442)throw new Error(`spotlight outside viewport right=${layout.panel.right}`);
 
   await page.locator('#map path.country').evaluateAll(paths=>{
-    const p=paths.find(x=>String(x.__data__?.id).padStart(3,'0')==='392');
-    if(!p)throw new Error('Japan path missing');
+    const p=paths.find(x=>String(x.__data__?.id).padStart(3,'0')==='124');
+    if(!p)throw new Error('Canada path missing');
     p.dispatchEvent(new MouseEvent('click',{bubbles:true,clientX:700,clientY:400}));
   });
-  await page.waitForFunction(()=>document.querySelector('#country-title')?.textContent.trim()==='Japan',{timeout:5000});
+  await page.waitForFunction(()=>document.querySelector('#country-title')?.textContent.trim()==='Canada',{timeout:5000});
   await page.waitForFunction(()=>document.querySelector('#country-detail')?.textContent.trim().length>40,{timeout:5000});
+  await page.waitForFunction(()=>document.querySelector('#country-story')?.dataset.spotlightPhase==='travel',{timeout:1000});
+
+  const travelling=await page.evaluate(()=>{
+    const panel=document.querySelector('#country-story'),detail=document.querySelector('#country-detail'),layer=document.querySelector('.selection-connector-layer');
+    return {pending:panel?.classList.contains('spotlight-timing-pending')||false,phase:panel?.dataset.spotlightPhase||'',clip:getComputedStyle(detail).clipPath,lastComplete:layer?.dataset.lastComplete||'',started:Number(panel?.dataset.spotlightStartedAt||0)};
+  });
+  if(!travelling.pending||travelling.phase!=='travel')throw new Error(`spotlight did not wait for connector ${JSON.stringify(travelling)}`);
+  if(!travelling.clip.includes('100%'))throw new Error(`spotlight payload not staged during connector travel clip=${travelling.clip}`);
+  if(travelling.lastComplete==='1')throw new Error(`connector already complete before staged-state assertion ${JSON.stringify(travelling)}`);
+
+  await page.waitForFunction(()=>{
+    const panel=document.querySelector('#country-story'),layer=document.querySelector('.selection-connector-layer');
+    return panel?.dataset.spotlightArrival==='connector'&&layer?.dataset.lastComplete==='1'&&(panel.dataset.spotlightPhase==='reveal'||panel.dataset.spotlightPhase==='ready');
+  },{timeout:5000});
+  await page.waitForFunction(()=>document.querySelector('#country-story')?.dataset.spotlightPhase==='ready',{timeout:2000});
+
   const selected=await page.evaluate(()=>{
     const panel=document.querySelector('#country-story'),detail=document.querySelector('#country-detail'),pr=panel?.getBoundingClientRect(),ps=panel&&getComputedStyle(panel),ds=detail&&getComputedStyle(detail);
-    return {title:document.querySelector('#country-title')?.textContent.trim(),detail:(detail?.textContent||'').trim(),width:pr?.width||0,height:pr?.height||0,left:pr?.left||0,display:ps?.display,visibility:ps?.visibility,opacity:ps?.opacity,detailVisibility:ds?.visibility,detailOpacity:ds?.opacity};
+    const started=Number(panel?.dataset.spotlightStartedAt||0),arrived=Number(panel?.dataset.spotlightArrivedAt||0);
+    return {title:document.querySelector('#country-title')?.textContent.trim(),detail:(detail?.textContent||'').trim(),width:pr?.width||0,height:pr?.height||0,left:pr?.left||0,display:ps?.display,visibility:ps?.visibility,opacity:ps?.opacity,detailVisibility:ds?.visibility,detailOpacity:ds?.opacity,clip:ds?.clipPath,phase:panel?.dataset.spotlightPhase||'',arrival:panel?.dataset.spotlightArrival||'',travelMs:arrived&&started?arrived-started:0};
   });
-  if(selected.title!=='Japan'||selected.detail.length<40)throw new Error('Japan spotlight data missing');
+  if(selected.title!=='Canada'||selected.detail.length<40)throw new Error('Canada spotlight data missing');
   if(selected.display==='none'||selected.visibility==='hidden'||Number(selected.opacity)<.95||selected.detailVisibility==='hidden'||Number(selected.detailOpacity)<.8)throw new Error(`selected spotlight invisible ${JSON.stringify(selected)}`);
   if(selected.width<300||selected.height<500)throw new Error(`selected spotlight collapsed ${JSON.stringify(selected)}`);
+  if(selected.phase!=='ready'||selected.arrival!=='connector')throw new Error(`spotlight reveal not connector-driven ${JSON.stringify(selected)}`);
+  if(selected.travelMs<350||selected.travelMs>1400)throw new Error(`spotlight timing drift travelMs=${selected.travelMs}`);
+  if(selected.clip!=='none'&&!selected.clip.includes('0px'))throw new Error(`spotlight remained clipped after arrival clip=${selected.clip}`);
 
   await page.screenshot({path:path.join(artifactDir,'spotlight-right-pane.png'),fullPage:false});
-  console.log(`SPOTLIGHT LAYOUT PASS rightPane=${Math.round(layout.panel.width)}x${Math.round(layout.panel.height)} mapRight=${Math.round(layout.map.right)} panelLeft=${Math.round(layout.panel.left)} selected=${selected.title}`);
+  console.log(`SPOTLIGHT LAYOUT PASS rightPane=${Math.round(layout.panel.width)}x${Math.round(layout.panel.height)} mapRight=${Math.round(layout.map.right)} panelLeft=${Math.round(layout.panel.left)} selected=${selected.title} timing=${Math.round(selected.travelMs)}ms`);
 } finally {
   await browser.close();
   if(server)await new Promise(r=>server.close(r));
