@@ -32,4 +32,4 @@ const markets=JSON.parse(await fs.readFile('data/corona/markets/current.json','u
 if(current.productionGate!=='pass'||current.freshCountryCount<50) throw new Error(`production gate failed: ${current.freshCountryCount}`);
 if(!Array.isArray(fxHistory.days)||fxHistory.days.length<1) throw new Error('FX history gate failed');
 if(markets.marketLayerGate!=='pass'||markets.freshMarketCount<4) throw new Error(`market layer gate failed: ${markets.freshMarketCount}`);
-console.log(`SITE BUILD PASS countries=${current.freshCountryCount} markets=${markets.freshMarketCount} fxDays=${fxHistory.days.length} motion=r2 connectors=r1 out=${out}`);
+console.log(`SITE BUILD PASS countries=${current.freshCountryCount} markets=${markets.freshMarketCount} fxDays=${fxHistory.days.length} motion=r2 connectors=r2 out=${out}`);
