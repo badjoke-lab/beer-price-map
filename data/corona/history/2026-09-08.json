@@ -1,18 +1,9 @@
 {
   "schemaVersion": 2,
   "product": "Corona Extra",
+  "date": "2026-09-08",
   "generatedAt": "2026-09-08T02:45:10.116Z",
-  "minimumFreshCountries": 50,
   "freshCountryCount": 55,
-  "coreFreshCount": 50,
-  "spareFreshCount": 5,
-  "displayCountryCount": 55,
-  "productionGate": "pass",
-  "scopeSemantics": {
-    "nationalAverage": false,
-    "countryReferenceMeaning": "One validated selected-source observation; not a country average.",
-    "marketLayerIndependent": true
-  },
   "records": [
     {
       "code": "AE",
