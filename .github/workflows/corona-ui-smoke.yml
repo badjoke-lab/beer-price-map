@@ -14,6 +14,7 @@ on:
       - 'scripts/fetch-corona-fx.mjs'
       - 'scripts/fetch-corona-markets.mjs'
       - 'scripts/smoke-corona-site.mjs'
+      - 'scripts/smoke-selection-connectors.mjs'
       - '.github/workflows/corona-ui-smoke.yml'
   pull_request:
     branches:
@@ -26,6 +27,7 @@ on:
       - 'scripts/fetch-corona-fx.mjs'
       - 'scripts/fetch-corona-markets.mjs'
       - 'scripts/smoke-corona-site.mjs'
+      - 'scripts/smoke-selection-connectors.mjs'
       - '.github/workflows/corona-ui-smoke.yml'
   workflow_dispatch:
 
@@ -45,11 +47,14 @@ jobs:
         run: |
           node --check apps/corona-price-map/app-v2.js
           node --check apps/corona-price-map/markets-v1.js
+          node --check apps/corona-price-map/motion-r2.js
+          node --check apps/corona-price-map/selection-connectors.js
           node --check scripts/fetch-corona-fx.mjs
           node --check scripts/fetch-corona-markets.mjs
           node --check scripts/build-fx-history-summary.mjs
           node --check scripts/build-corona-site.mjs
           node --check scripts/smoke-corona-site.mjs
+          node --check scripts/smoke-selection-connectors.mjs
       - name: Install Playwright
         run: |
           npm install --no-save playwright@1.55.0
@@ -63,6 +68,8 @@ jobs:
           node scripts/build-corona-site.mjs
       - name: Browser smoke
         run: node scripts/smoke-corona-site.mjs
+      - name: Connected selection smoke
+        run: node scripts/smoke-selection-connectors.mjs
       - name: Upload accepted screenshots
         if: always()
         uses: actions/upload-artifact@v4
