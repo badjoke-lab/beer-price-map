@@ -31,6 +31,10 @@ jobs:
         env:
           BASE_URL: https://badjoke-lab.github.io/beer-price-map/
         run: node scripts/smoke-corona-production.mjs
+      - name: Production connected selection smoke
+        env:
+          BASE_URL: https://badjoke-lab.github.io/beer-price-map/
+        run: node scripts/smoke-selection-connectors.mjs
       - name: Upload production screenshots
         if: always()
         uses: actions/upload-artifact@v4
