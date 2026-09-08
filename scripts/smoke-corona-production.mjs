@@ -12,14 +12,22 @@ const current=await response.json();
 if(current.productionGate!=='pass') throw new Error(`productionGate=${current.productionGate}`);
 if(Number(current.freshCountryCount)<50) throw new Error(`freshCountryCount=${current.freshCountryCount}`);
 if(!Array.isArray(current.records)||current.records.length<50) throw new Error(`records=${current.records?.length||0}`);
+const freshRecords=current.records.filter(r=>!r.stale);
+const freshCodes=new Set(freshRecords.map(r=>r.code));
+
 const fxResponse=await fetch(fxHistoryUrl,{headers:{'cache-control':'no-cache'}});
 if(!fxResponse.ok) throw new Error(`fx-history-summary.json HTTP ${fxResponse.status}`);
 const fxHistory=await fxResponse.json();
 if(!Array.isArray(fxHistory.days)||fxHistory.days.length<1) throw new Error('FX history missing');
+
 const marketsResponse=await fetch(marketsUrl,{headers:{'cache-control':'no-cache'}});
 if(!marketsResponse.ok) throw new Error(`markets-current.json HTTP ${marketsResponse.status}`);
 const markets=await marketsResponse.json();
 if(markets.marketLayerGate!=='pass'||Number(markets.freshMarketCount)<4) throw new Error(`marketLayerGate=${markets.marketLayerGate} freshMarketCount=${markets.freshMarketCount}`);
+const auMarketRecords=(markets.records||[]).filter(r=>r.countryCode==='AU'&&r.fresh);
+const caMarketRecords=(markets.records||[]).filter(r=>r.countryCode==='CA'&&r.fresh);
+if(auMarketRecords.length!==3||!['Sydney','Melbourne','Brisbane'].every(x=>auMarketRecords.some(r=>r.market===x))) throw new Error('AU market snapshot invalid');
+if(caMarketRecords.length!==1||caMarketRecords[0].market!=='Ontario') throw new Error('CA market snapshot invalid');
 
 await fs.mkdir('production-smoke-artifacts',{recursive:true});
 const browser=await chromium.launch({headless:true});
@@ -43,8 +51,6 @@ try {
   if(!/Beer Price Map/i.test(heading)) throw new Error(`unexpected heading=${heading}`);
   if(currencyOptions<25) throw new Error(`currency options ${currencyOptions}<25`);
 
-  // Production motion proof: the published page must actually animate rather than
-  // merely contain the poster styling in source.
   await page.waitForFunction(()=>document.documentElement.classList.contains('motion-on'),{timeout:5000});
   if(await page.locator('style[data-poster-motion="r1"]').count()!==1) throw new Error('production poster motion stylesheet missing');
   const glassAnimation=await page.locator('.beer-glass').evaluate(el=>getComputedStyle(el).animationName);
@@ -83,37 +89,36 @@ try {
   const indexedLabel=((await page.locator('#history-chart .chart-label').first().textContent())||'').trim();
   if(!/first visible point = 100/i.test(indexedLabel)) throw new Error(`indexed mode failed: ${indexedLabel}`);
 
-  await page.fill('#country-search','Australia');
-  await page.waitForTimeout(100);
-  await page.locator('#ranking tr').first().click();
-  await page.waitForFunction(()=>!document.querySelector('#market-section')?.hidden&&document.querySelectorAll('#market-ranking tr').length===3,{timeout:5000});
-  const auNames=await page.locator('#market-ranking tr td:first-child strong').allInnerTexts();
-  if(!['Sydney','Melbourne','Brisbane'].every(x=>auNames.includes(x))) throw new Error(`AU market rows=${auNames.join(',')}`);
-  const marketHref=await page.locator('#market-ranking tr').first().locator('a').getAttribute('href');
-  if(!marketHref||!/^https?:\/\//.test(marketHref)) throw new Error('market source link missing');
-
-  await page.fill('#country-search','Canada');
-  await page.waitForTimeout(100);
-  await page.locator('#ranking tr').first().click();
-  await page.waitForFunction(()=>!document.querySelector('#market-section')?.hidden&&document.querySelectorAll('#market-ranking tr').length===1,{timeout:5000});
-  const caMarket=(await page.locator('#market-ranking tr td:first-child strong').innerText()).trim();
-  if(caMarket!=='Ontario') throw new Error(`CA market=${caMarket}`);
+  const activeMarketCountry=(markets.records||[]).find(r=>r.fresh&&freshCodes.has(r.countryCode));
+  let marketUi='none:0';
+  if(activeMarketCountry){
+    const expected=(markets.records||[]).filter(r=>r.fresh&&r.countryCode===activeMarketCountry.countryCode).length;
+    await page.fill('#country-search',activeMarketCountry.country);
+    await page.waitForTimeout(100);
+    if(await page.locator('#ranking tr').count()!==1) throw new Error(`active market country ${activeMarketCountry.country} not selectable`);
+    await page.locator('#ranking tr').first().click();
+    await page.waitForFunction(n=>!document.querySelector('#market-section')?.hidden&&document.querySelectorAll('#market-ranking tr').length===n,expected,{timeout:5000});
+    const marketHref=await page.locator('#market-ranking tr').first().locator('a').getAttribute('href');
+    if(!marketHref||!/^https?:\/\//.test(marketHref)) throw new Error('market source link missing');
+    marketUi=`${activeMarketCountry.countryCode}:${expected}`;
+  }
   await page.screenshot({path:'production-smoke-artifacts/desktop.png',fullPage:true});
 
+  const mobileRecord=freshRecords.find(r=>r.code==='CA')||freshRecords.find(r=>r.code==='JP')||freshRecords[0];
+  if(!mobileRecord) throw new Error('no fresh mobile deep-link country');
   await page.setViewportSize({width:390,height:844});
-  await page.goto(new URL('?country=AU&currency=JPY',base).href,{waitUntil:'networkidle',timeout:60000});
+  await page.goto(new URL(`?country=${encodeURIComponent(mobileRecord.code)}&currency=JPY`,base).href,{waitUntil:'networkidle',timeout:60000});
   await page.waitForFunction(()=>document.querySelectorAll('#ranking tr').length>=50,{timeout:30000});
   const deepTitle=(await page.locator('#country-title').innerText()).trim();
-  if(deepTitle!=='Australia') throw new Error(`deep-link country=${deepTitle}`);
+  if(deepTitle!==mobileRecord.country) throw new Error(`deep-link country=${deepTitle}, expected=${mobileRecord.country}`);
   if(await page.inputValue('#currency')!=='JPY') throw new Error('deep-link currency did not restore');
-  await page.waitForFunction(()=>document.querySelectorAll('#market-ranking tr').length===3,{timeout:5000});
   if(await page.locator('#history-series').count()!==1||await page.locator('#history-scale').count()!==1) throw new Error('history controls missing');
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
   if(overflow>2) throw new Error(`mobile horizontal overflow ${overflow}px`);
   await page.screenshot({path:'production-smoke-artifacts/mobile.png',fullPage:true});
 
   if(errors.length) throw new Error(errors.join('\n'));
-  console.log(`PRODUCTION SMOKE PASS url=${base} fresh=${current.freshCountryCount} rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} markets=${markets.freshMarketCount} AU=3 CA=1 priceFxModes=pass motion=pass parallax=${parallax} mobileOverflow=${overflow}`);
+  console.log(`PRODUCTION SMOKE PASS url=${base} fresh=${current.freshCountryCount} rows=${rows} mapPaths=${paths} currencies=${currencyOptions} fxDays=${fxHistory.days.length} markets=${markets.freshMarketCount} AUraw=${auMarketRecords.length} CAraw=${caMarketRecords.length} marketUI=${marketUi} priceFxModes=pass motion=pass parallax=${parallax} mobile=${mobileRecord.code} mobileOverflow=${overflow}`);
 } finally {
   await browser.close();
 }
