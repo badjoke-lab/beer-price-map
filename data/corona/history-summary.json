@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-08T14:24:59.964853Z",
+  "generatedAt": "2026-09-08T14:31:07.016723Z",
   "countries": {
     "AE": [
       {
@@ -69,6 +69,21 @@
     "AU": [
       {
         "date": "2026-09-07",
+        "pricePer330Ml": 2.5544,
+        "currency": "AUD",
+        "shelfPrice": 65.95,
+        "packageVolumeMl": 8520.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.danmurphys.com.au/beer/brand-corona"
+      },
+      {
+        "date": "2026-09-08",
         "pricePer330Ml": 2.5544,
         "currency": "AUD",
         "shelfPrice": 65.95,
@@ -555,9 +570,9 @@
       },
       {
         "date": "2026-09-08",
-        "pricePer330Ml": 1.98,
+        "pricePer330Ml": 2.98,
         "currency": "EUR",
-        "shelfPrice": 1.98,
+        "shelfPrice": 2.98,
         "packageVolumeMl": 330.0,
         "marketScope": {
           "level": "country-reference",
@@ -1256,6 +1271,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://www.metro.pe/cerveza-corona-extra-botella-330ml-996296/p"
+      },
+      {
+        "date": "2026-09-08",
+        "pricePer330Ml": 5.5,
+        "currency": "PEN",
+        "shelfPrice": 5.5,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.metro.pe/cerveza-corona-extra-botella-330ml-996296/p"
       }
     ],
     "PH": [
@@ -1706,23 +1736,6 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://legourmetkampala.com/collections/imported-beer"
-      }
-    ],
-    "BE": [
-      {
-        "date": "2026-09-08",
-        "pricePer330Ml": 1.4483,
-        "currency": "EUR",
-        "shelfPrice": 8.69,
-        "packageVolumeMl": 1980.0,
-        "marketScope": {
-          "level": "country-reference",
-          "label": "Selected retailer source",
-          "nationalAverage": false,
-          "locationDeterministic": false,
-          "classification": "not-yet-market-audited"
-        },
-        "sourceUrl": "https://www.carrefour.be/nl/extra-12x33cl-fles/06955917.html"
       }
     ]
   }
