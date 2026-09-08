@@ -8,7 +8,7 @@ let flowToken=0;
 let lastCountry='';
 
 const style=document.createElement('style');
-style.dataset.selectionConnectors='r1';
+style.dataset.selectionConnectors='r2';
 style.textContent=`
 .selection-connector-layer{position:absolute;left:0;top:0;z-index:64;pointer-events:none;overflow:visible}
 .selection-connector-line{fill:none;stroke:#ffd56d;stroke-width:2.6;stroke-linecap:round;filter:drop-shadow(0 0 3px rgba(255,197,72,.9)) drop-shadow(0 0 9px rgba(255,177,56,.42))}
@@ -16,24 +16,22 @@ style.textContent=`
 .selection-connector-pulse{fill:none;stroke:#ffd56d;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:connectorPulse .62s ease-out forwards}
 @keyframes connectorPulse{0%{opacity:.9;scale:.45}100%{opacity:0;scale:2.35}}
 @keyframes connectorRowPulse{0%,100%{box-shadow:inset 4px 0 0 rgba(255,213,109,.8),0 0 0 rgba(255,195,65,0)}45%{box-shadow:inset 5px 0 0 #ffd56d,0 0 22px rgba(255,195,65,.28)}}
-@keyframes connectorPanelReveal{0%{filter:brightness(.83);transform:translate3d(12px,0,0)}65%{filter:brightness(1.12);transform:translate3d(-2px,0,0)}100%{filter:brightness(1);transform:none}}
+@keyframes connectorPanelReveal{0%{filter:brightness(.92);transform:translate3d(8px,0,0)}65%{filter:brightness(1.12);transform:translate3d(-2px,0,0)}100%{filter:brightness(1);transform:none}}
 .connector-selected-map{stroke:#ffd56d!important;stroke-width:3.1!important;filter:brightness(1.24) drop-shadow(0 0 7px rgba(255,213,109,.92))!important}
 #ranking tr.connector-selected-row{position:relative;background:linear-gradient(90deg,rgba(242,183,60,.22),rgba(242,183,60,.05))!important;box-shadow:inset 4px 0 0 #ffd56d}
 #ranking tr.connector-row-arrival{animation:connectorRowPulse .9s cubic-bezier(.2,.8,.2,1) 1}
 .country-panel.connector-selected-panel{box-shadow:0 18px 60px rgba(0,0,0,.34),0 0 0 1px rgba(255,213,109,.32),0 0 30px rgba(255,188,65,.08)}
-.country-panel.connector-awaiting #country-title,.country-panel.connector-awaiting #country-rank,.country-panel.connector-awaiting #country-detail,.country-panel.connector-awaiting .text-link{opacity:.14;transform:translate3d(10px,0,0)}
-.country-panel #country-title,.country-panel #country-rank,.country-panel #country-detail,.country-panel .text-link{transition:opacity .28s ease,transform .36s cubic-bezier(.2,.8,.2,1)}
 .country-panel.connector-reveal{animation:connectorPanelReveal .58s cubic-bezier(.2,.8,.2,1) 1}
-.mobile-selection-rail{position:fixed;right:10px;top:23vh;width:18px;height:54vh;z-index:72;pointer-events:none;opacity:0;transition:opacity .18s ease}
+.mobile-selection-rail{position:fixed;right:10px;top:26vh;width:18px;height:36vh;z-index:72;pointer-events:none;opacity:0;transition:opacity .18s ease}
 .mobile-selection-rail.active{opacity:1}.mobile-selection-rail:before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:rgba(255,213,109,.18);border-radius:2px}
 .mobile-selection-rail .rail-fill{position:absolute;left:8px;top:0;width:2px;height:100%;background:linear-gradient(#fff1ad,#f2b73c);box-shadow:0 0 9px rgba(255,192,61,.7);transform:scaleY(0);transform-origin:top;transition:transform .48s cubic-bezier(.2,.8,.2,1)}
-.mobile-selection-rail.to-story .rail-fill{transform:scaleY(.5)}.mobile-selection-rail.to-ranking .rail-fill{transform:scaleY(1)}
+.mobile-selection-rail.to-story .rail-fill{transform:scaleY(1)}
 .mobile-selection-rail i{position:absolute;left:4px;width:10px;height:10px;border:2px solid #ffd56d;border-radius:50%;background:#07131c;box-shadow:0 0 8px rgba(255,197,66,.65)}
-.mobile-selection-rail i:nth-of-type(1){top:-2px}.mobile-selection-rail i:nth-of-type(2){top:calc(50% - 5px)}.mobile-selection-rail i:nth-of-type(3){bottom:-2px}
-.mobile-selection-rail.to-story i:nth-of-type(2),.mobile-selection-rail.to-ranking i:nth-of-type(3){background:#ffd56d;box-shadow:0 0 14px rgba(255,197,66,.95)}
-@media(max-width:720px){.selection-connector-layer{display:none}#ranking tr.connector-mobile-reveal-row{display:table-row!important}.country-panel.connector-awaiting #country-title,.country-panel.connector-awaiting #country-rank,.country-panel.connector-awaiting #country-detail,.country-panel.connector-awaiting .text-link{opacity:.08;transform:translate3d(0,10px,0)}}
+.mobile-selection-rail i:first-of-type{top:-2px}.mobile-selection-rail i:last-of-type{bottom:-2px}
+.mobile-selection-rail.to-story i:last-of-type{background:#ffd56d;box-shadow:0 0 14px rgba(255,197,66,.95)}
+@media(max-width:720px){.selection-connector-layer{display:none}#ranking tr.connector-mobile-reveal-row{display:table-row!important}}
 @media(min-width:721px){.mobile-selection-rail{display:none}}
-@media(prefers-reduced-motion:reduce){.selection-connector-line,.selection-connector-head,.selection-connector-pulse,.mobile-selection-rail{display:none!important}.country-panel.connector-awaiting #country-title,.country-panel.connector-awaiting #country-rank,.country-panel.connector-awaiting #country-detail,.country-panel.connector-awaiting .text-link{opacity:1!important;transform:none!important}.connector-row-arrival,.connector-reveal{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.selection-connector-line,.selection-connector-head,.selection-connector-pulse,.mobile-selection-rail{display:none!important}.connector-row-arrival,.connector-reveal{animation:none!important}}
 `;
 document.head.append(style);
 document.documentElement.classList.add('selection-connectors-on');
@@ -57,8 +55,18 @@ function countryFromMapPath(path){const code=numericToAlpha2.get(String(path?.__
 function setHighlights(name){
   document.querySelectorAll('#map path.connector-selected-map').forEach(el=>el.classList.remove('connector-selected-map'));
   document.querySelectorAll('#ranking tr.connector-selected-row').forEach(el=>el.classList.remove('connector-selected-row'));
+  document.querySelectorAll('#ranking tr.connector-mobile-reveal-row').forEach(el=>el.classList.remove('connector-mobile-reveal-row'));
   const mp=mapPath(name),row=rankingRow(name),panel=document.querySelector('.country-panel');
-  mp?.classList.add('connector-selected-map');row?.classList.add('connector-selected-row');panel?.classList.toggle('connector-selected-panel',Boolean(name));
+  mp?.classList.add('connector-selected-map');
+  row?.classList.add('connector-selected-row');
+  if(mobileMq.matches)row?.classList.add('connector-mobile-reveal-row');
+  panel?.classList.toggle('connector-selected-panel',Boolean(name));
+}
+function ensureSpotlightVisible(){
+  const panel=document.querySelector('.country-panel'),detail=document.querySelector('#country-detail');
+  panel?.classList.remove('connector-awaiting');
+  if(panel)panel.hidden=false;
+  if(detail)detail.hidden=false;
 }
 function rememberOrigin(event){
   if(event.target.closest?.('#ranking a'))return;
@@ -91,44 +99,52 @@ async function drawLeg(a,b,label,token){
   await new Promise(resolve=>{const tick=now=>{if(token!==flowToken){resolve();return}const t=Math.min(1,(now-start)/duration),q=1-Math.pow(1-t,3),pos=path.getPointAtLength(len*q);head.setAttribute('cx',pos.x);head.setAttribute('cy',pos.y);if(t<1)requestAnimationFrame(tick);else resolve()};requestAnimationFrame(tick)});
   if(token!==flowToken){line.cancel();return false}pulse(svg,b);head.remove();path.dataset.connectorComplete='1';setTimeout(()=>{if(path.isConnected)path.animate([{opacity:1},{opacity:.12}],{duration:650,fill:'forwards'})},800);return true;
 }
-function spotlightAnchor(from){const panel=document.querySelector('.country-panel');if(!panel)return null;const r=pageRect(panel);return from==='map'?point(r,'left'):from==='ranking'?point(r,'bottom'):point(r,'left')}
-function revealSpotlight(panel){panel.classList.remove('connector-awaiting');panel.classList.remove('connector-reveal');requestAnimationFrame(()=>panel.classList.add('connector-reveal'))}
-function bumpRow(row){if(!row)return;row.classList.remove('connector-row-arrival');requestAnimationFrame(()=>row.classList.add('connector-row-arrival'));setTimeout(()=>row.classList.remove('connector-row-arrival'),1050)}
-async function ensureDesktopRowVisible(row){
-  if(!row)return;const wrap=row.closest('.table-wrap');if(!wrap)return;const rr=row.getBoundingClientRect(),wr=wrap.getBoundingClientRect();
-  if(rr.top>=wr.top&&rr.bottom<=wr.bottom)return;
-  const top=wrap.scrollTop+(rr.top-wr.top)-Math.max(0,(wrap.clientHeight-rr.height)/2);wrap.scrollTo({top,behavior:reduce?'auto':'smooth'});await wait(reduce?20:360);
+function spotlightAnchor(from){const panel=document.querySelector('.country-panel');if(!panel)return null;const r=pageRect(panel);return from==='map'?point(r,'left'):point(r,'bottom')}
+function revealSpotlight(panel){
+  ensureSpotlightVisible();
+  panel.classList.remove('connector-reveal');
+  requestAnimationFrame(()=>panel.classList.add('connector-reveal'));
 }
+function bumpRow(row){if(!row)return;row.classList.remove('connector-row-arrival');requestAnimationFrame(()=>row.classList.add('connector-row-arrival'));setTimeout(()=>row.classList.remove('connector-row-arrival'),1050)}
 function markFlow(layer,source,country,complete=false){layer.dataset.lastSource=source;layer.dataset.lastCountry=country;layer.dataset.lastComplete=complete?'1':'0'}
 
 async function desktopFlow(country,origin){
-  const token=++flowToken,panel=document.querySelector('.country-panel');if(!panel)return;clearLines();setHighlights(country);panel.classList.add('connector-awaiting');
+  const token=++flowToken,panel=document.querySelector('.country-panel');if(!panel)return;
+  clearLines();ensureSpotlightVisible();setHighlights(country);
   const svg=ensureOverlay();markFlow(svg,origin.source,country,false);
-  const row=rankingRow(country),mp=mapPath(country),spot=spotlightAnchor(origin.source);
-  if(origin.source==='map'&&spot){await drawLeg(point(origin.rect),spot,'map-spotlight',token);if(token!==flowToken)return;revealSpotlight(panel);await wait(150);const liveRow=rankingRow(country);await ensureDesktopRowVisible(liveRow);if(token!==flowToken)return;const rr=liveRow&&pageRect(liveRow);if(rr)await drawLeg(point(pageRect(panel),'bottom'),point(rr,'right'),'spotlight-ranking',token);bumpRow(liveRow)}
-  else if((origin.source==='ranking'||origin.source==='indirect')&&spot){await drawLeg(point(origin.rect),spot,'ranking-spotlight',token);if(token!==flowToken)return;revealSpotlight(panel);await wait(150);const liveMap=mapPath(country);if(liveMap)await drawLeg(point(pageRect(panel),'left'),point(pageRect(liveMap)),'spotlight-map',token);liveMap?.classList.add('connector-selected-map')}
-  else{revealSpotlight(panel)}
-  if(token===flowToken){setHighlights(country);markFlow(svg,origin.source,country,true)}
+  const spot=spotlightAnchor(origin.source);
+  if(spot&&origin.rect){
+    const label=origin.source==='map'?'map-spotlight':'ranking-spotlight';
+    await drawLeg(point(origin.rect),spot,label,token);
+    if(token!==flowToken)return;
+  }
+  revealSpotlight(panel);
+  const row=rankingRow(country);bumpRow(row);
+  setHighlights(country);markFlow(svg,origin.source,country,true);
 }
 
-function rail(){let el=document.querySelector('.mobile-selection-rail');if(!el){el=document.createElement('div');el.className='mobile-selection-rail';el.setAttribute('aria-hidden','true');el.innerHTML='<span class="rail-fill"></span><i></i><i></i><i></i>';document.body.append(el)}return el}
-async function mobileScrollTo(el){if(!el)return;const r=el.getBoundingClientRect();if(r.top>innerHeight*.18&&r.bottom<innerHeight*.85)return;el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});await wait(reduce?30:520)}
+function rail(){let el=document.querySelector('.mobile-selection-rail');if(!el){el=document.createElement('div');el.className='mobile-selection-rail';el.setAttribute('aria-hidden','true');el.innerHTML='<span class="rail-fill"></span><i></i><i></i>';document.body.append(el)}return el}
+async function mobileScrollToStory(panel){
+  if(!panel)return;const r=panel.getBoundingClientRect();if(r.top>innerHeight*.18&&r.bottom<innerHeight*.88)return;
+  panel.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});await wait(reduce?30:520);
+}
 async function mobileFlow(country,origin){
-  const token=++flowToken,panel=document.querySelector('.country-panel'),r=rail();if(!panel)return;setHighlights(country);panel.classList.add('connector-awaiting');r.className='mobile-selection-rail active';r.dataset.lastSource=origin.source;r.dataset.lastCountry=country;r.dataset.lastComplete='0';
-  requestAnimationFrame(()=>r.classList.add('to-story'));await wait(reduce?20:220);await mobileScrollTo(panel);if(token!==flowToken)return;revealSpotlight(panel);setHighlights(country);
-  if(origin.source==='map'){
-    await wait(reduce?30:850);if(token!==flowToken)return;const row=rankingRow(country);if(row){row.classList.add('connector-mobile-reveal-row');r.classList.add('to-ranking');await wait(reduce?20:260);await mobileScrollTo(row);bumpRow(row)}
-  }
-  r.dataset.lastComplete='1';setTimeout(()=>{if(r.dataset.lastCountry===country)r.classList.remove('active')},1800);
+  const token=++flowToken,panel=document.querySelector('.country-panel'),r=rail();if(!panel)return;
+  ensureSpotlightVisible();setHighlights(country);
+  r.className='mobile-selection-rail active';r.dataset.lastSource=origin.source;r.dataset.lastCountry=country;r.dataset.lastComplete='0';
+  requestAnimationFrame(()=>r.classList.add('to-story'));
+  await wait(reduce?20:180);await mobileScrollToStory(panel);if(token!==flowToken)return;
+  revealSpotlight(panel);setHighlights(country);bumpRow(rankingRow(country));
+  r.dataset.lastComplete='1';setTimeout(()=>{if(r.dataset.lastCountry===country)r.classList.remove('active')},1400);
 }
 
 function normalizeOrigin(country){const p=pendingOrigin;pendingOrigin=null;if(p&&performance.now()-p.time<1600&&(!p.country||p.country===country))return p;return {source:'default',country,rect:null,time:performance.now()}}
 function onSelection(){
-  const country=selectedName();if(!country)return;const origin=normalizeOrigin(country);lastCountry=country;setHighlights(country);
+  const country=selectedName();if(!country)return;ensureSpotlightVisible();const origin=normalizeOrigin(country);lastCountry=country;setHighlights(country);
   if(origin.source==='default'||!origin.rect)return;
   if(mobileMq.matches)mobileFlow(country,origin);else desktopFlow(country,origin);
 }
-function reapply(){const country=selectedName()||lastCountry;if(country)setHighlights(country)}
+function reapply(){const country=selectedName()||lastCountry;if(country){ensureSpotlightVisible();setHighlights(country)}}
 
 async function boot(){
   try{const res=await fetch('./data/current.json',{cache:'no-store'});if(res.ok){const data=await res.json();for(const rec of data.records||[]){codeToCountry.set(rec.code,rec.country);countryToCode.set(rec.country,rec.code)}}}catch{}

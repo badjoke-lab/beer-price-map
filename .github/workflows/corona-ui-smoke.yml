@@ -59,10 +59,8 @@ jobs:
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
-      - name: Refresh derived UI data
+      - name: Build UI from checked-in production data
         run: |
-          node scripts/fetch-corona-markets.mjs
-          node scripts/fetch-corona-fx.mjs
           node scripts/build-fx-history-summary.mjs
           python scripts/build-corona-history-summary.py
           node scripts/build-corona-site.mjs
