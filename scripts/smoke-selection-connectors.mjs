@@ -7,7 +7,7 @@ let server=null;
 let base=process.env.BASE_URL;
 if(!base){
   const root=path.resolve('dist/corona-price-map');
-  const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8'};
+  const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json'};
   server=http.createServer((req,res)=>{
     const u=new URL(req.url,'http://localhost');let rel=decodeURIComponent(u.pathname).replace(/^\/+/, '')||'index.html';
     const file=path.resolve(root,rel);if(!file.startsWith(root)){res.writeHead(403);res.end('forbidden');return}
@@ -54,14 +54,14 @@ try{
   if(await page.locator('#map path.connector-selected-map').count()!==1)throw new Error('Canada map highlight missing');
 
   await page.setViewportSize({width:390,height:844});
-  await page.goto(new URL('?country=AU',base).href,{waitUntil:'networkidle',timeout:60000});
+  await page.goto(new URL('?country=CA',base).href,{waitUntil:'networkidle',timeout:60000});
   await page.waitForFunction(()=>document.querySelectorAll('#ranking tr').length>=50,{timeout:30000});
-  await page.locator('#map path.country').evaluateAll(paths=>{const p=paths.find(x=>String(x.__data__?.id).padStart(3,'0')==='036');if(!p)throw new Error('Australia path missing');p.dispatchEvent(new MouseEvent('click',{bubbles:true,clientX:200,clientY:300}))});
-  await page.waitForFunction(()=>{const r=document.querySelector('.mobile-selection-rail');return r?.dataset.lastCountry==='Australia'&&r?.dataset.lastSource==='map'&&r?.dataset.lastComplete==='1'},{timeout:10000});
+  await page.locator('#map path.country').evaluateAll(paths=>{const p=paths.find(x=>String(x.__data__?.id).padStart(3,'0')==='124');if(!p)throw new Error('Canada path missing');p.dispatchEvent(new MouseEvent('click',{bubbles:true,clientX:200,clientY:300}))});
+  await page.waitForFunction(()=>{const r=document.querySelector('.mobile-selection-rail');return r?.dataset.lastCountry==='Canada'&&r?.dataset.lastSource==='map'&&r?.dataset.lastComplete==='1'},{timeout:10000});
   if(await page.locator('.mobile-selection-rail.to-story').count()!==1)throw new Error('mobile rail did not reach Country Story');
   if(await page.locator('.mobile-selection-rail.to-ranking').count()!==0)throw new Error('obsolete mobile ranking rail stage still active');
-  await assertSpotlightVisible(page,'Australia');
-  if(await page.locator('#ranking tr.connector-selected-row.connector-mobile-reveal-row').filter({hasText:'Australia'}).count()!==1)throw new Error('mobile selected ranking highlight missing');
+  await assertSpotlightVisible(page,'Canada');
+  if(await page.locator('#ranking tr.connector-selected-row.connector-mobile-reveal-row').filter({hasText:'Canada'}).count()!==1)throw new Error('mobile selected ranking highlight missing');
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);if(overflow>2)throw new Error(`mobile connector overflow ${overflow}px`);
 
   console.log(`SELECTION CONNECTOR SMOKE PASS desktop=origin→spotlight+counterpart-highlight mobile=story-rail+ranking-highlight info=visible overflow=${overflow}`);
