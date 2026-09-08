@@ -1,6 +1,6 @@
-/* Country Spotlight placement invariant.
+/* Country Spotlight placement + visibility invariant.
  * Desktop: the selected-country card must occupy the right column beside the map.
- * Tablet/mobile: existing responsive rules may stack it, but it must never disappear.
+ * Selected-country information must remain readable for the entire connector/motion cycle.
  */
 #map-section.explore-grid > .map-panel{
   grid-column:1;
@@ -15,6 +15,27 @@
   position:relative;
   z-index:3;
 }
+
+/* markets-v1 uses posterSlideRight for .motion-country-change. That animation starts
+ * at opacity:0, which made the real selected-country payload disappear exactly when
+ * a map selection arrived. Keep data opaque and animate position/brightness only. */
+@keyframes spotlightDetailArriveR4{
+  0%{transform:translate3d(12px,0,0);filter:brightness(.9)}
+  65%{transform:translate3d(-2px,0,0);filter:brightness(1.08)}
+  100%{transform:none;filter:brightness(1)}
+}
+#country-story #country-title,
+#country-story #country-rank,
+#country-story #country-detail,
+#country-story .text-link{
+  visibility:visible!important;
+  opacity:1!important;
+}
+#country-story #country-detail.motion-country-change{
+  opacity:1!important;
+  animation:spotlightDetailArriveR4 .36s cubic-bezier(.2,.8,.2,1) both!important;
+}
+
 @media (min-width:1121px){
   #map-section.explore-grid{
     grid-template-columns:minmax(0,1.72fr) minmax(330px,.88fr)!important;
@@ -35,4 +56,7 @@
     grid-row:auto!important;
     width:100%!important;
   }
+}
+@media (prefers-reduced-motion:reduce){
+  #country-story #country-detail.motion-country-change{animation:none!important;transform:none!important;filter:none!important}
 }

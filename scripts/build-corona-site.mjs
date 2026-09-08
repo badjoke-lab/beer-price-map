@@ -24,7 +24,7 @@ for(const [src,dst] of copies){await fs.copyFile(src,dst)}
 
 const indexPath=`${out}/index.html`;
 let indexHtml=await fs.readFile(indexPath,'utf8');
-if(!indexHtml.includes('./spotlight-fix-r3.css'))indexHtml=indexHtml.replace('</head>','  <link rel="stylesheet" href="./spotlight-fix-r3.css?v=r3" />\n</head>');
+if(!indexHtml.includes('./spotlight-fix-r3.css'))indexHtml=indexHtml.replace('</head>','  <link rel="stylesheet" href="./spotlight-fix-r3.css?v=r4" />\n</head>');
 if(!indexHtml.includes('./motion-r2.js'))indexHtml=indexHtml.replace('</body>','  <script src="./motion-r2.js?v=r2" type="module"></script>\n</body>');
 if(!indexHtml.includes('./selection-connectors.js'))indexHtml=indexHtml.replace('</body>','  <script src="./selection-connectors.js?v=r2b" type="module"></script>\n</body>');
 if(!indexHtml.includes('./spotlight-guard-r3.js'))indexHtml=indexHtml.replace('</body>','  <script src="./spotlight-guard-r3.js?v=r3" type="module"></script>\n</body>');
@@ -36,4 +36,4 @@ const markets=JSON.parse(await fs.readFile('data/corona/markets/current.json','u
 if(current.productionGate!=='pass'||current.freshCountryCount<50) throw new Error(`production gate failed: ${current.freshCountryCount}`);
 if(!Array.isArray(fxHistory.days)||fxHistory.days.length<1) throw new Error('FX history gate failed');
 if(markets.marketLayerGate!=='pass'||markets.freshMarketCount<4) throw new Error(`market layer gate failed: ${markets.freshMarketCount}`);
-console.log(`SITE BUILD PASS countries=${current.freshCountryCount} markets=${markets.freshMarketCount} fxDays=${fxHistory.days.length} motion=r2 connectors=r2 spotlight=r3 out=${out}`);
+console.log(`SITE BUILD PASS countries=${current.freshCountryCount} markets=${markets.freshMarketCount} fxDays=${fxHistory.days.length} motion=r2 connectors=r2 spotlight=r4 out=${out}`);
