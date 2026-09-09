@@ -1,18 +1,9 @@
 {
   "schemaVersion": 2,
   "product": "Corona Extra",
+  "date": "2026-09-09",
   "generatedAt": "2026-09-09T08:18:24.713Z",
-  "minimumFreshCountries": 50,
   "freshCountryCount": 54,
-  "coreFreshCount": 49,
-  "spareFreshCount": 5,
-  "displayCountryCount": 55,
-  "productionGate": "pass",
-  "scopeSemantics": {
-    "nationalAverage": false,
-    "countryReferenceMeaning": "One validated selected-source observation; not a country average.",
-    "marketLayerIndependent": true
-  },
   "records": [
     {
       "code": "AE",
@@ -113,32 +104,6 @@
       },
       "stale": false,
       "lastFreshAt": "2026-09-09T08:18:24.713Z"
-    },
-    {
-      "code": "BE",
-      "country": "Belgium",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "EUR",
-      "shelfPrice": 8.69,
-      "packageVolumeMl": 1980.0,
-      "pricePerLiter": 4.3889,
-      "pricePer330Ml": 1.4483,
-      "sourceUrl": "https://www.carrefour.be/nl/extra-12x33cl-fles/06955917.html",
-      "sourceMode": "browser",
-      "httpStatus": 200,
-      "observedPriceText": "8,69 €",
-      "observedVolumeText": "6 x 33 cl",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-08T14:24:45.929Z",
-      "staleSince": "2026-09-09T08:18:24.713Z"
     },
     {
       "code": "BR",
