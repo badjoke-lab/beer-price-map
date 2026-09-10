@@ -1,18 +1,9 @@
 {
   "schemaVersion": 2,
   "product": "Corona Extra",
+  "date": "2026-09-10",
   "generatedAt": "2026-09-10T08:17:29.679Z",
-  "minimumFreshCountries": 50,
   "freshCountryCount": 51,
-  "coreFreshCount": 46,
-  "spareFreshCount": 5,
-  "displayCountryCount": 55,
-  "productionGate": "pass",
-  "scopeSemantics": {
-    "nationalAverage": false,
-    "countryReferenceMeaning": "One validated selected-source observation; not a country average.",
-    "marketLayerIndependent": true
-  },
   "records": [
     {
       "code": "AE",
@@ -113,32 +104,6 @@
       },
       "stale": false,
       "lastFreshAt": "2026-09-10T08:17:29.679Z"
-    },
-    {
-      "code": "BE",
-      "country": "Belgium",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "EUR",
-      "shelfPrice": 8.69,
-      "packageVolumeMl": 1980.0,
-      "pricePerLiter": 4.3889,
-      "pricePer330Ml": 1.4483,
-      "sourceUrl": "https://www.carrefour.be/nl/extra-12x33cl-fles/06955917.html",
-      "sourceMode": "browser",
-      "httpStatus": 200,
-      "observedPriceText": "8,69 €",
-      "observedVolumeText": "6 x 33 cl",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-08T14:24:45.929Z",
-      "staleSince": "2026-09-10T08:17:29.679Z"
     },
     {
       "code": "BR",
@@ -769,32 +734,6 @@
       "lastFreshAt": "2026-09-10T08:17:29.679Z"
     },
     {
-      "code": "LK",
-      "country": "Sri Lanka",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "LKR",
-      "shelfPrice": 950.0,
-      "packageVolumeMl": 330.0,
-      "pricePerLiter": 2878.7879,
-      "pricePer330Ml": 950.0,
-      "sourceUrl": "https://ceylonspirits.lk/product/corona-extra-330ml-bottle",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "LKR 7,680.00",
-      "observedVolumeText": "330ml",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-09T08:18:24.713Z",
-      "staleSince": "2026-09-10T08:17:29.679Z"
-    },
-    {
       "code": "LV",
       "country": "Latvia",
       "role": "core",
@@ -1020,32 +959,6 @@
       "lastFreshAt": "2026-09-10T08:17:29.679Z"
     },
     {
-      "code": "PE",
-      "country": "Peru",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "PEN",
-      "shelfPrice": 5.5,
-      "packageVolumeMl": 330.0,
-      "pricePerLiter": 16.6667,
-      "pricePer330Ml": 5.5,
-      "sourceUrl": "https://www.metro.pe/cerveza-corona-extra-botella-330ml-996296/p",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "S/ 5 . 50 ",
-      "observedVolumeText": "330ml",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-09T08:18:24.713Z",
-      "staleSince": "2026-09-10T08:17:29.679Z"
-    },
-    {
       "code": "PH",
       "country": "Philippines",
       "role": "core",
@@ -1144,33 +1057,6 @@
       },
       "stale": false,
       "lastFreshAt": "2026-09-10T08:17:29.679Z"
-    },
-    {
-      "code": "SE",
-      "country": "Sweden",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "SEK",
-      "shelfPrice": 19.9,
-      "packageVolumeMl": 330.0,
-      "pricePerLiter": 60.303,
-      "pricePer330Ml": 19.9,
-      "sourceUrl": "https://www.systembolaget.se/produkt/ol/corona-extra-115403/",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "19:90",
-      "observedVolumeText": "330 ml",
-      "marketScope": {
-        "level": "country-retailer",
-        "label": "Sweden · Systembolaget catalog",
-        "nationalAverage": false,
-        "locationDeterministic": true,
-        "classification": "fixed-country-retailer",
-        "sourceProvider": "Systembolaget"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-09T08:18:24.713Z",
-      "staleSince": "2026-09-10T08:17:29.679Z"
     },
     {
       "code": "SG",

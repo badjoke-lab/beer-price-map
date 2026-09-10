@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-09T08:18:38.701596Z",
+  "generatedAt": "2026-09-10T08:17:43.033073Z",
   "countries": {
     "AE": [
       {
@@ -35,6 +35,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 6.507,
+        "currency": "AED",
+        "shelfPrice": 7,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://rrcellars.ae/product-category/beer/lager/"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 6.507,
         "currency": "AED",
         "shelfPrice": 7,
@@ -94,6 +109,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://shop.billa.at/produkte/corona-extra-00721783"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 2.0915,
+        "currency": "EUR",
+        "shelfPrice": 2.25,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://shop.billa.at/produkte/corona-extra-00721783"
       }
     ],
     "AU": [
@@ -129,6 +159,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 2.5544,
+        "currency": "AUD",
+        "shelfPrice": 65.95,
+        "packageVolumeMl": 8520.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.danmurphys.com.au/beer/brand-corona"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 2.5544,
         "currency": "AUD",
         "shelfPrice": 65.95,
@@ -188,6 +233,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://hedonism.ba/brand/corona-extra/"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 3.3697,
+        "currency": "BAM",
+        "shelfPrice": 87,
+        "packageVolumeMl": 8520.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://hedonism.ba/brand/corona-extra/"
       }
     ],
     "BR": [
@@ -226,6 +286,21 @@
         "pricePer330Ml": 7.89,
         "currency": "BRL",
         "shelfPrice": 7.89,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://mercado.carrefour.com.br/produto/cerveja-corona-extra-pilsen-330ml-long-neck-18487"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 6.65,
+        "currency": "BRL",
+        "shelfPrice": 6.65,
         "packageVolumeMl": 330.0,
         "marketScope": {
           "level": "country-reference",
@@ -288,6 +363,23 @@
           "sourceProvider": "LCBO"
         },
         "sourceUrl": "https://www.lcbo.com/en/corona-extra-44253"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 2.3227,
+        "currency": "CAD",
+        "shelfPrice": 39.95,
+        "packageVolumeMl": 5676.0,
+        "marketScope": {
+          "level": "region",
+          "label": "Ontario · LCBO",
+          "nationalAverage": false,
+          "locationDeterministic": true,
+          "classification": "fixed-regional-retailer",
+          "jurisdiction": "Ontario",
+          "sourceProvider": "LCBO"
+        },
+        "sourceUrl": "https://www.lcbo.com/en/corona-extra-44253"
       }
     ],
     "CH": [
@@ -323,6 +415,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 1.75,
+        "currency": "CHF",
+        "shelfPrice": 1.75,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.aldi-suisse.ch/de/produkt/corona-extra-000000000000507488"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 1.75,
         "currency": "CHF",
         "shelfPrice": 1.75,
@@ -382,6 +489,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://millaray.cl/productos/2802"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 1490.0,
+        "currency": "CLP",
+        "shelfPrice": 1490,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://millaray.cl/productos/2802"
       }
     ],
     "CR": [
@@ -417,6 +539,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 797.1014,
+        "currency": "CRC",
+        "shelfPrice": 3000,
+        "packageVolumeMl": 1242.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.walmart.co.cr/corona"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 797.1014,
         "currency": "CRC",
         "shelfPrice": 3000,
@@ -476,6 +613,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://www.rohlik.cz/en-CZ/1378245"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 40.8167,
+        "currency": "CZK",
+        "shelfPrice": 244.9,
+        "packageVolumeMl": 1980.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.rohlik.cz/en-CZ/1378245"
       }
     ],
     "DK": [
@@ -511,6 +663,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 10.0,
+        "currency": "DKK",
+        "shelfPrice": 10,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://prej.dk/produkt/corona-extra-4-5-36991"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 10.0,
         "currency": "DKK",
         "shelfPrice": 10,
@@ -570,6 +737,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://supermercadosrd.com/productos/cerveza-corona-extra-botella/25275"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 125.493,
+        "currency": "DOP",
+        "shelfPrice": 810,
+        "packageVolumeMl": 2130.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://supermercadosrd.com/productos/cerveza-corona-extra-botella/25275"
       }
     ],
     "EC": [
@@ -617,6 +799,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://www.tia.com.ec/supermercado/bebidas-alcoholicas/cerveza/cerveza-corona-extra-330-ml-243293000.html"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 1.67,
+        "currency": "USD",
+        "shelfPrice": 1.67,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.tia.com.ec/supermercado/bebidas-alcoholicas/cerveza/cerveza-corona-extra-330-ml-243293000.html"
       }
     ],
     "EE": [
@@ -652,6 +849,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 1.571,
+        "currency": "EUR",
+        "shelfPrice": 1.69,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.rimi.ee/epood/en/search?query=Corona"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 1.571,
         "currency": "EUR",
         "shelfPrice": 1.69,
@@ -714,6 +926,22 @@
           "sourceProvider": "Alko"
         },
         "sourceUrl": "https://www.alko.fi/en/products/761044/Corona-Extra/"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 1.99,
+        "currency": "EUR",
+        "shelfPrice": 1.99,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-retailer",
+          "label": "Finland · Alko catalog",
+          "nationalAverage": false,
+          "locationDeterministic": true,
+          "classification": "fixed-country-retailer",
+          "sourceProvider": "Alko"
+        },
+        "sourceUrl": "https://www.alko.fi/en/products/761044/Corona-Extra/"
       }
     ],
     "FR": [
@@ -749,6 +977,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 1.5983,
+        "currency": "EUR",
+        "shelfPrice": 9.59,
+        "packageVolumeMl": 1980.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://courses.monoprix.fr/products/corona-extra-bi%C3%A8re-6x33cl/MPX_3944094"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 1.5983,
         "currency": "EUR",
         "shelfPrice": 9.59,
@@ -808,6 +1051,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://kompas.ge/en/product/ludi-korona-eqstra"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 3.709,
+        "currency": "GEL",
+        "shelfPrice": 3.99,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://kompas.ge/en/product/ludi-korona-eqstra"
       }
     ],
     "GR": [
@@ -855,6 +1113,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://www.bigle.gr/products?code=c3781cd4-5c62-425d-9860-90e2c6daa78f"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 1.98,
+        "currency": "EUR",
+        "shelfPrice": 1.98,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.bigle.gr/products?code=c3781cd4-5c62-425d-9860-90e2c6daa78f"
       }
     ],
     "HR": [
@@ -890,6 +1163,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 1.89,
+        "currency": "EUR",
+        "shelfPrice": 1.89,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.konzum.hr/web/products/corona-pivo-extra-0-33-l-nb"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 1.89,
         "currency": "EUR",
         "shelfPrice": 1.89,
@@ -949,6 +1237,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://kptll.com/id/products/beer-corona-extra-can-330ml"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 50000.0,
+        "currency": "IDR",
+        "shelfPrice": 50000,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://kptll.com/id/products/beer-corona-extra-can-330ml"
       }
     ],
     "IE": [
@@ -984,6 +1287,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 1.3606,
+        "currency": "EUR",
+        "shelfPrice": 24.49,
+        "packageVolumeMl": 5940.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.carryout.ie/p/corona-extra-lager-18-x-330ml-bottles/7501064196539"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 1.3606,
         "currency": "EUR",
         "shelfPrice": 24.49,
@@ -1043,6 +1361,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://pricepilot.co.il/item/%D7%91%D7%99%D7%A8%D7%94%20%D7%A7%D7%95%D7%A8%D7%95%D7%A0%D7%94%20%D7%91%D7%A7%D7%91%D7%95%D7%A7%20%D7%91%D7%95%D7%93%D7%93%20330%20%D7%9E%D7%9C/6a66b418-e3f3-4869-be19-d25906290b12?lang=en"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 7.9,
+        "currency": "ILS",
+        "shelfPrice": 7.9,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://pricepilot.co.il/item/%D7%91%D7%99%D7%A8%D7%94%20%D7%A7%D7%95%D7%A8%D7%95%D7%A0%D7%94%20%D7%91%D7%A7%D7%91%D7%95%D7%A7%20%D7%91%D7%95%D7%93%D7%93%20330%20%D7%9E%D7%9C/6a66b418-e3f3-4869-be19-d25906290b12?lang=en"
       }
     ],
     "IS": [
@@ -1078,6 +1411,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 369.0,
+        "currency": "ISK",
+        "shelfPrice": 369,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.vinbudin.is/english/home/products/stoek-vara.aspx/?productid=26214"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 369.0,
         "currency": "ISK",
         "shelfPrice": 369,
@@ -1137,6 +1485,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://www.carrefour.it/p/corona-extra-bottiglia-33cl/0000075041670.html"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 1.29,
+        "currency": "EUR",
+        "shelfPrice": 1.29,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.carrefour.it/p/corona-extra-bottiglia-33cl/0000075041670.html"
       }
     ],
     "JM": [
@@ -1172,6 +1535,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 2.0121,
+        "currency": "USD",
+        "shelfPrice": 51.95,
+        "packageVolumeMl": 8520.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.indulgejamaica.com/product-page/corona-extra"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 2.0121,
         "currency": "USD",
         "shelfPrice": 51.95,
@@ -1231,6 +1609,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://www.myfyxx.com/products/corona-extra-beer-bottle-35cl"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 2.6872,
+        "currency": "JOD",
+        "shelfPrice": 2.85,
+        "packageVolumeMl": 350.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.myfyxx.com/products/corona-extra-beer-bottle-35cl"
       }
     ],
     "JP": [
@@ -1266,6 +1659,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 247.8333,
+        "currency": "JPY",
+        "shelfPrice": 5948.0,
+        "packageVolumeMl": 7920.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.costco.co.jp/Corona/c/Corona"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 247.8333,
         "currency": "JPY",
         "shelfPrice": 5948.0,
@@ -1325,6 +1733,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://drunk.kz/product/45172"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 2300.0,
+        "currency": "KZT",
+        "shelfPrice": 2300,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://drunk.kz/product/45172"
       }
     ],
     "LB": [
@@ -1360,6 +1783,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 1.8498,
+        "currency": "USD",
+        "shelfPrice": 1.99,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.spinneyslebanon.com/extra-mexican-beer-bottle-541405-v001.html"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 1.8498,
         "currency": "USD",
         "shelfPrice": 1.99,
@@ -1466,6 +1904,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://www.rimi.lv/e-veikals/en/search?query=Corona"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 1.664,
+        "currency": "EUR",
+        "shelfPrice": 1.79,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.rimi.lv/e-veikals/en/search?query=Corona"
       }
     ],
     "MD": [
@@ -1501,6 +1954,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 39.0423,
+        "currency": "MDL",
+        "shelfPrice": 42.0,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://winetime.md/brand/corona-extra"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 39.0423,
         "currency": "MDL",
         "shelfPrice": 42.0,
@@ -1560,6 +2028,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://savemart.com.mt/category/beverages/beers-ciders?page=2"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 1.8592,
+        "currency": "EUR",
+        "shelfPrice": 2,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://savemart.com.mt/category/beverages/beers-ciders?page=2"
       }
     ],
     "MU": [
@@ -1595,6 +2078,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 92.9113,
+        "currency": "MUR",
+        "shelfPrice": 99.95,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.winners.mu/category/products?categoryId=219&pagenumber=2"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 92.9113,
         "currency": "MUR",
         "shelfPrice": 99.95,
@@ -1654,6 +2152,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://jgsj.jayagrocer.com/products/corona-extra-355ml-1"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 14.864,
+        "currency": "MYR",
+        "shelfPrice": 15.99,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://jgsj.jayagrocer.com/products/corona-extra-355ml-1"
       }
     ],
     "NL": [
@@ -1689,6 +2202,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 1.665,
+        "currency": "EUR",
+        "shelfPrice": 9.99,
+        "packageVolumeMl": 1980.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.jumbo.com/producten/corona-extra-bier-blikken-6-x-33-cl-538459PAK"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 1.665,
         "currency": "EUR",
         "shelfPrice": 9.99,
@@ -1748,6 +2276,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://cheers.com.np/"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 4.65,
+        "currency": "USD",
+        "shelfPrice": 4.65,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://cheers.com.np/"
       }
     ],
     "NZ": [
@@ -1795,6 +2338,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://pokeno.shop.thebottleo.co.nz/category/beer"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 4.29,
+        "currency": "NZD",
+        "shelfPrice": 6.5,
+        "packageVolumeMl": 500.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://pokeno.shop.thebottleo.co.nz/category/beer"
       }
     ],
     "PA": [
@@ -1830,6 +2388,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 1.0411,
+        "currency": "USD",
+        "shelfPrice": 1.12,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.super99.com/10100390-corona-extra-cerveza-botella-355ml"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 1.0411,
         "currency": "USD",
         "shelfPrice": 1.12,
@@ -1936,6 +2509,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://boozeshop.ph/products/corona-extra-beer-330ml-bottle"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 140.0,
+        "currency": "PHP",
+        "shelfPrice": 140,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://boozeshop.ph/products/corona-extra-beer-330ml-bottle"
       }
     ],
     "PL": [
@@ -1971,6 +2559,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 4.59,
+        "currency": "PLN",
+        "shelfPrice": 4.59,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.frisco.pl/pid,140996/n,corona-extra-piwo-(butelka-bezzwrotna)/stn,product"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 4.59,
         "currency": "PLN",
         "shelfPrice": 4.59,
@@ -2030,6 +2633,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://www.auchan.pt/pt/bebidas-e-garrafeira/cervejas-e-sidras/cerveja-estrangeira/cerveja-corona-mexico-0.355l/977772.html"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 4.369,
+        "currency": "EUR",
+        "shelfPrice": 4.7,
+        "packageVolumeMl": 355.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.auchan.pt/pt/bebidas-e-garrafeira/cervejas-e-sidras/cerveja-estrangeira/cerveja-corona-mexico-0.355l/977772.html"
       }
     ],
     "PY": [
@@ -2065,6 +2683,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 8500.0,
+        "currency": "PYG",
+        "shelfPrice": 8500,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://stock.com.py/products/332213-cerveza-corona-extra-330-ml.aspx"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 8500.0,
         "currency": "PYG",
         "shelfPrice": 8500,
@@ -2174,6 +2807,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://www.paneco.com.sg/products/corona-extra-beer-bottle-330ml-4987"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 3.45,
+        "currency": "SGD",
+        "shelfPrice": 3.45,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.paneco.com.sg/products/corona-extra-beer-bottle-330ml-4987"
       }
     ],
     "TH": [
@@ -2209,6 +2857,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 109.0,
+        "currency": "THB",
+        "shelfPrice": 109,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://wishbeer.com/products/corona-extra-350-ml-46"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 109.0,
         "currency": "THB",
         "shelfPrice": 109,
@@ -2268,6 +2931,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://www.jokong.com.tw/collections/%E5%95%A4%E9%85%92/products/%E5%8F%AF%E6%A8%82%E5%A8%9C%E5%95%A4%E9%85%92-%E7%8E%BB%E7%92%83355ml-24%E7%BD%90-%E5%90%AB%E9%81%8B%E5%88%B0%E5%BA%9C"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 51.9014,
+        "currency": "TWD",
+        "shelfPrice": 1340,
+        "packageVolumeMl": 8520.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.jokong.com.tw/collections/%E5%95%A4%E9%85%92/products/%E5%8F%AF%E6%A8%82%E5%A8%9C%E5%95%A4%E9%85%92-%E7%8E%BB%E7%92%83355ml-24%E7%BD%90-%E5%90%AB%E9%81%8B%E5%88%B0%E5%BA%9C"
       }
     ],
     "VN": [
@@ -2303,6 +2981,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 29700.0,
+        "currency": "VND",
+        "shelfPrice": 27000,
+        "packageVolumeMl": 300.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://shop.annam-gourmet.com/hcm-est/corona-extra-beer-4-5-bottle-300ml.html"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 29700.0,
         "currency": "VND",
         "shelfPrice": 27000,
@@ -2362,6 +3055,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://jayswines.com/"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 300.0,
+        "currency": "KES",
+        "shelfPrice": 300,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://jayswines.com/"
       }
     ],
     "NI": [
@@ -2397,6 +3105,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 64.0,
+        "currency": "NIO",
+        "shelfPrice": 64,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://www.walmart.com.ni/cerveza-corona-extra-botella-355-ml/p"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 64.0,
         "currency": "NIO",
         "shelfPrice": 64,
@@ -2456,6 +3179,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://app.isokko.com/store/isokkostore"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 4500.0,
+        "currency": "RWF",
+        "shelfPrice": 4500,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://app.isokko.com/store/isokkostore"
       }
     ],
     "SI": [
@@ -2503,6 +3241,21 @@
           "classification": "not-yet-market-audited"
         },
         "sourceUrl": "https://najcena.si/akcija/corona-extra-pivo-0355-137001"
+      },
+      {
+        "date": "2026-09-10",
+        "pricePer330Ml": 1.4983,
+        "currency": "EUR",
+        "shelfPrice": 8.99,
+        "packageVolumeMl": 1980.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://najcena.si/akcija/corona-extra-pivo-0355-137001"
       }
     ],
     "UG": [
@@ -2538,6 +3291,21 @@
       },
       {
         "date": "2026-09-09",
+        "pricePer330Ml": 22000.0,
+        "currency": "UGX",
+        "shelfPrice": 22000,
+        "packageVolumeMl": 330.0,
+        "marketScope": {
+          "level": "country-reference",
+          "label": "Selected retailer source",
+          "nationalAverage": false,
+          "locationDeterministic": false,
+          "classification": "not-yet-market-audited"
+        },
+        "sourceUrl": "https://legourmetkampala.com/collections/imported-beer"
+      },
+      {
+        "date": "2026-09-10",
         "pricePer330Ml": 22000.0,
         "currency": "UGX",
         "shelfPrice": 22000,
