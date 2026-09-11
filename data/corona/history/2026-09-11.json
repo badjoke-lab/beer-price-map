@@ -1,18 +1,9 @@
 {
   "schemaVersion": 2,
   "product": "Corona Extra",
+  "date": "2026-09-11",
   "generatedAt": "2026-09-11T08:12:38.057Z",
-  "minimumFreshCountries": 50,
   "freshCountryCount": 52,
-  "coreFreshCount": 47,
-  "spareFreshCount": 5,
-  "displayCountryCount": 55,
-  "productionGate": "pass",
-  "scopeSemantics": {
-    "nationalAverage": false,
-    "countryReferenceMeaning": "One validated selected-source observation; not a country average.",
-    "marketLayerIndependent": true
-  },
   "records": [
     {
       "code": "AE",
@@ -993,58 +984,6 @@
       "lastFreshAt": "2026-09-11T08:12:38.057Z"
     },
     {
-      "code": "PA",
-      "country": "Panama",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "USD",
-      "shelfPrice": 1.12,
-      "packageVolumeMl": 355.0,
-      "pricePerLiter": 3.1549,
-      "pricePer330Ml": 1.0411,
-      "sourceUrl": "https://www.super99.com/10100390-corona-extra-cerveza-botella-355ml",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "$1.12",
-      "observedVolumeText": "355ml",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-10T08:17:29.679Z",
-      "staleSince": "2026-09-11T08:12:38.057Z"
-    },
-    {
-      "code": "PE",
-      "country": "Peru",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "PEN",
-      "shelfPrice": 5.5,
-      "packageVolumeMl": 330.0,
-      "pricePerLiter": 16.6667,
-      "pricePer330Ml": 5.5,
-      "sourceUrl": "https://www.metro.pe/cerveza-corona-extra-botella-330ml-996296/p",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "S/ 5 . 50 ",
-      "observedVolumeText": "330ml",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-09T08:18:24.713Z",
-      "staleSince": "2026-09-11T08:12:38.057Z"
-    },
-    {
       "code": "PH",
       "country": "Philippines",
       "role": "core",
@@ -1143,33 +1082,6 @@
       },
       "stale": false,
       "lastFreshAt": "2026-09-11T08:12:38.057Z"
-    },
-    {
-      "code": "SE",
-      "country": "Sweden",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "SEK",
-      "shelfPrice": 19.9,
-      "packageVolumeMl": 330.0,
-      "pricePerLiter": 60.303,
-      "pricePer330Ml": 19.9,
-      "sourceUrl": "https://www.systembolaget.se/produkt/ol/corona-extra-115403/",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "19:90",
-      "observedVolumeText": "330 ml",
-      "marketScope": {
-        "level": "country-retailer",
-        "label": "Sweden · Systembolaget catalog",
-        "nationalAverage": false,
-        "locationDeterministic": true,
-        "classification": "fixed-country-retailer",
-        "sourceProvider": "Systembolaget"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-09T08:18:24.713Z",
-      "staleSince": "2026-09-11T08:12:38.057Z"
     },
     {
       "code": "SG",
