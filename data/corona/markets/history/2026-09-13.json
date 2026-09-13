@@ -1,10 +1,8 @@
 {
   "schemaVersion": 1,
   "product": "Corona Extra",
+  "date": "2026-09-13",
   "generatedAt": "2026-09-13T08:27:48.685Z",
-  "marketLayerGate": "pass",
-  "freshMarketCount": 4,
-  "countriesWithMarketLayer": 2,
   "records": [
     {
       "marketId": "CA-ON-LCBO",
