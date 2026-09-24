@@ -1,18 +1,9 @@
 {
   "schemaVersion": 2,
   "product": "Corona Extra",
+  "date": "2026-09-24",
   "generatedAt": "2026-09-24T08:38:42.444Z",
-  "minimumFreshCountries": 50,
   "freshCountryCount": 53,
-  "coreFreshCount": 48,
-  "spareFreshCount": 5,
-  "displayCountryCount": 55,
-  "productionGate": "pass",
-  "scopeSemantics": {
-    "nationalAverage": false,
-    "countryReferenceMeaning": "One validated selected-source observation; not a country average.",
-    "marketLayerIndependent": true
-  },
   "records": [
     {
       "code": "AE",
@@ -215,32 +206,6 @@
       },
       "stale": false,
       "lastFreshAt": "2026-09-24T08:38:42.444Z"
-    },
-    {
-      "code": "CL",
-      "country": "Chile",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "CLP",
-      "shelfPrice": 1490,
-      "packageVolumeMl": 330.0,
-      "pricePerLiter": 4515.1515,
-      "pricePer330Ml": 1490.0,
-      "sourceUrl": "https://millaray.cl/productos/2802",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "$1.490",
-      "observedVolumeText": "330CC",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-23T08:44:38.407Z",
-      "staleSince": "2026-09-24T08:38:42.444Z"
     },
     {
       "code": "CR",
@@ -992,32 +957,6 @@
       },
       "stale": false,
       "lastFreshAt": "2026-09-24T08:38:42.444Z"
-    },
-    {
-      "code": "PA",
-      "country": "Panama",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "USD",
-      "shelfPrice": 1.12,
-      "packageVolumeMl": 355.0,
-      "pricePerLiter": 3.1549,
-      "pricePer330Ml": 1.0411,
-      "sourceUrl": "https://www.super99.com/10100390-corona-extra-cerveza-botella-355ml",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "$1.12",
-      "observedVolumeText": "355ml",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-10T08:17:29.679Z",
-      "staleSince": "2026-09-24T08:38:42.444Z"
     },
     {
       "code": "PE",
