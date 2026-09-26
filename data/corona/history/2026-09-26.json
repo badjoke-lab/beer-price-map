@@ -1,18 +1,9 @@
 {
   "schemaVersion": 2,
   "product": "Corona Extra",
+  "date": "2026-09-26",
   "generatedAt": "2026-09-26T08:45:48.003Z",
-  "minimumFreshCountries": 50,
   "freshCountryCount": 51,
-  "coreFreshCount": 46,
-  "spareFreshCount": 5,
-  "displayCountryCount": 55,
-  "productionGate": "pass",
-  "scopeSemantics": {
-    "nationalAverage": false,
-    "countryReferenceMeaning": "One validated selected-source observation; not a country average.",
-    "marketLayerIndependent": true
-  },
   "records": [
     {
       "code": "AE",
@@ -115,32 +106,6 @@
       "lastFreshAt": "2026-09-26T08:45:48.003Z"
     },
     {
-      "code": "BE",
-      "country": "Belgium",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "EUR",
-      "shelfPrice": 9.99,
-      "packageVolumeMl": 250.0,
-      "pricePerLiter": 39.96,
-      "pricePer330Ml": 13.1868,
-      "sourceUrl": "https://www.carrefour.be/nl/extra-12x33cl-fles/06955917.html",
-      "sourceMode": "browser",
-      "httpStatus": 200,
-      "observedPriceText": "9.99€",
-      "observedVolumeText": "250 ml",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-24T08:38:42.444Z",
-      "staleSince": "2026-09-26T08:45:48.003Z"
-    },
-    {
       "code": "BR",
       "country": "Brazil",
       "role": "core",
@@ -216,32 +181,6 @@
       },
       "stale": false,
       "lastFreshAt": "2026-09-26T08:45:48.003Z"
-    },
-    {
-      "code": "CL",
-      "country": "Chile",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "CLP",
-      "shelfPrice": 1490,
-      "packageVolumeMl": 330.0,
-      "pricePerLiter": 4515.1515,
-      "pricePer330Ml": 1490.0,
-      "sourceUrl": "https://millaray.cl/productos/2802",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "$1.490",
-      "observedVolumeText": "330CC",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-23T08:44:38.407Z",
-      "staleSince": "2026-09-26T08:45:48.003Z"
     },
     {
       "code": "CR",
@@ -993,58 +932,6 @@
       },
       "stale": false,
       "lastFreshAt": "2026-09-26T08:45:48.003Z"
-    },
-    {
-      "code": "PA",
-      "country": "Panama",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "USD",
-      "shelfPrice": 1.12,
-      "packageVolumeMl": 355.0,
-      "pricePerLiter": 3.1549,
-      "pricePer330Ml": 1.0411,
-      "sourceUrl": "https://www.super99.com/10100390-corona-extra-cerveza-botella-355ml",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "$1.12",
-      "observedVolumeText": "355ml",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-10T08:17:29.679Z",
-      "staleSince": "2026-09-26T08:45:48.003Z"
-    },
-    {
-      "code": "PE",
-      "country": "Peru",
-      "role": "core",
-      "product": "Corona Extra",
-      "currency": "PEN",
-      "shelfPrice": 5.5,
-      "packageVolumeMl": 330.0,
-      "pricePerLiter": 16.6667,
-      "pricePer330Ml": 5.5,
-      "sourceUrl": "https://www.metro.pe/cerveza-corona-extra-botella-330ml-996296/p",
-      "sourceMode": "http",
-      "httpStatus": 200,
-      "observedPriceText": "S/ 5 . 50 ",
-      "observedVolumeText": "330ml",
-      "marketScope": {
-        "level": "country-reference",
-        "label": "Selected retailer source",
-        "nationalAverage": false,
-        "locationDeterministic": false,
-        "classification": "not-yet-market-audited"
-      },
-      "stale": true,
-      "lastFreshAt": "2026-09-24T08:38:42.444Z",
-      "staleSince": "2026-09-26T08:45:48.003Z"
     },
     {
       "code": "PH",
