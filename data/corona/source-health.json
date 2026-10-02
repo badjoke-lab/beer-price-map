@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-01T10:20:10.298Z",
-  "freshCountryCount": 50,
+  "generatedAt": "2026-10-02T09:57:45.627Z",
+  "freshCountryCount": 52,
   "minimumFreshCountries": 50,
   "productionGate": "pass",
   "records": [
@@ -19,7 +19,7 @@
       "sourceUrl": "https://rrcellars.ae/product-category/beer/lager/",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -36,13 +36,13 @@
       "sourceUrl": "https://shop.billa.at/produkte/corona-extra-00721783",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
       "code": "AU",
       "role": "core",
-      "fresh": false,
+      "fresh": true,
       "marketScope": {
         "level": "country-reference",
         "label": "Selected retailer source",
@@ -51,11 +51,10 @@
         "classification": "not-yet-market-audited"
       },
       "sourceUrl": "https://www.danmurphys.com.au/beer/brand-corona",
-      "lastSuccessAt": "2026-09-29T10:00:59.440Z",
-      "failureReasons": [
-        "missing-volume",
-        "missing-volume"
-      ]
+      "sourceMode": "browser",
+      "httpStatus": 200,
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
+      "failureReasons": []
     },
     {
       "code": "BA",
@@ -71,13 +70,13 @@
       "sourceUrl": "https://hedonism.ba/brand/corona-extra/",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
       "code": "BE",
       "role": "core",
-      "fresh": false,
+      "fresh": true,
       "marketScope": {
         "level": "country-reference",
         "label": "Selected retailer source",
@@ -86,15 +85,10 @@
         "classification": "not-yet-market-audited"
       },
       "sourceUrl": "https://www.carrefour.be/nl/extra-12x33cl-fles/06955917.html",
-      "lastSuccessAt": "2026-09-24T08:38:42.444Z",
-      "failureReasons": [
-        "challenge",
-        "challenge",
-        "challenge",
-        "challenge",
-        "challenge",
-        "challenge"
-      ]
+      "sourceMode": "browser",
+      "httpStatus": 200,
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
+      "failureReasons": []
     },
     {
       "code": "BR",
@@ -110,7 +104,7 @@
       "sourceUrl": "https://mercado.carrefour.com.br/produto/cerveja-corona-extra-pilsen-330ml-long-neck-18487",
       "sourceMode": "browser",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -129,7 +123,7 @@
       "sourceUrl": "https://www.lcbo.com/en/corona-extra-44253",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -146,7 +140,7 @@
       "sourceUrl": "https://www.aldi-suisse.ch/de/produkt/corona-extra-000000000000507488",
       "sourceMode": "browser",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -181,7 +175,7 @@
       "sourceUrl": "https://www.walmart.co.cr/corona",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -198,7 +192,7 @@
       "sourceUrl": "https://www.rohlik.cz/en-CZ/1378245",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -215,7 +209,7 @@
       "sourceUrl": "https://prej.dk/produkt/corona-extra-4-5-36991",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -232,7 +226,7 @@
       "sourceUrl": "https://supermercadosrd.com/productos/cerveza-corona-extra-botella/25275",
       "sourceMode": "browser",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -249,7 +243,7 @@
       "sourceUrl": "https://www.tia.com.ec/supermercado/bebidas-alcoholicas/cerveza/cerveza-corona-extra-330-ml-243293000.html",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -266,7 +260,7 @@
       "sourceUrl": "https://www.rimi.ee/epood/en/search?query=Corona",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -284,7 +278,7 @@
       "sourceUrl": "https://www.alko.fi/en/products/761044/Corona-Extra/",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -301,7 +295,7 @@
       "sourceUrl": "https://courses.monoprix.fr/products/corona-extra-bi%C3%A8re-6x33cl/MPX_3944094",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -318,7 +312,7 @@
       "sourceUrl": "https://kompas.ge/en/product/ludi-korona-eqstra",
       "sourceMode": "browser",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -335,7 +329,7 @@
       "sourceUrl": "https://www.bigle.gr/products?code=c3781cd4-5c62-425d-9860-90e2c6daa78f",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -352,7 +346,7 @@
       "sourceUrl": "https://www.konzum.hr/web/products/corona-pivo-extra-0-33-l-nb",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -369,7 +363,7 @@
       "sourceUrl": "https://kptll.com/id/products/beer-corona-extra-can-330ml",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -386,7 +380,7 @@
       "sourceUrl": "https://www.carryout.ie/p/corona-extra-lager-18-x-330ml-bottles/7501064196539",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -403,7 +397,7 @@
       "sourceUrl": "https://pricepilot.co.il/item/%D7%91%D7%99%D7%A8%D7%94%20%D7%A7%D7%95%D7%A8%D7%95%D7%A0%D7%94%20%D7%91%D7%A7%D7%91%D7%95%D7%A7%20%D7%91%D7%95%D7%93%D7%93%20330%20%D7%9E%D7%9C/6a66b418-e3f3-4869-be19-d25906290b12?lang=en",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -420,7 +414,7 @@
       "sourceUrl": "https://www.vinbudin.is/english/home/products/stoek-vara.aspx/?productid=26214",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -437,7 +431,7 @@
       "sourceUrl": "https://www.carrefour.it/p/corona-extra-bottiglia-33cl/0000075041670.html",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -454,7 +448,7 @@
       "sourceUrl": "https://www.indulgejamaica.com/product-page/corona-extra",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -471,7 +465,7 @@
       "sourceUrl": "https://www.myfyxx.com/products/corona-extra-beer-bottle-35cl",
       "sourceMode": "browser",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -488,7 +482,7 @@
       "sourceUrl": "https://www.costco.co.jp/Corona/c/Corona",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -505,7 +499,7 @@
       "sourceUrl": "https://drunk.kz/product/45172",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -522,7 +516,7 @@
       "sourceUrl": "https://www.spinneyslebanon.com/extra-mexican-beer-bottle-541405-v001.html",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -539,7 +533,7 @@
       "sourceUrl": "https://ceylonspirits.lk/product/corona-extra-330ml-bottle",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -556,7 +550,7 @@
       "sourceUrl": "https://www.rimi.lv/e-veikals/en/search?query=Corona",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -573,7 +567,7 @@
       "sourceUrl": "https://winetime.md/brand/corona-extra",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -590,7 +584,7 @@
       "sourceUrl": "https://savemart.com.mt/category/beverages/beers-ciders?page=2",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -607,7 +601,7 @@
       "sourceUrl": "https://www.winners.mu/category/products?categoryId=219&pagenumber=2",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -624,7 +618,7 @@
       "sourceUrl": "https://jgsj.jayagrocer.com/products/corona-extra-355ml-1",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -641,7 +635,7 @@
       "sourceUrl": "https://www.jumbo.com/producten/corona-extra-bier-blikken-6-x-33-cl-538459PAK",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -658,7 +652,7 @@
       "sourceUrl": "https://cheers.com.np/",
       "sourceMode": "browser",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -675,7 +669,7 @@
       "sourceUrl": "https://pokeno.shop.thebottleo.co.nz/category/beer",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -710,7 +704,7 @@
       "sourceUrl": "https://www.metro.pe/cerveza-corona-extra-botella-330ml-996296/p",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -727,7 +721,7 @@
       "sourceUrl": "https://boozeshop.ph/products/corona-extra-beer-330ml-bottle",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -744,7 +738,7 @@
       "sourceUrl": "https://www.frisco.pl/pid,140996/n,corona-extra-piwo-(butelka-bezzwrotna)/stn,product",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -761,7 +755,7 @@
       "sourceUrl": "https://www.auchan.pt/pt/bebidas-e-garrafeira/cervejas-e-sidras/cerveja-estrangeira/cerveja-corona-mexico-0.355l/977772.html",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -778,7 +772,7 @@
       "sourceUrl": "https://stock.com.py/products/332213-cerveza-corona-extra-330-ml.aspx",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -796,7 +790,7 @@
       "sourceUrl": "https://www.systembolaget.se/produkt/ol/corona-extra-115403/",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -813,7 +807,7 @@
       "sourceUrl": "https://www.paneco.com.sg/products/corona-extra-beer-bottle-330ml-4987",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -830,7 +824,7 @@
       "sourceUrl": "https://wishbeer.com/products/corona-extra-350-ml-46",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -847,7 +841,7 @@
       "sourceUrl": "https://www.jokong.com.tw/collections/%E5%95%A4%E9%85%92/products/%E5%8F%AF%E6%A8%82%E5%A8%9C%E5%95%A4%E9%85%92-%E7%8E%BB%E7%92%83355ml-24%E7%BD%90-%E5%90%AB%E9%81%8B%E5%88%B0%E5%BA%9C",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -864,7 +858,7 @@
       "sourceUrl": "https://shop.annam-gourmet.com/hcm-est/corona-extra-beer-4-5-bottle-300ml.html",
       "sourceMode": "browser",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -899,7 +893,7 @@
       "sourceUrl": "https://jayswines.com/",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -916,7 +910,7 @@
       "sourceUrl": "https://app.isokko.com/store/isokkostore",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -933,7 +927,7 @@
       "sourceUrl": "https://najcena.si/akcija/corona-extra-pivo-0355-137001",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     },
     {
@@ -950,7 +944,7 @@
       "sourceUrl": "https://legourmetkampala.com/collections/imported-beer",
       "sourceMode": "http",
       "httpStatus": 200,
-      "lastSuccessAt": "2026-10-01T10:20:10.298Z",
+      "lastSuccessAt": "2026-10-02T09:57:45.627Z",
       "failureReasons": []
     }
   ]
