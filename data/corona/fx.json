@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "base": "USD",
   "date": "2026-10-11",
-  "fetchedAt": "2026-10-11T10:11:25.627Z",
+  "fetchedAt": "2026-10-12T11:06:58.501Z",
   "source": "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json",
   "rates": {
     "USD": 1,
